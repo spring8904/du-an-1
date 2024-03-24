@@ -21,11 +21,18 @@
   <!-- Divider -->
   <hr class="sidebar-divider">
 
+  <!-- Nav Item - Role -->
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'role') !== false ? "active" : "" ?>">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=roles">
+      <i class="fas fa-fw fa-table"></i>
+      <span>QL Chức vụ</span></a>
+  </li>
+
   <!-- Nav Item - User -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'user') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=users">
       <i class="fas fa-fw fa-table"></i>
-      <span>Quản lý User</span></a>
+      <span>QL User</span></a>
   </li>
 
   <!-- Divider -->

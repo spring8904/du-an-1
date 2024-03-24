@@ -5,7 +5,7 @@ function userListAll()
   $title = 'Danh sách người dùng';
   $view = 'users/index';
   $styles = ['styles/datatable'];
-  $scripts = ['scripts/datatable', 'users/script'];
+  $scripts = ['scripts/datatable'];
 
   $users = listAll('tb_nguoi_dung');
 
@@ -21,7 +21,7 @@ function userShowOne($id)
   $title = $user['ho_ten'];
   $view = 'users/detail';
   $styles = ['styles/datatable'];
-  $scripts = ['scripts/datatable', 'users/script'];
+  $scripts = ['scripts/datatable'];
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 

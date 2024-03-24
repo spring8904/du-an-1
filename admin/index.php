@@ -27,6 +27,12 @@ middleware_auth_check($act, $arrRouteNeedAuth);
 match ($act) {
   '/' => dashboard(),
 
+  // CRUD Role
+  'roles' => roleListAll(),
+  'role-create' => roleCreate(),
+  'role-update' => roleUpdate($_GET['id']),
+  'role-delete' => roleDelete($_GET['id']),
+
   // CRUD User
   'users' => userListAll(),
   'user-detail' => userShowOne($_GET['id']),
