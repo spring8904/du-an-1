@@ -17,6 +17,6 @@ function homeIndex()
 
         $products = getSearchProduct($catalogue_id, $product_name, $price_min, $price_max);
     }
-    
+
     require_once PATH_VIEW . 'home.php';
 }

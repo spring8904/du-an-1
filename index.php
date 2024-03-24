@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 // Require file trong commons
 require_once './commons/env.php';
@@ -22,12 +22,12 @@ $arrRouteNeedAuth = [
     'order',
     'addOrder',
     'updateQuantity',
-]; 
+];
 
 // Kiểm tra xem user đã đăng nhập chưa
 middleware_auth_check($act, $arrRouteNeedAuth);
 
-match($act) {
+match ($act) {
     '/' => homeIndex(),
     'cart' => cartIndex(),
     'addToCart' => addToCart(),

@@ -24,7 +24,11 @@
                     <a class="nav-link" href="<?= BASE_URL . '?act=cart' ?>">Giỏ hàng</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
+                    <?php if (empty($_SESSION['user'])) { ?>
+                        <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
+                    <?php } else { ?>
+                        <a class="nav-link" href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
+                    <?php } ?>
                 </li>
             </ul>
         </div>
@@ -71,16 +75,15 @@
                                     <p class="card-text"><?= $product['overview'] ?></p>
                                     <p class="card-text"><strong>Giá:</strong> <?= $product['price_regular'] ?></p>
                                     <p class="card-text"><strong>Giảm giá:</strong> <?= $product['price_sale'] ?></p>
-                                    <?php 
-                                        $product_price = $product['price_sale'] ?? $product['price_regular'];
+                                    <?php
+                                    $product_price = $product['price_sale'] ?? $product['price_regular'];
                                     ?>
-                                    <a href="<?= BASE_URL . 
-                                        '?act=addToCart&id_product=' . $product['id'] .
-                                        '&product_name=' . $product['name'] .
-                                        '&product_image=' . $product['img_thumbnail'] .
-                                        '&product_price=' . $product_price
-                                        ?>" class="btn btn-primary"
-                                        onclick="return confirm('Bạn có muốn thêm sản phẩm vào giỏ hàng không?')">Add to cart</a>
+                                    <a href="<?= BASE_URL .
+                                                    '?act=addToCart&id_product=' . $product['id'] .
+                                                    '&product_name=' . $product['name'] .
+                                                    '&product_image=' . $product['img_thumbnail'] .
+                                                    '&product_price=' . $product_price
+                                                ?>" class="btn btn-primary" onclick="return confirm('Bạn có muốn thêm sản phẩm vào giỏ hàng không?')">Add to cart</a>
                                 </div>
                             </div>
                         </div>

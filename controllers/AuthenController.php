@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-function authenShowFormLogin() {
+function authenShowFormLogin()
+{
     if ($_POST) {
         authenLogin();
     }
@@ -8,7 +9,8 @@ function authenShowFormLogin() {
     require_once PATH_VIEW . 'authen/login.php';
 }
 
-function authenLogin() {
+function authenLogin()
+{
     $user = getUserClientByEmailAndPassword($_POST['email'], $_POST['password']);
 
     if (empty($user)) {
@@ -24,7 +26,8 @@ function authenLogin() {
     exit();
 }
 
-function authenLogout() {
+function authenLogout()
+{
     if (!empty($_SESSION['user'])) {
         session_destroy();
     }
