@@ -6,7 +6,7 @@ function orderIndex()
     if (isset($_SESSION["cart"])) {
         $cartItems = $_SESSION["cart"];
     }
-    
+
     require_once PATH_VIEW . 'order.php';
 }
 
