@@ -13,26 +13,31 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Logo</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL ?>">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL . '?act=cart' ?>">Giỏ hàng</a>
-                </li>
-                <li class="nav-item">
-                    <?php if (empty($_SESSION['user'])) { ?>
-                        <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
-                    <?php } else { ?>
-                        <a class="nav-link" href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
-                    <?php } ?>
-                </li>
-            </ul>
+    <div class="bg-dark">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">Logo</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_URL ?>">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_URL . '?act=cart' ?>">Giỏ hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <?php if (empty($_SESSION['user'])) { ?>
+                                <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
+                            <?php } else { ?>
+                                <a class="nav-link" href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
+                            <?php } ?>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
+
+    </div>
 
     <div class="container mt-4">
         <div class="row">

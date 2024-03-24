@@ -47,8 +47,12 @@
               <td><?= $user['ho_ten'] ?></td>
             </tr>
             <tr>
-              <td>Giới tính</td>
-              <td><?= $user['gioi_tinh'] == 'male' ? 'Nam' : 'Nữ' ?></td>
+            <tr>
+              <td>Chức vụ</td>
+              <td><?= ucfirst(showOne('tb_chuc_vu', $user['id_cv'])['chuc_vu']) ?></td>
+            </tr>
+            <td>Giới tính</td>
+            <td><?= $user['gioi_tinh'] == 'male' ? 'Nam' : 'Nữ' ?></td>
             </tr>
             <tr>
               <td>Ngày sinh</td>
@@ -57,10 +61,6 @@
             <tr>
               <td>Địa chỉ</td>
               <td><?= $user['dia_chi'] ?></td>
-            </tr>
-            <tr>
-              <td>Chức vụ</td>
-              <td><?= ucfirst(showOne('tb_chuc_vu', $user['id_cv'])['chuc_vu']) ?></td>
             </tr>
           </tbody>
         </table>

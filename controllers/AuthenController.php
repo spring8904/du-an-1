@@ -21,8 +21,11 @@ function authenLogin()
     }
 
     $_SESSION['user'] = $user;
-
-    header('Location: ' . BASE_URL);
+    if (showOne('tb_chuc_vu', $user['id_cv'])['chuc_vu'] == 'admin') {
+        header('Location: ' . BASE_URL_ADMIN);
+    } else {
+        header('Location: ' . BASE_URL);
+    }
     exit();
 }
 
