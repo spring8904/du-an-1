@@ -10,8 +10,6 @@ define('PATH_CONTROLLER_ADMIN',   __DIR__ . '/../admin/controllers/');
 define('PATH_MODEL_ADMIN',        __DIR__ . '/../admin/models/');
 define('PATH_VIEW_ADMIN',         __DIR__ . '/../admin/views/');
 
-define('PATH_UPLOAD',       __DIR__ . '/../');
-
 define('BASE_URL',          'http://localhost/du-an-1/');
 define('BASE_URL_ADMIN',    'http://localhost/du-an-1/admin/');
 

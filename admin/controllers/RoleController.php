@@ -34,6 +34,11 @@ function roleCreate()
 
 function roleUpdate($id)
 {
+  if ($_GET['id'] == 1 || $_GET['id'] == 2) {
+    echo "<script>alert('Không thể sửa chức vụ này!'); window.location='?act=roles';</script>";
+    exit();
+  }
+
   $tableName = 'tb_chuc_vu';
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {

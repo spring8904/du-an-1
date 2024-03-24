@@ -17,7 +17,7 @@
       <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="role" class="form-label">Tên chức vụ:<span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="role" name="chuc_vu" required>
+          <input type="text" class="form-control" id="role" name="chuc_vu" required autofocus>
         </div>
         <div class="d-flex justify-content-between mt-3">
           <div>

@@ -1,8 +1,3 @@
-<?php
-if ($_GET['id'] == 1 || $_GET['id'] == 2) {
-  echo "<script>alert('Không thể sửa chức vụ này!'); window.location='?act=roles';</script>";
-}
-?>
 <div class="container-fluid">
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>

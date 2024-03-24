@@ -40,6 +40,12 @@ match ($act) {
   'user-update' => userUpdate($_GET['id']),
   'user-delete' => userDelete($_GET['id']),
 
+  // CRUD Pr Category
+  'prCategories' => prCategoryListAll(),
+  'prCategory-create' => prCategoryCreate(),
+  'prCategory-update' => prCategoryUpdate($_GET['id']),
+  'prCategory-delete' => prCategoryDelete($_GET['id']),
+
   // Authen
   'login' => authenShowFormLogin(),
   'logout' => authenLogout(),
