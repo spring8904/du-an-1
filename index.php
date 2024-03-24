@@ -1,10 +1,10 @@
 <?php
 session_start();
 // Require file trong commons
-require_once './commons/env.php';
-require_once './commons/helper.php';
-require_once './commons/connect-db.php';
-require_once './commons/model.php';
+require_once './common/env.php';
+require_once './common/helper.php';
+require_once './common/connect-db.php';
+require_once './common/model.php';
 
 // Require file trong controllers và models
 require_file(PATH_CONTROLLER);
@@ -42,4 +42,4 @@ match ($act) {
     'logout' => authenLogout(),
 };
 
-require_once './commons/disconnect-db.php';
+require_once './common/disconnect-db.php';
