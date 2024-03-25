@@ -17,25 +17,25 @@
             <form method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="title" name="title" required value="<?= $post['title'] ?>">
+                    <input type="text" class="form-control" id="tieu_de" name="tieu_de" required value="<?= $post['tieu_de'] ?>">
                 </div>
                 <div class="mb-3">
                     <label for="excrept" class="form-label">Mô tả bài viết:</label>
-                    <input type="text" class="form-control" id="excrept" name="excrept" value="<?= $post['excrept'] ?>">
+                    <input type="text" class="form-control" id="mo_ta" name="mo_ta" value="<?= $post['mo_ta'] ?>">
                 </div>
                 <label for="image" class="form-label">Hình ảnh:</label>
                 <div class="col">
                     <div class="mb-3 input-group">
-                        <input type="file" class="form-control" id="img_thumbnail" accept="image/*" onchange="loadFile(event)" name="img_thumbnail">
+                        <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh">
                         <label class="input-group-text" for="image">Tải lên</label>
                     </div>
                     <div class="text-center">
-                        <img id="output" src="<?= BASE_URL . 'uploads/' . $post['img_thumbnail'] ?>" width="200px" height="200px" />
+                        <img id="output" src="<?= BASE_URL . 'uploads/' . $post['hinh_anh'] ?>" width="200px" height="200px" />
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Nội dung bài viết:</label>
-                    <textarea class="form-control" id="content" name="content" required><?= $post['content'] ?></textarea>
+                    <textarea class="form-control" id="noi_dung" name="noi_dung" required><?= $post['noi_dung'] ?></textarea>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
                     <a href="<?= BASE_URL_ADMIN ?>?act=posts" class=" btn btn-secondary">Go back</a>

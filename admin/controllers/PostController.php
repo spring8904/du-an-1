@@ -20,7 +20,7 @@ function postShowOne($id)
         e404();
     }
 
-    $title = 'Chi tiết bài viết' . ' - ' . $post['p_title'];
+    $title = 'Chi tiết bài viết' . ' - ' . $post['p_tieu_de'];
     $view = 'posts/detail';
     $styles = ['styles/datatable'];
     $scripts = ['scripts/datatable'];
@@ -33,24 +33,24 @@ function postCreate()
     $title = 'Tạo bài viết';
     $view = 'posts/create';
 
-
     $users = listAll('tb_nguoi_dung');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $posts = 'posts';
+        $posts = 'tb_bai_viet';
 
         $data = [
-            'users_id' => $_SESSION['user']['id'],
-            'title' => $_POST['title'],
-            'excrept' => $_POST['excrept'],
-            'content' => $_POST['content'],
+            'id_nd' => $_SESSION['user']['id'],
+            'tieu_de' => $_POST['tieu_de'],
+            'mo_ta' => $_POST['mo_ta'],
+            'noi_dung' => $_POST['noi_dung'],
+            'ngay_dang' => date('Y-m-d H:i:s'),
         ];
 
-        if ($_FILES['img_thumbnail']['size'] !== 0) {
-            $imgThumbnail = uploadImage($_FILES['img_thumbnail']);
+        if ($_FILES['hinh_anh']['size'] !== 0) {
+            $imgThumbnail = uploadImage($_FILES['hinh_anh']);
 
             if ($imgThumbnail) {
-                $data['img_thumbnail'] = $imgThumbnail;
+                $data['hinh_anh'] = $imgThumbnail;
                 insert($posts, $data);
             } else {
                 $err = 'Có lỗi xảy ra, vui lòng kiểm tra lại.';
@@ -70,21 +70,21 @@ function postUpdate($id)
     $title = 'Cập nhật bài viết';
     $view = 'posts/update';
 
-    $tableName = 'posts';
+    $tableName = 'tb_bai_viet';
     $post = showOne($tableName, $id);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $data = [
-            'title' => $_POST['title'],
-            'excrept' => $_POST['excrept'],
-            'content' => $_POST['content'],
-            'updated_at' => date('Y-m-d H:i:s'),
+            'tieu_de' => $_POST['tieu_de'],
+            'mo_ta' => $_POST['mo_ta'],
+            'noi_dung' => $_POST['noi_dung'],
+            'ngay_sua' => date('Y-m-d H:i:s'),
         ];
 
-        if ($_FILES['img_thumbnail']['size'] !== 0) {
-            $imgThumbnail = uploadImage($_FILES['img_thumbnail']);
-            $data['img_thumbnail'] = $imgThumbnail;
+        if ($_FILES['hinh_anh']['size'] !== 0) {
+            $imgThumbnail = uploadImage($_FILES['hinh_anh']);
+            $data['hinh_anh'] = $imgThumbnail;
         }
 
         update($tableName, $id, $data);
@@ -95,66 +95,62 @@ function postUpdate($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validatePostCreate($data)
-{
-    $errors = [];
+// function validatePostCreate($data)
+// {
+//     $errors = [];
 
-    // Validate title
-    if (empty($data['title'])) {
-        $errors[] = 'Vui lòng điền tiêu đề';
-    } elseif (is_array($data['title']) > 100) {
-        $errors[] = 'Mô tả bài viết phải nhỏ hơn 100 ký tự';
-    }
+//     // Validate title
+//     if (empty($data['tieu_de'])) {
+//         $errors[] = 'Vui lòng điền tiêu đề';
+//     } elseif (is_array($data['tieu_de']) > 100) {
+//         $errors[] = 'Mô tả bài viết phải nhỏ hơn 100 ký tự';
+//     }
 
-    // Validate excrept
-    if (is_array($data['content']) > 300) {
-        $errors[] = 'Mô tả bài viết phải nhỏ hơn 300 ký tự';
-    }
+//     // Validate excrept
+//     if (is_array($data['mo_ta']) > 300) {
+//         $errors[] = 'Mô tả bài viết phải nhỏ hơn 300 ký tự';
+//     }
 
-    // Validate content 
-    if (empty($data['content'])) {
-        $errors[] = 'Vui lòng điền nội dung bài viết';
-    }
+//     // Validate content 
+//     if (empty($data['noi_dung'])) {
+//         $errors[] = 'Vui lòng điền nội dung bài viết';
+//     }
 
-    // Validate img_thumbnail
-    if (empty($data['img_thumbnail'])) {
-        $errors['img_thumbnail'] = 'Vui lòng nhập hình ảnh';
-    } elseif (is_array($data['img_thumbnail'])) {
-        $typeImage = ['image/jpeg', 'image/png', 'image/jpg'];
+//     // Validate img_thumbnail
+//     if (empty($data['hinh_anh'])) {
+//         $errors['hinh_anh'] = 'Vui lòng nhập hình ảnh';
+//     } elseif (is_array($data['hinh_anh'])) {
+//         $typeImage = ['image/jpeg', 'image/png', 'image/jpg'];
 
-        if ($data['img_thumbnail']['size'] > 2 * 1024 * 1024) {
-            $errors[] = 'Hình ảnh phải nhỏ hơn 2MB';
-        } elseif (!in_array($data['img_thumbnail']['type'], $typeImage)) {
-            $errors[] = 'Hình ảnh phải có định dạng jpeg, png, jpg';
-        }
-    }
+//         if ($data['hinh_anh']['size'] > 2 * 1024 * 1024) {
+//             $errors[] = 'Hình ảnh phải nhỏ hơn 2MB';
+//         } elseif (!in_array($data['hinh_anh']['type'], $typeImage)) {
+//             $errors[] = 'Hình ảnh phải có định dạng jpeg, png, jpg';
+//         }
+//     }
 
-    if (!empty($errors)) {
-        $_SESSION['errors'] = $errors;
-        $_SESSION['data'] = $data;
+//     if (!empty($errors)) {
+//         $_SESSION['errors'] = $errors;
+//         $_SESSION['data'] = $data;
 
-        header('Location: ' . BASE_URL_ADMIN . '?act=post-create');
+//         header('Location: ' . BASE_URL_ADMIN . '?act=post-create');
 
-        exit();
-    }
-}
+//         exit();
+//     }
+// }
 
 function postDelete($id)
 {
-    $post = showOne('posts', $id);
+    $post = showOne('tb_bai_viet', $id);
 
     if (empty($post)) {
         e404();
     }
 
-    delete('posts', $id);
+    delete('tb_bai_viet', $id);
 
-    if (!empty($post['img_thumbnail']) && file_exists(PATH_UPLOADS . 'posts/' . $post['img_thumbnail'])) {
-        unlink(PATH_UPLOADS . 'posts/' . $post['img_thumbnail']);
-    }
-
-    if (!empty($post['img_cover']) && file_exists(PATH_UPLOADS . 'posts/' . $post['img_cover'])) {
-        unlink(PATH_UPLOADS . 'posts/' . $post['img_cover']);
+    if (!empty($post['hinh_anh']) && file_exists(PATH_UPLOADS . 'posts/' . $post['hinh_anh'])) {
+        unlink(PATH_UPLOADS . 'posts/' . $post['hinh_anh']);
     }
 
     $_SESSION['success'] = 'Xóa thành công bài viết';

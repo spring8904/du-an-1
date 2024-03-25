@@ -31,17 +31,18 @@
               <tr>
                 <td><?= $post['p_id'] ?></td>
                 <td>
-                  <img src="<?= BASE_URL . 'uploads/' . $post['p_img_thumbnail'] ?>" alt="<?= $post['p_title'] ?>" width="50">
+                  <img src="<?= BASE_URL . 'uploads/' . $post['p_hinh_anh'] ?>" alt="<?= $post['p_tieu_de'] ?>" width="50">
                 </td>
-                <td><?= $post['p_title'] ?></td>
-                <td><?= $post['p_excrept'] ?></td>
+                <td><?= $post['p_tieu_de'] ?></td>
+                <td><?= $post['p_mo_ta'] ?></td>
                 <td><?= $post['us_name'] ?></td>
                 <td><img src="<?= BASE_URL . 'uploads/' . $post['us_avatar'] ?>" alt="<?= $post['us_name'] ?>" width="50"></td>
-                <td><?= $post['p_created_at'] ?></td>
+                <td><?= $post['p_ngay_dang'] ?></td>
+                <td><?= $post['p_ngay_sua'] ?></td>
                 <td>
                   <a href="<?= BASE_URL_ADMIN . '?act=post-update&id=' . $post['p_id'] ?>" class="btn btn-warning">Sửa</a>
                   <a href="<?= BASE_URL_ADMIN . '?act=post-detail&id=' . $post['p_id'] ?>" class="btn btn-primary">Xem</a>
-                  <a href="<?= BASE_URL_ADMIN . '?act=post-delete&id=' . $post['p_id']  ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết <?= $post['p_title'] ?>')">Xóa</a>
+                  <a href="<?= BASE_URL_ADMIN . '?act=post-delete&id=' . $post['p_id']  ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết <?= $post['p_tieu_de'] ?>')">Xóa</a>
                 </td>
               </tr>
             <?php } ?>

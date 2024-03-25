@@ -26,19 +26,19 @@
             </tr>
             <tr>
               <td>Ảnh bài viết</td>
-              <td><img src="<?= BASE_URL ?>../uploads/<?= $post['p_img_thumbnail'] ?>" alt="<?= $post['p_title'] ?>" width="100"></td>
+              <td><img src="<?= BASE_URL ?>../uploads/<?= $post['p_hinh_anh'] ?>" alt="<?= $post['p_tieu_de'] ?>" width="100"></td>
             </tr>
             <tr>
               <td>Tiêu đề bài viết</td>
-              <td><?= $post['p_title'] ?></td>
+              <td><?= $post['p_tieu_de'] ?></td>
             </tr>
             <tr>
               <td>Mô tả bài viết</td>
-              <td><?= $post['p_excrept'] ?></td>
+              <td><?= $post['p_mo_ta'] ?></td>
             </tr>
             <tr>
               <td>Nội dung bài viết</td>
-              <td><?= $post['p_content'] ?></td>
+              <td><?= $post['p_noi_dung'] ?></td>
             </tr>
             <tr>
               <td>Người viết</td>
@@ -50,11 +50,11 @@
             </tr>
             <tr>
               <td>Ngày đăng</td>
-              <td><?= $post['p_created_at'] ?></td>
+              <td><?= $post['p_ngay_dang'] ?></td>
             </tr>
             <tr>
               <td>Ngày sửa</td>
-              <td><?= $post['p_updated_at'] ?></td>
+              <td><?= $post['p_ngay_sua'] ?></td>
             </tr>
           </tbody>
         </table>
