@@ -3,8 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Mar 25, 2024 at 03:14 PM
+-- Generation Time: Mar 25, 2024 at 03:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -245,8 +244,7 @@ CREATE TABLE `tb_chuc_vu` (
 
 INSERT INTO `tb_chuc_vu` (`id`, `chuc_vu`) VALUES
 (1, 'admin'),
-(2, 'client'),
-(4, 'qqqq');
+(2, 'client');
 
 -- --------------------------------------------------------
 
@@ -281,10 +279,7 @@ CREATE TABLE `tb_danh_muc_sp` (
 --
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
-
-(2, 'iPhone', '', ''),
-(3, 'Oppo', '', ''),
-(4, 'Samsung', '', '');
+(0, 'Samsung', '', '6600434aa4044.jpg');
 
 -- --------------------------------------------------------
 
@@ -327,7 +322,7 @@ CREATE TABLE `tb_gio_hang` (
 CREATE TABLE `tb_hinh_anh_sp` (
   `id` int(11) NOT NULL,
   `id_sp` int(11) NOT NULL,
-  `hinh_anh` varchar(255) NOT NULL
+    `hinh_anh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -417,7 +412,7 @@ INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_
 CREATE TABLE `tb_san_pham` (
   `id` int(11) NOT NULL,
   `ten_sp` varchar(50) NOT NULL,
-  `gia_sp` float NOT NULL,
+`gia_sp` float NOT NULL,
   `id_dm` int(11) NOT NULL,
   `mo_ta` text NOT NULL,
   `ngay_nhap` date NOT NULL,

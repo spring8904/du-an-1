@@ -69,7 +69,7 @@
             </div>
             <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
             <div class="mb-3 input-group">
-              <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh[]" required multiple>
+              <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh[]" multiple>
               <label class="input-group-text" for="image">Tải lên</label>
             </div>
             <div class="text-center">

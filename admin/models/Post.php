@@ -16,7 +16,7 @@ if (!function_exists('listAllForPost')) {
                     p.ngay_dang         as p_ngay_dang,
                     p.ngay_sua          as p_ngay_sua,
                     us.ho_ten           as us_name,
-                    us.avatar           as us_avatar
+                    us.email           as us_email
                 FROM tb_bai_viet as p
                 INNER JOIN tb_nguoi_dung as us ON us.id = p.id_nd
                 ORDER BY p_id DESC;

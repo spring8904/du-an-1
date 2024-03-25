@@ -21,22 +21,25 @@
               <th>Người viết</th>
               <th>Avatar</th>
               <th>Ngày đăng</th>
+              <th>Ngày sửa</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($posts as $post) {
-              
+
             ?>
               <tr>
                 <td><?= $post['p_id'] ?></td>
                 <td>
-                  <img src="<?= BASE_URL . 'uploads/' . $post['p_hinh_anh'] ?>" alt="<?= $post['p_tieu_de'] ?>" width="50">
+                  <?php if ($post['p_hinh_anh']) { ?>
+                    <img src="<?= BASE_URL . 'uploads/' . $post['p_hinh_anh'] ?>" alt="<?= $post['p_tieu_de'] ?>" width="50">
+                  <?php } ?>
                 </td>
                 <td><?= $post['p_tieu_de'] ?></td>
                 <td><?= $post['p_mo_ta'] ?></td>
                 <td><?= $post['us_name'] ?></td>
-                <td><img src="<?= BASE_URL . 'uploads/' . $post['us_avatar'] ?>" alt="<?= $post['us_name'] ?>" width="50"></td>
+                <td><?= $post['us_email'] ?></td>
                 <td><?= $post['p_ngay_dang'] ?></td>
                 <td><?= $post['p_ngay_sua'] ?></td>
                 <td>
