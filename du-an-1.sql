@@ -3,6 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Mar 25, 2024 at 03:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
@@ -67,21 +68,6 @@ INSERT INTO `catalogues` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `costumer`
 --
 
@@ -130,25 +116,6 @@ CREATE TABLE `order_items` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL COMMENT 'ưu tiên lưu giá price hơn regular.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `posts`
---
-
-CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
-  `users_id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `excrept` text DEFAULT NULL,
-  `img_thumnail` varchar(255) NOT NULL,
-  `img_cover` varchar(255) DEFAULT NULL,
-  `content` text DEFAULT NULL,
-  `view_count` int(11) NOT NULL DEFAULT 0,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -209,20 +176,27 @@ INSERT INTO `product_portfolio` (`id`, `ten_dm`, `hinh_anh`, `trang_thai`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promotion`
+-- Table structure for table `tb_bai_viet`
 --
 
-CREATE TABLE `promotion` (
+CREATE TABLE `tb_bai_viet` (
   `id` int(11) NOT NULL,
-  `promotion_name` varchar(100) NOT NULL,
-  `promotion_code` varchar(50) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `mota` text NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `discount` float NOT NULL,
-  `image` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id_nd` int(11) NOT NULL,
+  `tieu_de` varchar(100) NOT NULL,
+  `mo_ta` varchar(325) DEFAULT NULL,
+  `hinh_anh` varchar(255) NOT NULL,
+  `noi_dung` text NOT NULL,
+  `luot_xem` int(11) NOT NULL DEFAULT 0,
+  `ngay_dang` datetime NOT NULL DEFAULT current_timestamp(),
+  `ngay_sua` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_bai_viet`
+--
+
+INSERT INTO `tb_bai_viet` (`id`, `id_nd`, `tieu_de`, `mo_ta`, `hinh_anh`, `noi_dung`, `luot_xem`, `ngay_dang`, `ngay_sua`) VALUES
+(1, 4, 'zxcv', 'qưer', '66015eb108e27.jpg', 'qưer', 0, '2024-03-25 12:19:31', '2024-03-25 12:24:34');
 
 -- --------------------------------------------------------
 
@@ -307,6 +281,7 @@ CREATE TABLE `tb_danh_muc_sp` (
 --
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
+
 (2, 'iPhone', '', ''),
 (3, 'Oppo', '', ''),
 (4, 'Samsung', '', '');
@@ -397,6 +372,13 @@ CREATE TABLE `tb_lien_he` (
   `ngay_gui` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_lien_he`
+--
+
+INSERT INTO `tb_lien_he` (`id`, `ten_kh`, `so_dien_thoai`, `dia_chi`, `email`, `noi_dung`, `ngay_gui`) VALUES
+(1, 'Khúc Trọng Kiên', '0321456792', 'Thái Bình', 'demo1@gmail.com', 'Demo Contact', '2024-03-25 15:47:20');
+
 -- --------------------------------------------------------
 
 --
@@ -421,7 +403,10 @@ CREATE TABLE `tb_nguoi_dung` (
 --
 
 INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_cv`, `gioi_tinh`, `dia_chi`, `ngay_sinh`, `so_dien_thoai`) VALUES
-(1, 'lamnxph45877@fpt.edu.vn', '12345678', 'Nguyễn Xuân Lâm', '65ffcc0cd4f5b.png', 1, 'male', 'Hà Nội', '2024-03-24', '0339735022');
+(1, 'lamnxph45877@fpt.edu.vn', '12345678', 'Nguyễn Xuân Lâm', '65ffcc0cd4f5b.png', 1, 'male', 'Hà Nội', '2024-03-24', '0339735022'),
+(4, 'thiethnph45900@fpt.edu.vn', '12345678', 'Hoàng Ngọc Thiết', 'thiethnph45900.jpg', 1, 'male', 'Thái Bình', '2024-03-24', '0325905331'),
+(5, 'hthiet0707@gmail.com', '12345678', 'Hoàng Ngọc Thiết', '6600651075e88.jpg', 1, 'male', 'Thái Bình', '2024-02-11', '0325905331'),
+(6, 'test@gmail.com', 'ưqerqwer', 'qưerqwer', '660065af10733.jpg', 1, 'male', 'qưerqwer', '2024-11-11', '55646546');
 
 -- --------------------------------------------------------
 
@@ -480,7 +465,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `type`) VALUES
-(14, 'thiethnph45900', 'thiethnph45900@fpt.edu.vn', '12345678', '/uploads/avatar/thiethnph45900.jpg', 1);
+(1, 'thiethnph45900', 'thiethnph45900@fpt.edu.vn', '12345678', '/uploads/avatar/thiethnph45900.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -508,12 +493,6 @@ ALTER TABLE `catalogues`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -529,17 +508,17 @@ ALTER TABLE `order_items`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `posts`
---
-ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `catalogue_id` (`catalogue_id`);
+
+--
+-- Indexes for table `tb_bai_viet`
+--
+ALTER TABLE `tb_bai_viet`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_binh_luan`
@@ -648,12 +627,6 @@ ALTER TABLE `catalogues`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -666,16 +639,16 @@ ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `posts`
---
-ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tb_bai_viet`
+--
+ALTER TABLE `tb_bai_viet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_binh_luan`
@@ -735,7 +708,7 @@ ALTER TABLE `tb_khuyen_mai`
 -- AUTO_INCREMENT for table `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_nguoi_dung`

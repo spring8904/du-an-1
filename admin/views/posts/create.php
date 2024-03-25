@@ -19,17 +19,17 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="title" name="title" required autofocus>
+                            <input type="text" class="form-control" id="tieu_de" name="tieu_de" required autofocus>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Mô tả bài viết:</label>
-                            <input type="text" class="form-control" rows="5" id="excrept" name="excrept">
+                            <input type="text" class="form-control" rows="5" id="mo_ta" name="mo_ta">
                         </div>
                     </div>
                     <div class="col">
                         <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
                         <div class="mb-3 input-group">
-                            <input type="file" class="form-control" id="img_thumbnail" accept="image/*" onchange="loadFile(event)" name="img_thumbnail" required>
+                            <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh" required>
                             <label class="input-group-text" for="image">Tải lên</label>
                         </div>
                         <div class="text-center">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Nội dung bài viết:</label>
-                        <textarea class="form-control" id="content" name="content"></textarea>
+                        <textarea class="form-control" id="noi_dung" name="noi_dung"></textarea>
                     </div>
                 </div>
 

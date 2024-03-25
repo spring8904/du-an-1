@@ -56,6 +56,12 @@
       <span>QL Bài viết</span></a>
   </li>
 
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'contact') !== false ? "active" : "" ?>">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=contacts">
+      <i class="fas fa-fw fa-table"></i>
+      <span>QL Liên hệ</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 

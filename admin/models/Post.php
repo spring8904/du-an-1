@@ -1,22 +1,24 @@
 <?php
 
 if (!function_exists('listAllForPost')) {
-    function listAllForPost(){
-        try{
+    function listAllForPost()
+    {
+        try {
             $sql = "
                 SELECT 
                     p.id                as p_id,
-                    p.users_id          as p_users_id,
-                    p.title             as p_title,
-                    p.excrept           as p_excrept,
-                    p.img_thumbnail     as p_img_thumbnail,
-                    p.img_cover         as p_img_cover,
-                    p.created_at        as p_created_at,
-                    p.updated_at        as p_updated_at,
+                    p.id_nd             as p_id_nd,
+                    p.tieu_de           as p_tieu_de,
+                    p.mo_ta             as p_mo_ta,
+                    p.hinh_anh          as p_hinh_anh,
+                    p.noi_dung          as p_noi_dung,
+                    p.luot_xem          as p_luot_xem,
+                    p.ngay_dang         as p_ngay_dang,
+                    p.ngay_sua          as p_ngay_sua,
                     us.ho_ten           as us_name,
                     us.avatar           as us_avatar
-                FROM posts as p
-                INNER JOIN tb_nguoi_dung as us ON us.id = p.users_id
+                FROM tb_bai_viet as p
+                INNER JOIN tb_nguoi_dung as us ON us.id = p.id_nd
                 ORDER BY p_id DESC;
             ";
 
@@ -24,7 +26,7 @@ if (!function_exists('listAllForPost')) {
 
             $stmt->execute();
 
-            return $stmt->fetchAll();       
+            return $stmt->fetchAll();
         } catch (\Exception $e) {
             debug($e);
         }
@@ -32,23 +34,24 @@ if (!function_exists('listAllForPost')) {
 }
 
 if (!function_exists('showOneForPost')) {
-    function showOneForPost($id){
-        try{
+    function showOneForPost($id)
+    {
+        try {
             $sql = "
                 SELECT 
                     p.id                as p_id,
-                    p.users_id          as p_users_id,
-                    p.title             as p_title,
-                    p.excrept           as p_excrept,
-                    p.content           as p_content,
-                    p.img_thumbnail     as p_img_thumbnail,
-                    p.img_cover         as p_img_cover,
-                    p.created_at        as p_created_at,
-                    p.updated_at        as p_updated_at,
+                    p.id_nd             as p_id_nd,
+                    p.tieu_de           as p_tieu_de,
+                    p.mo_ta             as p_mo_ta,
+                    p.hinh_anh          as p_hinh_anh,
+                    p.noi_dung          as p_noi_dung,
+                    p.luot_xem          as p_luot_xem,
+                    p.ngay_dang         as p_ngay_dang,
+                    p.ngay_sua          as p_ngay_sua,
                     us.ho_ten           as us_name,
                     us.avatar           as us_avatar
-                FROM posts as p
-                INNER JOIN tb_nguoi_dung as us ON us.id = p.users_id
+                FROM tb_bai_viet as p
+                INNER JOIN tb_nguoi_dung as us ON us.id = p.id_nd
                 WHERE 
                     p.id = :id
                 LIMIT 1
@@ -66,4 +69,3 @@ if (!function_exists('showOneForPost')) {
         }
     }
 }
-
