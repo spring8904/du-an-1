@@ -42,6 +42,12 @@
       <span>QL Danh mục Sp</span></a>
   </li>
 
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'post') !== false ? "active" : "" ?>">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=posts">
+      <i class="fas fa-fw fa-table"></i>
+      <span>QL Bài viết</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 

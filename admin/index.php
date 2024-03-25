@@ -6,11 +6,13 @@ require_once '../common/helper.php';
 require_once '../common/connect-db.php';
 require_once '../common/model.php';
 
+
 // Require file trong controllers và models
 require_file(PATH_CONTROLLER);
 require_file(PATH_MODEL);
 require_file(PATH_CONTROLLER_ADMIN);
 require_file(PATH_MODEL_ADMIN);
+
 
 // Điều hướng
 $act = $_GET['act'] ?? '/';
@@ -18,7 +20,10 @@ $act = $_GET['act'] ?? '/';
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
   '/',
+  'roles', 'role-create', 'role-update', 'role-delete',
   'users', 'user-detail', 'user-create', 'user-update', 'user-delete',
+  'prCategories', 'prCategory-create', 'prCategory-update', 'prCategory-delete',
+  'posts', 'post-detail', 'post-create', 'post-update', 'post-delete',
 ];
 
 // Kiểm tra xem admin đã đăng nhập chưa
@@ -45,6 +50,13 @@ match ($act) {
   'prCategory-create' => prCategoryCreate(),
   'prCategory-update' => prCategoryUpdate($_GET['id']),
   'prCategory-delete' => prCategoryDelete($_GET['id']),
+
+  // CRUD Post
+  'posts' => postListAll(),
+  'post-detail' => postShowOne($_GET['id']),
+  'post-create' => postCreate(),
+  'post-update' => postUpdate($_GET['id']),
+  'post-delete' => postDelete($_GET['id']),
 
   // Authen
   'login' => authenShowFormLogin(),
