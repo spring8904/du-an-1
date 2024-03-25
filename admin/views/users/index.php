@@ -38,7 +38,11 @@
             ?>
               <tr>
                 <td><?= $user['id'] ?></td>
-                <td><img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="<?= $user['ho_ten'] ?>" width="50"></td>
+                <td>
+                  <?php if ($user['avatar']) { ?>
+                    <img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="<?= $user['ho_ten'] ?>" width="50">
+                  <?php } ?>
+                </td>
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['ho_ten'] ?></td>
                 <td>

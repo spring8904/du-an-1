@@ -67,6 +67,14 @@
               <label for="description" class="form-label">Mô tả:</label>
               <textarea type="text" class="form-control" id="description" name="mo_ta" rows="2"><?= $product['mo_ta'] ?></textarea>
             </div>
+            <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
+            <div class="mb-3 input-group">
+              <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh[]" required multiple>
+              <label class="input-group-text" for="image">Tải lên</label>
+            </div>
+            <div class="text-center">
+              <img id="output" width="200px" height="200px" <?= getImageProduct($product['id']) ? 'src="' . BASE_URL . 'uploads/' . getImageProduct($product['id'])['hinh_anh'] . '"'  : '' ?> />
+            </div>
           </div>
         </div>
 

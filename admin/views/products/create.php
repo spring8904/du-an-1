@@ -14,7 +14,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" novalidate>
         <div class="row">
           <div class="col-md">
 
@@ -65,6 +65,14 @@
             <div class="mb-3">
               <label for="description" class="form-label">Mô tả:</label>
               <textarea type="text" class="form-control" id="description" name="mo_ta" rows="2"></textarea>
+            </div>
+            <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
+            <div class="mb-3 input-group">
+              <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh[]" required multiple>
+              <label class="input-group-text" for="image">Tải lên</label>
+            </div>
+            <div class="text-center">
+              <img id="output" width="200px" height="200px" />
             </div>
           </div>
         </div>

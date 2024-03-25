@@ -79,7 +79,7 @@
               <label class="input-group-text" for="image">Upload</label>
             </div>
             <div class="text-center">
-              <img id="output" width="200px" height="200px" src="<?= BASE_URL ?>uploads/<?= $user['avatar'] ?>" />
+              <img id="output" width="200px" height="200px" <?= $user['avatar'] ? 'src="' . BASE_URL . 'uploads/' . $user['avatar'] . '"' : '' ?> />
             </div>
           </div>
           <div class="d-flex justify-content-between mt-3">

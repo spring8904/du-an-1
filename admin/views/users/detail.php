@@ -32,7 +32,11 @@
             </tr>
             <tr>
               <td>Ảnh đại diện</td>
-              <td><img src="<?= BASE_URL ?>uploads/<?= $user['avatar'] ?>" alt="avatar" width="100"></td>
+              <td>
+                <?php if ($user['avatar']) { ?>
+                  <img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="avatar" width="100">
+                <?php } ?>
+              </td>
             </tr>
             <tr>
               <td>Email</td>

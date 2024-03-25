@@ -15,6 +15,7 @@
           <thead>
             <tr>
               <th>ID</th>
+              <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
               <th>Giá</th>
               <th>Danh mục</th>
@@ -27,6 +28,7 @@
           <tfoot>
             <tr>
               <th>ID</th>
+              <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
               <th>Giá</th>
               <th>Danh mục</th>
@@ -41,6 +43,11 @@
             ?>
               <tr>
                 <td><?= $product['id'] ?></td>
+                <td>
+                  <?php if (getImageProduct($product['id'])) { ?>
+                    <img src="<?= BASE_URL . 'uploads/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="50">
+                  <?php } ?>
+                </td>
                 <td><?= $product['ten_sp'] ?></td>
                 <td><?= $product['gia_sp'] ?></td>
                 <td><?= showOne('tb_danh_muc_sp', $product['id_dm'])['ten_dm'] ?></td>

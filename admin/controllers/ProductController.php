@@ -40,7 +40,8 @@ function productCreate()
       'trang_thai' => $_POST['trang_thai'],
     ];
 
-    insert($tableName, $data);
+    $id_sp = insert_get_last_id($tableName, $data);
+    uploadMultipleProductImages($_FILES['hinh_anh'], $id_sp);
 
     header('Location: ./?act=products');
     exit();
@@ -69,6 +70,11 @@ function productUpdate($id)
 
     update($tableName, $id, $data);
 
+    if (isset($_FILES['hinh_anh'])) {
+      deleteImageProduct($id);
+      uploadMultipleProductImages($_FILES['hinh_anh'], $id);
+    }
+
     header('Location: ./?act=products');
   } else {
     $product = showOne($tableName, $id);
@@ -83,6 +89,23 @@ function productDelete($id)
   $tableName = 'tb_san_pham';
 
   delete($tableName, $id);
+  deleteImageProduct($id);
 
   header('Location: ./?act=products');
+}
+
+
+function uploadMultipleProductImages($files, $id_sp)
+{
+  $files = reArrayFiles($files);
+  foreach ($files as $file) {
+    $image = uploadImage($file);
+    if ($image) {
+      $data = [
+        'id_sp' => $id_sp,
+        'hinh_anh' => $image,
+      ];
+      insert('tb_hinh_anh_sp', $data);
+    }
+  }
 }

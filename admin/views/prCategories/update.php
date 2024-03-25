@@ -29,7 +29,7 @@
           <label class="input-group-text" for="image">Tải lên</label>
         </div>
         <div class="text-center">
-          <img id="output" src="<?= BASE_URL . 'uploads/' . $prCategory['hinh_anh'] ?>" width="200px" height="200px" />
+          <img id="output" <?= $prCategory['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/' . $prCategory['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
         </div>
         <div class="d-flex justify-content-between mt-3">
           <div>
