@@ -18,3 +18,35 @@ if (!function_exists('getProductsByCategory')) {
     }
   }
 }
+
+function getImageProduct($id_sp)
+{
+  try {
+    $sql = "SELECT * FROM tb_hinh_anh_sp WHERE id_sp = :id_sp ORDER BY id LIMIT 1";
+
+    $stmt = $GLOBALS['conn']->prepare($sql);
+
+    $stmt->bindParam(':id_sp', $id_sp);
+
+    $stmt->execute();
+
+    return $stmt->fetch();
+  } catch (\Exception $e) {
+    debug($e);
+  }
+}
+
+function deleteImageProduct($id)
+{
+  try {
+    $sql = "DELETE FROM tb_hinh_anh_sp WHERE id_sp = :id";
+
+    $stmt = $GLOBALS['conn']->prepare($sql);
+
+    $stmt->bindParam(':id', $id);
+
+    $stmt->execute();
+  } catch (\Exception $e) {
+    debug($e);
+  }
+}

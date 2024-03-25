@@ -35,13 +35,21 @@
       <span>QL User</span></a>
   </li>
 
-  <!-- Nav Item - User -->
+  <!-- Nav Item - Pr category -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'prCategor') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=prCategories">
       <i class="fas fa-fw fa-table"></i>
       <span>QL Danh mục Sp</span></a>
   </li>
 
+  <!-- Nav Item - Product -->
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'product') !== false ? "active" : "" ?>">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=products">
+      <i class="fas fa-fw fa-table"></i>
+      <span>QL Sản phẩm</span></a>
+  </li>
+
+  <!-- Nav Item - Post -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'post') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=posts">
       <i class="fas fa-fw fa-table"></i>
