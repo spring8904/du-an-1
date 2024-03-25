@@ -6,8 +6,8 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary d-flex justify-content-between">
-        <a href="<?= BASE_URL_ADMIN ?>?act=users">Quay trở lại</a>
-        <a href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>">Sửa thông tin</a>
+        <a href="<?= BASE_URL_ADMIN ?>?act=products">Quay trở lại</a>
+        <a href="<?= BASE_URL_ADMIN ?>?act=product-update&id=<?= $product['id'] ?>">Sửa thông tin</a>
       </h6>
     </div>
     <div class="card-body">
@@ -28,39 +28,37 @@
           <tbody>
             <tr>
               <td>ID</td>
-              <td><?= $user['id'] ?></td>
+              <td><?= $product['id'] ?></td>
             </tr>
             <tr>
-              <td>Ảnh đại diện</td>
-              <td><img src="<?= BASE_URL ?>uploads/<?= $user['avatar'] ?>" alt="avatar" width="100"></td>
+              <td>Tên sản phẩm</td>
+              <td><?= $product['ten_sp'] ?></td>
             </tr>
             <tr>
-              <td>Email</td>
-              <td><?= $user['email'] ?></td>
+              <td>Giá sản phẩm</td>
+              <td><?= $product['gia_sp'] ?></td>
             </tr>
             <tr>
-              <td>Mật khẩu</td>
-              <td>********</td>
+              <td>Danh mục</td>
+              <td><?= showOne('tb_danh_muc_sp', $product['id_dm'])['ten_dm'] ?></td>
             </tr>
             <tr>
-              <td>Họ tên</td>
-              <td><?= $user['ho_ten'] ?></td>
+              <td>Mô tả</td>
+              <td><?= $product['mo_ta'] ?></td>
             </tr>
             <tr>
-            <tr>
-              <td>Chức vụ</td>
-              <td><?= ucfirst(showOne('tb_chuc_vu', $user['id_cv'])['chuc_vu']) ?></td>
-            </tr>
-            <td>Giới tính</td>
-            <td><?= $user['gioi_tinh'] == 'male' ? 'Nam' : 'Nữ' ?></td>
+              <td>Ngày nhập</td>
+              <td><?= formatDate($product['ngay_nhap']) ?></td>
             </tr>
             <tr>
-              <td>Ngày sinh</td>
-              <td><?= formatDate($user['ngay_sinh']) ?></td>
+              <td>Số lượng</td>
+              <td><?= $product['so_luong'] ?></td>
             </tr>
             <tr>
-              <td>Địa chỉ</td>
-              <td><?= $user['dia_chi'] ?></td>
+              <td>Trạng thái</td>
+              <td>
+                <h5><span class="badge badge-<?= $product['trang_thai'] == 'show' ? 'success' : 'warning' ?>"><?= $product['trang_thai'] ?></span></h5>
+              </td>
             </tr>
           </tbody>
         </table>

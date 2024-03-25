@@ -27,11 +27,12 @@ function prCategoryCreate()
 
       if ($image) {
         $data['hinh_anh'] = $image;
-        insert($tableName, $data);
       } else {
         $err = 'Có lỗi xảy ra, vui lòng kiểm tra lại.';
       }
     }
+
+    insert($tableName, $data);
     header('Location: ./?act=prCategories');
     exit();
   }

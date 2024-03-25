@@ -51,6 +51,13 @@ match ($act) {
   'prCategory-update' => prCategoryUpdate($_GET['id']),
   'prCategory-delete' => prCategoryDelete($_GET['id']),
 
+  // CRUD Product
+  'products' => productListAll(),
+  'product-detail' => productShowOne($_GET['id']),
+  'product-create' => productCreate(),
+  'product-update' => productUpdate($_GET['id']),
+  'product-delete' => productDelete($_GET['id']),
+
   // CRUD Post
   'posts' => postListAll(),
   'post-detail' => postShowOne($_GET['id']),

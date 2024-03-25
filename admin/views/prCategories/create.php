@@ -23,9 +23,9 @@
           <label for="description" class="form-label">Mô tả:</label>
           <input type="text" class="form-control" id="description" name="mo_ta">
         </div>
-        <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
+        <label for="image" class="form-label">Hình ảnh:</label>
         <div class="mb-3 input-group">
-          <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh" required>
+          <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh">
           <label class="input-group-text" for="image">Tải lên</label>
         </div>
         <div class="text-center">

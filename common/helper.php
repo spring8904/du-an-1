@@ -70,3 +70,10 @@ if (!function_exists('uploadImage')) {
         }
     }
 }
+
+if (!function_exists('formatDate')) {
+    function formatDate($date)
+    {
+        return date('d/m/Y', strtotime($date));
+    }
+}
