@@ -14,7 +14,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tiêu đề bài viết</th>
               <th>Mô tả bài viết</th>
@@ -25,12 +25,25 @@
               <th>Action</th>
             </tr>
           </thead>
+          <tfoot>
+            <tr>
+              <th>STT</th>
+              <th>Hình ảnh</th>
+              <th>Tiêu đề bài viết</th>
+              <th>Mô tả bài viết</th>
+              <th>Người viết</th>
+              <th>Avatar</th>
+              <th>Ngày đăng</th>
+              <th>Ngày sửa</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
           <tbody>
-            <?php foreach ($posts as $post) {
-
+            <?php $stt = 1;
+            foreach ($posts as $post) {
             ?>
               <tr>
-                <td><?= $post['p_id'] ?></td>
+                <td><?= $stt++ ?></td>
                 <td>
                   <?php if ($post['p_hinh_anh']) { ?>
                     <img src="<?= BASE_URL . 'uploads/' . $post['p_hinh_anh'] ?>" alt="<?= $post['p_tieu_de'] ?>" width="50">

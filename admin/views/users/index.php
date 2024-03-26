@@ -14,7 +14,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Avatar</th>
               <th>Email</th>
               <th>Họ Tên</th>
@@ -24,7 +24,7 @@
           </thead>
           <tfoot>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Avatar</th>
               <th>Email</th>
               <th>Họ Tên</th>
@@ -33,11 +33,13 @@
             </tr>
           </tfoot>
           <tbody>
-            <?php foreach ($users as $user) {
+            <?php
+            $stt = 1;
+            foreach ($users as $user) {
               $role = showOne('tb_chuc_vu', $user['id_cv'])['chuc_vu'];
             ?>
               <tr>
-                <td><?= $user['id'] ?></td>
+                <td><?= $stt++ ?></td>
                 <td>
                   <?php if ($user['avatar']) { ?>
                     <img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="<?= $user['ho_ten'] ?>" width="50">

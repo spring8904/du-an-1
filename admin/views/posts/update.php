@@ -35,7 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Nội dung bài viết:</label>
-                    <textarea class="form-control" id="noi_dung" name="noi_dung" required><?= $post['noi_dung'] ?></textarea>
+                    <textarea class="form-control" id="noi_dung" name="noi_dung"><?= $post['noi_dung'] ?></textarea>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
                     <a href="<?= BASE_URL_ADMIN ?>?act=posts" class=" btn btn-secondary">Go back</a>

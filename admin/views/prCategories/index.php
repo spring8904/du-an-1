@@ -14,7 +14,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tên danh mục</th>
               <th>Số lượng sản phẩm</th>
@@ -24,7 +24,7 @@
           </thead>
           <tfoot>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tên danh mục</th>
               <th>Số lượng sản phẩm</th>
@@ -33,11 +33,13 @@
             </tr>
           </tfoot>
           <tbody>
-            <?php foreach ($prCategories as $prCategory) {
+            <?php
+            $stt = 1;
+            foreach ($prCategories as $prCategory) {
               $quantity = count(getProductsByCategory($prCategory['id']));
             ?>
               <tr>
-                <td><?= $prCategory['id'] ?></td>
+                <td><?= $stt++ ?></td>
                 <td>
                   <?php if ($prCategory['hinh_anh']) { ?>
                     <img src="<?= BASE_URL . 'uploads/' . $prCategory['hinh_anh'] ?>" alt="<?= $prCategory['ten_dm'] ?>" width="50">

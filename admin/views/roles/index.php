@@ -14,23 +14,25 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Tên chức vụ</th>
               <th>Action</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Tên chức vụ</th>
               <th>Action</th>
             </tr>
           </tfoot>
           <tbody>
-            <?php foreach ($roles as $role) {
+            <?php
+            $stt = 1;
+            foreach ($roles as $role) {
             ?>
               <tr>
-                <td><?= $role['id'] ?></td>
+                <td><?= $stt++ ?></td>
                 <td><?= $role['chuc_vu'] ?></td>
                 <td>
                   <?php if ($role['id'] != 1 && $role['id'] != 2) { ?>
