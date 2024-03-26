@@ -27,10 +27,6 @@
           </tfoot>
           <tbody>
             <tr>
-              <td>ID</td>
-              <td><?= $user['id'] ?></td>
-            </tr>
-            <tr>
               <td>Ảnh đại diện</td>
               <td>
                 <?php if ($user['avatar']) { ?>

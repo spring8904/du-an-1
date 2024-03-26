@@ -14,7 +14,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
               <th>Giá</th>
@@ -27,7 +27,7 @@
           </thead>
           <tfoot>
             <tr>
-              <th>ID</th>
+              <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
               <th>Giá</th>
@@ -39,10 +39,12 @@
             </tr>
           </tfoot>
           <tbody>
-            <?php foreach ($products as $product) {
+            <?php
+            $stt = 1;
+            foreach ($products as $product) {
             ?>
               <tr>
-                <td><?= $product['id'] ?></td>
+                <td><?= $stt++ ?></td>
                 <td>
                   <?php if (getImageProduct($product['id'])) { ?>
                     <img src="<?= BASE_URL . 'uploads/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="50">

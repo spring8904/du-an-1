@@ -70,7 +70,7 @@ function productUpdate($id)
 
     update($tableName, $id, $data);
 
-    if (isset($_FILES['hinh_anh'])) {
+    if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['name'][0] !== '') {
       deleteImageProduct($id);
       uploadMultipleProductImages($_FILES['hinh_anh'], $id);
     }

@@ -21,10 +21,6 @@
           </thead>
           <tbody>
             <tr>
-              <td>ID</td>
-              <td><?= $post['p_id'] ?></td>
-            </tr>
-            <tr>
               <td>Ảnh bài viết</td>
               <td><img src="<?= BASE_URL ?>../uploads/<?= $post['p_hinh_anh'] ?>" alt="<?= $post['p_tieu_de'] ?>" width="100"></td>
             </tr>

@@ -33,7 +33,7 @@
                             <label class="input-group-text" for="image">Tải lên</label>
                         </div>
                         <div class="text-center">
-                            <img id="output" width="200px" height="100px" />
+                            <img id="output" width="200px" height="200px" />
                         </div>
                     </div>
                     <div class="mb-3">

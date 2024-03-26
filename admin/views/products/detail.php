@@ -27,10 +27,6 @@
           </tfoot>
           <tbody>
             <tr>
-              <td>ID</td>
-              <td><?= $product['id'] ?></td>
-            </tr>
-            <tr>
               <td>Hình ảnh</td>
               <td>
                 <?php if (getImageProduct($product['id'])) { ?>
