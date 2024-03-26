@@ -24,6 +24,8 @@ $arrRouteNeedAuth = [
   'users', 'user-detail', 'user-create', 'user-update', 'user-delete',
   'prCategories', 'prCategory-create', 'prCategory-update', 'prCategory-delete',
   'posts', 'post-detail', 'post-create', 'post-update', 'post-delete',
+  'contacts', 'contact-detail', 'contact-delete',
+
 ];
 
 // Kiểm tra xem admin đã đăng nhập chưa
@@ -64,6 +66,11 @@ match ($act) {
   'post-create' => postCreate(),
   'post-update' => postUpdate($_GET['id']),
   'post-delete' => postDelete($_GET['id']),
+
+  // CRUD Contact
+  'contacts' => contactListAll(),
+  'contact-detail' => contactShowOne($_GET['id']),
+  'contact-delete' => contactDelete($_GET['id']),
 
   // Authen
   'login' => authenShowFormLogin(),
