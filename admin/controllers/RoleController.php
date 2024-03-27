@@ -19,21 +19,17 @@ function roleCreate()
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tableName = 'tb_chuc_vu';
 
-    if (empty($_POST['chuc_vu'])) {
-      $_SESSION['error'] = 'Chức vụ không được để trống!';
-      header('Location: ./?act=role-create');
+    $err = validateRole();
+
+    if (!empty($err)) {
+      $_SESSION['error'] = $err;
+    } else {
+      $data['chuc_vu'] = $_POST['chuc_vu'];
+      insert($tableName, $data);
+      $_SESSION['success'] = 'Thêm chức vụ thành công!';
+      header('Location: ./?act=roles');
       exit();
     }
-
-    $data = [
-      'chuc_vu' => $_POST['chuc_vu'],
-    ];
-
-    insert($tableName, $data);
-    $_SESSION['success'] = 'Thêm chức vụ thành công!';
-
-    header('Location: ./?act=roles');
-    exit();
   }
 
   $title = 'Thêm chức vụ';
@@ -53,24 +49,23 @@ function roleUpdate($id)
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (empty($_POST['chuc_vu'])) {
-      $_SESSION['error'] = 'Chức vụ không được để trống!';
-      header('Location: ./?act=role-update&id=' . $id);
+    $err = validateRole();
+    if (!empty($err)) {
+      $_SESSION['error'] = $err;
+    } else {
+      $data['chuc_vu'] = $_POST['chuc_vu'];
+      update($tableName, $id, $data);
+      $_SESSION['success'] = 'Cập nhật chức vụ thành công!';
+      header('Location: ./?act=roles');
       exit();
     }
-
-    $data['chuc_vu'] = $_POST['chuc_vu'];
-    update($tableName, $id, $data);
-    $_SESSION['success'] = 'Cập nhật chức vụ thành công!';
-
-    header('Location: ./?act=roles');
-  } else {
-    $role = showOne($tableName, $id);
-    $title = 'Cập nhật chức vụ';
-    $view = 'roles/update';
-    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
-    unset($_SESSION['error']);
   }
+
+  $role = showOne($tableName, $id);
+  $title = 'Cập nhật chức vụ';
+  $view = 'roles/update';
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+  unset($_SESSION['error']);
 }
 
 function roleDelete($id)
@@ -86,4 +81,13 @@ function roleDelete($id)
   $_SESSION['success'] = 'Xóa chức vụ thành công!';
 
   header('Location: ./?act=roles');
+}
+
+function validateRole()
+{
+  $err = [];
+  if (empty($_POST['chuc_vu'])) {
+    $err[] = 'Chức vụ không được để trống!';
+  }
+  return $err;
 }
