@@ -62,6 +62,9 @@ function roleUpdate($id)
   }
 
   $role = showOne($tableName, $id);
+  if (empty($role)) {
+    e404();
+  }
   $title = 'Cập nhật chức vụ';
   $view = 'roles/update';
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';

@@ -10,6 +10,7 @@ function userListAll()
   $users = listAll('tb_nguoi_dung');
 
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+  unset($_SESSION['success']);
 }
 
 function userShowOne($id)
@@ -30,35 +31,33 @@ function userCreate()
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tableName = 'tb_nguoi_dung';
 
-    $data = [
-      'email' => $_POST['email'],
-      'mat_khau' => $_POST['mat_khau'],
-      'ho_ten' => $_POST['ho_ten'],
-      'gioi_tinh' => $_POST['gioi_tinh'],
-      'dia_chi' => $_POST['dia_chi'],
-      'ngay_sinh' => $_POST['ngay_sinh'],
-      'so_dien_thoai' => $_POST['so_dien_thoai'],
-      'id_cv' => $_POST['id_cv'],
-    ];
+    $err = validateUser(true);
 
-    if ($_FILES['avatar']['size'] !== 0) {
-      $avatar = uploadImage($_FILES['avatar']);
-
-      if ($avatar) {
-        $data['avatar'] = $avatar;
-        insert($tableName, $data);
-      } else {
-        $err = 'Có lỗi xảy ra, vui lòng kiểm tra lại.';
-      }
+    if (!empty($err)) {
+      $_SESSION['error'] = $err;
+    } else {
+      $data = [
+        'email' => $_POST['email'],
+        'mat_khau' => $_POST['mat_khau'],
+        'ho_ten' => $_POST['ho_ten'],
+        'gioi_tinh' => $_POST['gioi_tinh'],
+        'dia_chi' => $_POST['dia_chi'],
+        'ngay_sinh' => $_POST['ngay_sinh'],
+        'so_dien_thoai' => $_POST['so_dien_thoai'],
+        'id_cv' => 2,
+        'avatar' => uploadImage($_FILES['avatar']),
+      ];
+      insert($tableName, $data);
+      $_SESSION['success'] = 'Thêm người dùng thành công!';
+      header('Location: ./?act=users');
+      exit();
     }
-
-    header('Location: ./?act=users');
-    exit();
   }
 
   $title = 'Thêm người dùng';
   $view = 'users/create';
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+  unset($_SESSION['error']);
 }
 
 function userUpdate($id)
@@ -67,31 +66,36 @@ function userUpdate($id)
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $data = [
-      'email' => $_POST['email'],
-      'mat_khau' => $_POST['mat_khau'],
-      'ho_ten' => $_POST['ho_ten'],
-      'gioi_tinh' => $_POST['gioi_tinh'],
-      'dia_chi' => $_POST['dia_chi'],
-      'ngay_sinh' => $_POST['ngay_sinh'],
-      'so_dien_thoai' => $_POST['so_dien_thoai'],
-      'id_cv' => $_POST['id_cv'],
-    ];
+    $err = validateUser();
 
-    if ($_FILES['avatar']['size'] !== 0) {
-      $avatar = uploadImage($_FILES['avatar']);
-      $data['avatar'] = $avatar;
+    if (!empty($err)) {
+      $_SESSION['error'] = $err;
+    } else {
+      $data = [
+        'email' => $_POST['email'],
+        'mat_khau' => $_POST['mat_khau'],
+        'ho_ten' => $_POST['ho_ten'],
+        'gioi_tinh' => $_POST['gioi_tinh'],
+        'dia_chi' => $_POST['dia_chi'],
+        'ngay_sinh' => $_POST['ngay_sinh'],
+        'so_dien_thoai' => $_POST['so_dien_thoai'],
+      ];
+      update($tableName, $id, $data);
+      $_SESSION['success'] = 'Cập nhật người dùng thành công!';
+      header('Location: ./?act=users');
+      exit();
     }
-
-    update($tableName, $id, $data);
-
-    header('Location: ./?act=users');
-  } else {
-    $user = showOne($tableName, $id);
-    $title = 'Cập nhật người dùng';
-    $view = 'users/update';
-    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
   }
+
+  $user = showOne($tableName, $id);
+  if (empty($user)) {
+    e404();
+  }
+
+  $title = 'Cập nhật người dùng';
+  $view = 'users/update';
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+  unset($_SESSION['error']);
 }
 
 function userDelete($id)
@@ -99,6 +103,56 @@ function userDelete($id)
   $tableName = 'tb_nguoi_dung';
 
   delete($tableName, $id);
-
+  $_SESSION['success'] = 'Xóa người dùng thành công!';
   header('Location: ./?act=users');
+}
+
+function validateUser($checkImage = false)
+{
+  $err = [];
+
+  if (empty($_POST['email'])) {
+    $err[] = 'Vui lòng nhập email.';
+  } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $err[] = 'Email không hợp lệ.';
+  }
+
+  if (empty($_POST['mat_khau'])) {
+    $err[] = 'Vui lòng nhập mật khẩu.';
+  } elseif (strlen($_POST['mat_khau']) < 8) {
+    $err[] = 'Mật khẩu phải có ít nhất 8 ký tự.';
+  }
+
+  if (empty($_POST['ho_ten'])) {
+    $err[] = 'Vui lòng nhập họ tên.';
+  }
+
+  if (empty($_POST['gioi_tinh'])) {
+    $err[] = 'Vui lòng chọn giới tính.';
+  }
+
+  if (empty($_POST['dia_chi'])) {
+    $err[] = 'Vui lòng nhập địa chỉ.';
+  }
+
+  if (empty($_POST['ngay_sinh'])) {
+    $err[] = 'Vui lòng chọn ngày sinh.';
+  } elseif (strtotime($_POST['ngay_sinh']) > strtotime(date('Y-m-d'))) {
+    $err[] = 'Ngày sinh không hợp lệ.';
+  }
+
+  if (empty($_POST['so_dien_thoai'])) {
+    $err[] = 'Vui lòng nhập số điện thoại.';
+  } elseif (!preg_match('/^0[0-9]{9}$/', $_POST['so_dien_thoai'])) {
+    $err[] = 'Số điện thoại không hợp lệ.';
+  }
+
+  if ($checkImage) {
+    $error = validateImage($_FILES['avatar']);
+    if ($error) {
+      $err[] = $error;
+    }
+  }
+
+  return $err;
 }

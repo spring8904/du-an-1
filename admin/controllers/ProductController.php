@@ -16,9 +16,11 @@ function productListAll()
 function productShowOne($id)
 {
   $product = showOne('tb_san_pham', $id);
+
   if (empty($product)) {
     e404();
   }
+
   $title = $product['ten_sp'];
   $view = 'products/detail';
   $styles = ['styles/datatable'];
@@ -31,24 +33,26 @@ function productCreate()
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tableName = 'tb_san_pham';
 
-    $data = [
-      'ten_sp' => $_POST['ten_sp'],
-      'mo_ta' => $_POST['mo_ta'],
-      'id_dm' => $_POST['id_dm'],
-      'gia_sp' => $_POST['gia_sp'],
-      'ngay_nhap' => $_POST['ngay_nhap'],
-      'so_luong' => $_POST['so_luong'],
-      'id_tt' => $_POST['id_tt'],
-    ];
-
     $err = validateProduct(true);
 
     if (!empty($err)) {
       $_SESSION['error'] = $err;
     } else {
+      $data = [
+        'ten_sp' => $_POST['ten_sp'],
+        'mo_ta' => $_POST['mo_ta'],
+        'id_dm' => $_POST['id_dm'],
+        'gia_sp' => $_POST['gia_sp'],
+        'ngay_nhap' => $_POST['ngay_nhap'],
+        'so_luong' => $_POST['so_luong'],
+        'id_tt' => $_POST['id_tt'],
+      ];
+
       $id_sp = insert_get_last_id($tableName, $data);
-      uploadMultipleProductImages($_FILES['hinh_anh'], $id_sp);
       $_SESSION['success'] = 'Thêm sản phẩm thành công!';
+
+      uploadMultipleProductImages($_FILES['hinh_anh'], $id_sp);
+
       header('Location: ./?act=products');
       exit();
     }
@@ -65,21 +69,22 @@ function productUpdate($id)
   $tableName = 'tb_san_pham';
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = [
-      'ten_sp' => $_POST['ten_sp'],
-      'mo_ta' => $_POST['mo_ta'],
-      'id_dm' => $_POST['id_dm'],
-      'gia_sp' => $_POST['gia_sp'],
-      'ngay_nhap' => $_POST['ngay_nhap'],
-      'so_luong' => $_POST['so_luong'],
-      'id_tt' => $_POST['id_tt'],
-    ];
 
     $err = validateProduct();
 
     if (!empty($err)) {
       $_SESSION['error'] = $err;
     } else {
+      $data = [
+        'ten_sp' => $_POST['ten_sp'],
+        'mo_ta' => $_POST['mo_ta'],
+        'id_dm' => $_POST['id_dm'],
+        'gia_sp' => $_POST['gia_sp'],
+        'ngay_nhap' => $_POST['ngay_nhap'],
+        'so_luong' => $_POST['so_luong'],
+        'id_tt' => $_POST['id_tt'],
+      ];
+
       update($tableName, $id, $data);
       $_SESSION['success'] = 'Cập nhật sản phẩm thành công!';
       if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['name'][0] !== '') {
@@ -92,6 +97,11 @@ function productUpdate($id)
   }
 
   $product = showOne($tableName, $id);
+
+  if (empty($product)) {
+    e404();
+  }
+
   $title = 'Cập nhật sản phẩm';
   $view = 'products/update';
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';

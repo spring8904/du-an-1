@@ -2,9 +2,11 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
 
-  <?php if (isset($error)) { ?>
-    <h2 class="alert alert-danger"><?= $error ?></h2>
-  <?php } ?>
+  <?php if (isset($_SESSION['error'])) {
+    foreach ($_SESSION['error'] as $error) { ?>
+      <p class="alert alert-danger"><?= $error ?></p>
+  <?php }
+  } ?>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">

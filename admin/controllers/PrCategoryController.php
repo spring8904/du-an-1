@@ -71,6 +71,9 @@ function prCategoryUpdate($id)
   }
 
   $prCategory = showOne($tableName, $id);
+  if (empty($prCategory)) {
+    e404();
+  }
   $title = 'Cập nhật danh mục sản phẩm';
   $view = 'prCategories/update';
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';

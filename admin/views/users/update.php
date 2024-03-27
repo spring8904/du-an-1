@@ -2,9 +2,11 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
 
-  <?php if (isset($error)) { ?>
-    <h2 class="alert alert-danger"><?= $error ?></h2>
-  <?php } ?>
+  <?php if (isset($_SESSION['error'])) {
+    foreach ($_SESSION['error'] as $error) { ?>
+      <p class="alert alert-danger"><?= $error ?></p>
+  <?php }
+  } ?>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -69,7 +71,7 @@
           </div>
           <div class="d-flex justify-content-between mt-3">
             <a href="<?= BASE_URL_ADMIN ?>?act=users" class="btn btn-secondary">Quay trở lại</a>
-            <button type="submit" class="btn btn-primary">Lưu/button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
           </div>
         </div>
       </form>
