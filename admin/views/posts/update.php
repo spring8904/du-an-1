@@ -14,7 +14,7 @@
             </h6>
         </div>
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
                     <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="tieu_de" name="tieu_de" required value="<?= $post['tieu_de'] ?>">
@@ -36,8 +36,8 @@
                     <textarea class="form-control" id="noi_dung" name="noi_dung"><?= $post['noi_dung'] ?></textarea>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                    <a href="<?= BASE_URL_ADMIN ?>?act=posts" class=" btn btn-secondary">Go back</a>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="<?= BASE_URL_ADMIN ?>?act=posts" class=" btn btn-secondary">Quay trở lại</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
                 </div>
             </form>
         </div>

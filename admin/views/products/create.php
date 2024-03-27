@@ -14,7 +14,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" novalidate>
         <div class="row">
           <div class="col-md">
 
@@ -79,10 +79,10 @@
 
         <div class="d-flex justify-content-between mt-3">
           <div>
-            <a href="./?act=products" class="btn btn-secondary">Go back</a>
-            <button type="reset" class="btn btn-danger">Reset</button>
+            <a href="./?act=products" class="btn btn-secondary">Quay trở lại</a>
+            <button type="reset" class="btn btn-danger">Đặt lại</button>
           </div>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Lưu</button>
         </div>
       </form>
     </div>

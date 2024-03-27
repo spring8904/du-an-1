@@ -34,8 +34,8 @@
           <img id="output" <?= $prCategory['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/' . $prCategory['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
         </div>
         <div class="d-flex justify-content-between mt-3">
-          <a href="<?= BASE_URL_ADMIN ?>?act=prCategories" class=" btn btn-secondary">Go back</a>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <a href="<?= BASE_URL_ADMIN ?>?act=prCategories" class=" btn btn-secondary">Quay trở lại</a>
+          <button type="submit" class="btn btn-primary">Lưu</button>
         </div>
       </form>
     </div>

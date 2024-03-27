@@ -14,14 +14,14 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
           <label for="role" class="form-label">Tên chức vụ:<span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="role" name="chuc_vu" required value="<?= $role['chuc_vu'] ?>">
         </div>
         <div class="d-flex justify-content-between mt-3">
-          <a href="<?= BASE_URL_ADMIN ?>?act=roles" class=" btn btn-secondary">Go back</a>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <a href="<?= BASE_URL_ADMIN ?>?act=roles" class=" btn btn-secondary">Quay trở lại</a>
+          <button type="submit" class="btn btn-primary">Lưu</button>
         </div>
       </form>
     </div>
