@@ -24,47 +24,47 @@
   <!-- Nav Item - Role -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'role') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=roles">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fa-solid fa-user"></i>
       <span>QL Chức vụ</span></a>
   </li>
 
   <!-- Nav Item - User -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'user') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=users">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fa-solid fa-users"></i>
       <span>QL Người dùng</span></a>
   </li>
 
   <!-- Nav Item - Pr category -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'prCategor') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=prCategories">
-      <i class="fas fa-fw fa-table"></i>
-      <span>QL Danh mục sản phẩm</span></a>
+      <i class="fa-solid fa-layer-group"></i>
+      <span>QL Danh mục Sp</span></a>
   </li>
 
   <!-- Nav Item - Product -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'product') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=products">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fa-solid fa-mobile-screen-button"></i>
       <span>QL Sản phẩm</span></a>
   </li>
 
   <!-- Nav Item - Post -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'post') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=posts">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fa-solid fa-file-lines"></i>
       <span>QL Bài viết</span></a>
   </li>
 
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'contact') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=contacts">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fa-solid fa-paper-plane"></i>
       <span>QL Liên hệ</span></a>
   </li>
 
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'promotion') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=promotions">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fa-solid fa-ticket"></i>
       <span>QL Khuyến mãi</span></a>
   </li>
 
