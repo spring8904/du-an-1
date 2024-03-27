@@ -2,7 +2,7 @@
 
 function contactListAll()
 {
-  $title = 'Danh sách thông tin Liên hệ Khách hàng';
+  $title = 'Danh sách liên hệ';
   $view = 'contacts/index';
   $styles = ['styles/datatable'];
   $scripts = ['scripts/datatable'];

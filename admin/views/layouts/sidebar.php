@@ -62,6 +62,12 @@
       <span>QL Liên hệ</span></a>
   </li>
 
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'promotion') !== false ? "active" : "" ?>">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=promotions">
+      <i class="fas fa-fw fa-table"></i>
+      <span>QL Khuyến mãi</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 

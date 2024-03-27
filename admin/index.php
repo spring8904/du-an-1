@@ -78,6 +78,13 @@ match ($act) {
   'contact-processed' => contactProcessed($_GET['id']),
   'contact-no-process' => contactNoProcess($_GET['id']),
 
+  // CRUD Promotion
+  'promotions' => promotionListAll(),
+  'promotion-detail' => promotionDetail($_GET['id']),
+  'promotion-create' => promotionCreate(),
+  'promotion-update' => promotionUpdate($_GET['id']),
+  'promotion-delete' => promotionDelete($_GET['id']),
+
   // Authen
   'login' => authenShowFormLogin(),
   'logout' => authenLogout(),
