@@ -23,31 +23,19 @@ function prCategoryCreate()
       'mo_ta' => $_POST['mo_ta'],
     ];
 
-    if (empty($_POST['ten_dm'])) {
-      $_SESSION['error'][] = 'Tên danh mục không được để trống!';
-    }
+    $err = validatePrCategory();
 
-    if ($_FILES['hinh_anh']['size'] !== 0) {
-      $result = uploadImage($_FILES['hinh_anh']);
-
-      if (is_array($result)) {
-        foreach ($result as $error) {
-          $_SESSION['error'][] = $error;
-        }
-      } else {
-        $data['hinh_anh'] = $result;
+    if (!empty($err)) {
+      $_SESSION['error'] = $err;
+    } else {
+      if ($_FILES['hinh_anh']['size'] != 0) {
+        $data['hinh_anh'] = uploadImage($_FILES['hinh_anh']);
       }
-    }
-
-    if (!empty($_SESSION['error'])) {
-      header('Location: ./?act=prCategory-create');
+      insert($tableName, $data);
+      $_SESSION['success'] = 'Thêm danh mục sản phẩm thành công!';
+      header('Location: ./?act=prCategories');
       exit();
     }
-
-    insert($tableName, $data);
-    $_SESSION['success'] = 'Thêm danh mục sản phẩm thành công!';
-    header('Location: ./?act=prCategories');
-    exit();
   }
 
   $title = 'Thêm danh mục sản phẩm';
@@ -67,38 +55,26 @@ function prCategoryUpdate($id)
       'mo_ta' => $_POST['mo_ta'],
     ];
 
-    if (empty($_POST['ten_dm'])) {
-      $_SESSION['error'][] = 'Tên danh mục không được để trống!';
-    }
+    $err = validatePrCategory();
 
-    if ($_FILES['hinh_anh']['size'] !== 0) {
-      $result = uploadImage($_FILES['hinh_anh']);
-
-      if (is_array($result)) {
-        foreach ($result as $error) {
-          $_SESSION['error'][] = $error;
-        }
-      } else {
-        $data['hinh_anh'] = $result;
+    if (!empty($err)) {
+      $_SESSION['error'] = $err;
+    } else {
+      if ($_FILES['hinh_anh']['size'] != 0) {
+        $data['hinh_anh'] = uploadImage($_FILES['hinh_anh']);
       }
-    }
-
-    if (!empty($_SESSION['error'])) {
-      header('Location: ./?act=prCategory-update&id=' . $id);
+      update($tableName, $id, $data);
+      $_SESSION['success'] = 'Cập nhật danh mục sản phẩm thành công!';
+      header('Location: ./?act=prCategories');
       exit();
     }
-
-    update($tableName, $id, $data);
-    $_SESSION['success'] = 'Cập nhật danh mục sản phẩm thành công!';
-
-    header('Location: ./?act=prCategories');
-  } else {
-    $prCategory = showOne($tableName, $id);
-    $title = 'Cập nhật danh mục sản phẩm';
-    $view = 'prCategories/update';
-    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
-    unset($_SESSION['error']);
   }
+
+  $prCategory = showOne($tableName, $id);
+  $title = 'Cập nhật danh mục sản phẩm';
+  $view = 'prCategories/update';
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+  unset($_SESSION['error']);
 }
 
 function prCategoryDelete($id)
@@ -114,4 +90,21 @@ function prCategoryDelete($id)
   $_SESSION['success'] = 'Xóa danh mục sản phẩm thành công!';
 
   header('Location: ./?act=prCategories');
+}
+
+function validatePrCategory()
+{
+  $err = [];
+  if (empty($_POST['ten_dm'])) {
+    $err[] = 'Tên danh mục không được để trống!';
+  }
+
+  if ($_FILES['hinh_anh']['size'] !== 0) {
+    $error = validateImage($_FILES['hinh_anh']);
+    if ($error) {
+      $err[] = $error;
+    }
+  }
+
+  return $err;
 }
