@@ -52,29 +52,12 @@ if (!function_exists('uploadImage')) {
     {
         $targetDir = PATH_UPLOADS;
         $targetFile = basename($file['name']);
-        $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $newFileName = uniqid() . '.' . $imageFileType;
         $newTargetFile = $targetDir . $newFileName;
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-        $err = [];
 
-        if (!in_array($imageFileType, $allowTypes)) {
-            $err[] = 'Vui lòng chọn file ảnh!';
-        }
-
-        if ($file['size'] == 0) {
-            $err[] = 'Vui lòng chọn file ảnh!';
-        } elseif ($file['size'] > 5000000) {
-            $err[] = 'File ảnh quá lớn!';
-        }
-
-        if (!empty($err)) {
-            return $err;
-        } else {
-            move_uploaded_file($file['tmp_name'], $newTargetFile);
-            return $newFileName;
-        }
+        move_uploaded_file($file['tmp_name'], $newTargetFile);
+        return $newFileName;
     }
 }
 
@@ -100,4 +83,23 @@ if (!function_exists('reArrayFiles')) {
 
         return $file_ary;
     }
+}
+
+function validateImage($file)
+{
+    $err = null;
+    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+
+    if ($file['size'] == 0) {
+        $err = 'Hình ảnh không được để trống!';
+    } elseif ($file['size'] > 5000000) {
+        $err = 'Dung lượng hình ảnh quá lớn!';
+    } else {
+        $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+        if (!in_array($imageFileType, $allowTypes)) {
+            $err = 'Hình ảnh không đúng định dạng!';
+        }
+    }
+    return $err;
 }
