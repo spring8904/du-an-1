@@ -57,13 +57,20 @@ if (!function_exists('uploadImage')) {
         $newFileName = uniqid() . '.' . $imageFileType;
         $newTargetFile = $targetDir . $newFileName;
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        $err = [];
 
         if (!in_array($imageFileType, $allowTypes)) {
-            $uploadOk = 0;
+            $err[] = 'Vui lòng chọn file ảnh!';
         }
 
-        if ($uploadOk == 0) {
-            return false;
+        if ($file['size'] == 0) {
+            $err[] = 'Vui lòng chọn file ảnh!';
+        } elseif ($file['size'] > 5000000) {
+            $err[] = 'File ảnh quá lớn!';
+        }
+
+        if (!empty($err)) {
+            return $err;
         } else {
             move_uploaded_file($file['tmp_name'], $newTargetFile);
             return $newFileName;

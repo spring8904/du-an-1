@@ -2,9 +2,11 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
 
-  <?php if (isset($error)) { ?>
-    <h2 class="alert alert-danger"><?= $error ?></h2>
-  <?php } ?>
+  <?php if (isset($_SESSION['error'])) {
+    foreach ($_SESSION['error'] as $error) { ?>
+      <p class="alert alert-danger"><?= $error ?></p>
+  <?php }
+  } ?>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -14,7 +16,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
           <label for="name" class="form-label">Tên danh mục sản phẩm:<span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="name" name="ten_dm" required value="<?= $prCategory['ten_dm'] ?>">
