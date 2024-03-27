@@ -106,6 +106,15 @@ function userUpdate($id)
 function userDelete($id)
 {
   $tableName = 'tb_nguoi_dung';
+  $user = showOne($tableName, $id);
+
+  if (empty($user)) {
+    e404();
+  }
+
+  if ($user['avatar'] && file_exists(PATH_UPLOADS . 'users/' . $user['avatar'])) {
+    unlink(PATH_UPLOADS . 'users/' . $user['avatar']);
+  }
 
   delete($tableName, $id);
   $_SESSION['success'] = 'Xóa người dùng thành công!';

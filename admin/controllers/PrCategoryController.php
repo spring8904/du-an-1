@@ -89,7 +89,19 @@ function prCategoryDelete($id)
 
   $tableName = 'tb_danh_muc_sp';
 
+
+  $prCategory = showOne($tableName, $id);
+
+  if (empty($prCategory)) {
+    e404();
+  }
+
   delete($tableName, $id);
+
+  if ($prCategory['hinh_anh'] && file_exists(PATH_UPLOADS . 'prCategories/' . $prCategory['hinh_anh'])) {
+    unlink(PATH_UPLOADS . 'prCategories/' . $prCategory['hinh_anh']);
+  }
+
   $_SESSION['success'] = 'Xóa danh mục sản phẩm thành công!';
 
   header('Location: ./?act=prCategories');

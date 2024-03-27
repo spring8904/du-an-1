@@ -110,7 +110,7 @@ function postDelete($id)
 
     delete('tb_bai_viet', $id);
 
-    if (!empty($post['hinh_anh']) && file_exists(PATH_UPLOADS . 'posts/' . $post['hinh_anh'])) {
+    if ($post['hinh_anh'] && file_exists(PATH_UPLOADS . 'posts/' . $post['hinh_anh'])) {
         unlink(PATH_UPLOADS . 'posts/' . $post['hinh_anh']);
     }
 
