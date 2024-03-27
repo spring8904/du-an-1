@@ -9,14 +9,12 @@ if (!function_exists('listAllForPost')) {
                     p.id                as p_id,
                     p.id_nd             as p_id_nd,
                     p.tieu_de           as p_tieu_de,
-                    p.mo_ta             as p_mo_ta,
                     p.hinh_anh          as p_hinh_anh,
                     p.noi_dung          as p_noi_dung,
-                    p.luot_xem          as p_luot_xem,
                     p.ngay_dang         as p_ngay_dang,
                     p.ngay_sua          as p_ngay_sua,
                     us.ho_ten           as us_name,
-                    us.email           as us_email
+                    us.email            as us_email
                 FROM tb_bai_viet as p
                 INNER JOIN tb_nguoi_dung as us ON us.id = p.id_nd
                 ORDER BY p_id DESC;
@@ -42,14 +40,13 @@ if (!function_exists('showOneForPost')) {
                     p.id                as p_id,
                     p.id_nd             as p_id_nd,
                     p.tieu_de           as p_tieu_de,
-                    p.mo_ta             as p_mo_ta,
                     p.hinh_anh          as p_hinh_anh,
                     p.noi_dung          as p_noi_dung,
-                    p.luot_xem          as p_luot_xem,
                     p.ngay_dang         as p_ngay_dang,
                     p.ngay_sua          as p_ngay_sua,
                     us.ho_ten           as us_name,
-                    us.avatar           as us_avatar
+                    us.avatar           as us_avatar,
+                    us.email            as us_email
                 FROM tb_bai_viet as p
                 INNER JOIN tb_nguoi_dung as us ON us.id = p.id_nd
                 WHERE 

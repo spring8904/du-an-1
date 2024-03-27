@@ -51,7 +51,7 @@
                 <td><?= $stt++ ?></td>
                 <td>
                   <?php if (getImageProduct($product['id'])) { ?>
-                    <img src="<?= BASE_URL . 'uploads/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="50">
+                    <img src="<?= BASE_URL . 'uploads/products/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="50">
                   <?php } ?>
                 </td>
                 <td><?= $product['ten_sp'] ?></td>

@@ -46,7 +46,7 @@
                 <td><?= $stt++ ?></td>
                 <td>
                   <?php if ($prCategory['hinh_anh']) { ?>
-                    <img src="<?= BASE_URL . 'uploads/' . $prCategory['hinh_anh'] ?>" alt="<?= $prCategory['ten_dm'] ?>" width="50">
+                    <img src="<?= BASE_URL . 'uploads/prCategories/' . $prCategory['hinh_anh'] ?>" alt="<?= $prCategory['ten_dm'] ?>" width="50">
                   <?php } ?>
                 </td>
                 <td><?= $prCategory['ten_dm'] ?></td>

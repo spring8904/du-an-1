@@ -30,7 +30,7 @@
               <td>Hình ảnh</td>
               <td>
                 <?php if (getImageProduct($product['id'])) { ?>
-                  <img src="<?= BASE_URL . 'uploads/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="100">
+                  <img src="<?= BASE_URL . 'uploads/products/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="100">
                 <?php } ?>
               </td>
             </tr>

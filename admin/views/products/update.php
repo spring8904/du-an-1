@@ -77,7 +77,7 @@
               <label class="input-group-text" for="image">Tải lên</label>
             </div>
             <div class="text-center">
-              <img id="output" width="200px" height="200px" <?= getImageProduct($product['id']) ? 'src="' . BASE_URL . 'uploads/' . getImageProduct($product['id'])['hinh_anh'] . '"'  : '' ?> />
+              <img id="output" width="200px" height="200px" <?= getImageProduct($product['id']) ? 'src="' . BASE_URL . 'uploads/products/' . getImageProduct($product['id'])['hinh_anh'] . '"'  : '' ?> />
             </div>
           </div>
         </div>

@@ -124,7 +124,7 @@ function uploadMultipleProductImages($files, $id_sp)
 {
   $files = reArrayFiles($files);
   foreach ($files as $file) {
-    $result = uploadImage($file);
+    $result = uploadImage($file, 'products');
 
     $data = [
       'id_sp' => $id_sp,

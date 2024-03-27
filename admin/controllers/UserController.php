@@ -45,7 +45,7 @@ function userCreate()
         'ngay_sinh' => $_POST['ngay_sinh'],
         'so_dien_thoai' => $_POST['so_dien_thoai'],
         'id_cv' => 2,
-        'avatar' => uploadImage($_FILES['avatar']),
+        'avatar' => uploadImage($_FILES['avatar'], 'users'),
       ];
       insert($tableName, $data);
       $_SESSION['success'] = 'Thêm người dùng thành công!';
@@ -80,6 +80,11 @@ function userUpdate($id)
         'ngay_sinh' => $_POST['ngay_sinh'],
         'so_dien_thoai' => $_POST['so_dien_thoai'],
       ];
+
+      if ($_FILES['avatar']['size'] !== 0) {
+        $data['avatar'] = uploadImage($_FILES['avatar'], 'users');
+      }
+
       update($tableName, $id, $data);
       $_SESSION['success'] = 'Cập nhật người dùng thành công!';
       header('Location: ./?act=users');

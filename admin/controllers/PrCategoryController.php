@@ -29,7 +29,7 @@ function prCategoryCreate()
       $_SESSION['error'] = $err;
     } else {
       if ($_FILES['hinh_anh']['size'] != 0) {
-        $data['hinh_anh'] = uploadImage($_FILES['hinh_anh']);
+        $data['hinh_anh'] = uploadImage($_FILES['hinh_anh'], 'prCategories');
       }
       insert($tableName, $data);
       $_SESSION['success'] = 'Thêm danh mục sản phẩm thành công!';
@@ -61,7 +61,7 @@ function prCategoryUpdate($id)
       $_SESSION['error'] = $err;
     } else {
       if ($_FILES['hinh_anh']['size'] != 0) {
-        $data['hinh_anh'] = uploadImage($_FILES['hinh_anh']);
+        $data['hinh_anh'] = uploadImage($_FILES['hinh_anh'], 'prCategories');
       }
       update($tableName, $id, $data);
       $_SESSION['success'] = 'Cập nhật danh mục sản phẩm thành công!';

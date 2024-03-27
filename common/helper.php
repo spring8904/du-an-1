@@ -48,9 +48,9 @@ if (!function_exists('middleware_auth_check')) {
 }
 
 if (!function_exists('uploadImage')) {
-    function uploadImage($file)
+    function uploadImage($file, $path)
     {
-        $targetDir = PATH_UPLOADS;
+        $targetDir = PATH_UPLOADS . $path . '/';
         $targetFile = basename($file['name']);
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $newFileName = uniqid() . '.' . $imageFileType;

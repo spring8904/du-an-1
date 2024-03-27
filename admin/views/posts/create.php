@@ -2,9 +2,11 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
 
-    <?php if (isset($error)) { ?>
-        <h2 class="alert alert-danger"><?= $error ?></h2>
-    <?php } ?>
+    <?php if (isset($_SESSION['error'])) {
+        foreach ($_SESSION['error'] as $error) { ?>
+            <p class="alert alert-danger"><?= $error ?></p>
+    <?php }
+    } ?>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -20,14 +22,7 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="tieu_de" name="tieu_de" required autofocus>
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Mô tả bài viết:</label>
-                            <input type="text" class="form-control" rows="5" id="mo_ta" name="mo_ta">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
+                        </div><label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
                         <div class="mb-3 input-group">
                             <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh" required>
                             <label class="input-group-text" for="image">Tải lên</label>
@@ -36,9 +31,11 @@
                             <img id="output" width="200px" height="200px" />
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="content" class="form-label">Nội dung bài viết:</label>
-                        <textarea class="form-control" id="noi_dung" name="noi_dung"></textarea>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Nội dung bài viết:<span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13"></textarea>
+                        </div>
                     </div>
                 </div>
 

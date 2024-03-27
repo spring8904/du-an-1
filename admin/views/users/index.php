@@ -46,7 +46,7 @@
                 <td><?= $stt++ ?></td>
                 <td>
                   <?php if ($user['avatar']) { ?>
-                    <img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="<?= $user['ho_ten'] ?>" width="50">
+                    <img src="<?= BASE_URL . 'uploads/users/' . $user['avatar'] ?>" alt="<?= $user['ho_ten'] ?>" width="50">
                   <?php } ?>
                 </td>
                 <td><?= $user['email'] ?></td>
