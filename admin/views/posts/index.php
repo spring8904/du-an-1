@@ -57,7 +57,7 @@
                 <td><?= $post['p_ngay_dang'] ?></td>
                 <td><?= $post['p_ngay_sua'] ?></td>
                 <td>
-                  <a href="<?= BASE_URL_ADMIN . '?act=post-detail&id=' . $post['p_id'] ?>" class="btn btn-primary">Xem</a>
+                  <a href="<?= BASE_URL_ADMIN . '?act=post-detail&id=' . $post['p_id'] ?>" class="btn btn-info">Xem</a>
                   <a href="<?= BASE_URL_ADMIN . '?act=post-update&id=' . $post['p_id'] ?>" class="btn btn-warning">Sửa</a>
                   <a href="<?= BASE_URL_ADMIN . '?act=post-delete&id=' . $post['p_id']  ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết <?= $post['p_tieu_de'] ?>')">Xóa</a>
                 </td>
