@@ -58,21 +58,7 @@
               <label class="form-label" for="phone-number">Số điện thoại:<span class="text-danger">*</span></label>
               <input type="number" class="form-control" name="so_dien_thoai" id="phone-number" required>
             </div>
-            <div class="mb-3">
-              <label class="form-label" for="role-id">Chức vụ:<span class="text-danger">*</span></label>
-              <select class="form-select" id="role-id" name="id_cv" required>
-                <option selected hidden value="">Chọn...</option>
-                <?php
-                $roles = listAll('tb_chuc_vu');
-                foreach ($roles as $role) {
-                ?>
-                  <option value="<?= $role['id'] ?>"><?= ucfirst($role['chuc_vu']) ?></option>
-                <?php
-                }
-                ?>
-              </select>
-            </div>
-            <label for="image" class="form-label">Avatar:<span class="text-danger">*</span></label>
+            <label for="image" class="form-label">Ảnh đại diện:<span class="text-danger">*</span></label>
             <div class="mb-3 input-group">
               <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="avatar" required>
               <label class="input-group-text" for="image">Tải lên</label>

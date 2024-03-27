@@ -16,14 +16,14 @@
             <tr>
               <th>STT</th>
               <th>Tên chức vụ</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>STT</th>
               <th>Tên chức vụ</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </tfoot>
           <tbody>

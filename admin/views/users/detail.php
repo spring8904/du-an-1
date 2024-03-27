@@ -7,7 +7,9 @@
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary d-flex justify-content-between">
         <a href="<?= BASE_URL_ADMIN ?>?act=users">Quay trở lại</a>
-        <a href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>">Sửa thông tin</a>
+        <?php if (showOne('tb_chuc_vu', $user['id_cv'])['id'] != 1) { ?>
+          <a href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>">Sửa thông tin</a>
+        <?php } ?>
       </h6>
     </div>
     <div class="card-body">
@@ -30,17 +32,13 @@
               <td>Ảnh đại diện</td>
               <td>
                 <?php if ($user['avatar']) { ?>
-                  <img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="avatar" width="100">
+                  <img src="<?= BASE_URL . 'uploads/' . $user['avatar'] ?>" alt="<?= $user['ho_ten'] ?>" width="100">
                 <?php } ?>
               </td>
             </tr>
             <tr>
               <td>Email</td>
               <td><?= $user['email'] ?></td>
-            </tr>
-            <tr>
-              <td>Mật khẩu</td>
-              <td>********</td>
             </tr>
             <tr>
               <td>Họ tên</td>

@@ -24,14 +24,12 @@
                     <input type="text" class="form-control" id="mo_ta" name="mo_ta" value="<?= $post['mo_ta'] ?>">
                 </div>
                 <label for="image" class="form-label">Hình ảnh:</label>
-                <div class="col">
-                    <div class="mb-3 input-group">
-                        <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh">
-                        <label class="input-group-text" for="image">Tải lên</label>
-                    </div>
-                    <div class="text-center">
-                        <img id="output" <?= $post['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/' . $post['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
-                    </div>
+                <div class="mb-3 input-group">
+                    <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh">
+                    <label class="input-group-text" for="image">Tải lên</label>
+                </div>
+                <div class="text-center">
+                    <img id="output" <?= $post['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/' . $post['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Nội dung bài viết:</label>

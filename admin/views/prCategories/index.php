@@ -19,7 +19,7 @@
               <th>Tên danh mục</th>
               <th>Số lượng sản phẩm</th>
               <th>Mô tả</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tfoot>
@@ -29,7 +29,7 @@
               <th>Tên danh mục</th>
               <th>Số lượng sản phẩm</th>
               <th>Mô tả</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </tfoot>
           <tbody>

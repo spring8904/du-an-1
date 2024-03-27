@@ -7,6 +7,15 @@
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary d-flex justify-content-between">
         <a href="<?= BASE_URL_ADMIN ?>?act=contacts">Quay trở lại</a>
+
+        <?php
+        $status = showOne('tb_trang_thai', $contact['id_tt']);
+        if ($status['id'] == 3) {
+        ?>
+          <a href="<?= BASE_URL_ADMIN . '?act=contact-processed&id=' . $contact['id']  ?>" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn đã xử lý liên hệ này')">Đánh dấu là đã xử lý</a>
+        <?php } elseif ($status['id'] != 3) { ?>
+          <a href="<?= BASE_URL_ADMIN . '?act=contact-no-process&id=' . $contact['id']  ?>" class="btn btn-danger">Đánh dấu là đã xử lý</a>
+        <?php } ?>
       </h6>
     </div>
     <div class="card-body">
@@ -20,12 +29,17 @@
           </thead>
           <tbody>
             <tr>
-              <td>ID</td>
-              <td><?= $contact['id'] ?></td>
+              <td>Tiêu đề</td>
+              <td><?= $contact['tieu_de'] ?></td>
             </tr>
             <tr>
+
               <td>Họ tên</td>
               <td><?= $contact['ten_kh'] ?></td>
+            </tr>
+            <tr>
+              <td>Ngày gửi</td>
+              <td><?= $contact['ngay_gui'] ?></td>
             </tr>
             <tr>
               <td>Số điện thoại</td>
@@ -42,10 +56,6 @@
             <tr>
               <td>Nội dung</td>
               <td><?= $contact['noi_dung'] ?></td>
-            </tr>
-            <tr>
-              <td>Ngày gửi</td>
-              <td><?= $contact['ngay_gui'] ?></td>
             </tr>
           </tbody>
         </table>

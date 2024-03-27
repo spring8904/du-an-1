@@ -9,23 +9,42 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Họ tên Khách hàng</th>
-              <th>Số điện thoại</th>
-              <th>Nội dung</th>
-              <th>Action</th>
+              <th>STT</th>
+              <th>Tiêu đề</th>
+              <th>Họ tên</th>
+              <th>Ngày gửi</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
             </tr>
           </thead>
+          <tfoot>
+            <tr>
+              <th>STT</th>
+              <th>Tiêu đề</th>
+              <th>Họ tên</th>
+              <th>Ngày gửi</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </tfoot>
           <tbody>
             <?php foreach ($contacts as $contact) { ?>
               <tr>
                 <td><?= $contact['id'] ?></td>
+                <td><?= $contact['tieu_de'] ?></td>
                 <td><?= $contact['ten_kh'] ?></td>
-                <td><?= $contact['so_dien_thoai'] ?></td>
-                <td><?= $contact['noi_dung'] ?></td>
+                <td><?= $contact['ngay_gui'] ?></td>
+                <td>
+                  <?php $status = showOne('tb_trang_thai', $contact['id_tt']); ?>
+                  <h5><span class="badge badge-<?= $status['id'] == 3 ? 'danger' : 'success' ?>"><?= $status['ten_tt'] ?></span></h5>
+                </td>
                 <td>
                   <a href="<?= BASE_URL_ADMIN . '?act=contact-detail&id=' . $contact['id'] ?>" class="btn btn-info">Xem</a>
-                  <a href="<?= BASE_URL_ADMIN . '?act=contact-delete&id=' . $contact['id']  ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa Khách hàng <?= $contact['so_dien_thoai'] ?>')">Xóa</a>
+                  <?php if ($status['id'] == 3) { ?>
+                    <a href="<?= BASE_URL_ADMIN . '?act=contact-processed&id=' . $contact['id']  ?>" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn đã xử lý liên hệ này')">Đã xử lý</a>
+                  <?php } elseif ($status['id'] != 3) { ?>
+                    <a href="<?= BASE_URL_ADMIN . '?act=contact-no-process&id=' . $contact['id']  ?>" class="btn btn-danger">Chưa xử lý</a>
+                  <?php } ?>
                 </td>
               </tr>
             <?php } ?>

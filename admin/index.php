@@ -28,6 +28,11 @@ $arrRouteNeedAuth = [
 
 ];
 
+if ($_SESSION['user']['id_cv'] != 1 && in_array($act, $arrRouteNeedAuth)) {
+  header('Location: ' . BASE_URL);
+  exit();
+}
+
 // Kiểm tra xem admin đã đăng nhập chưa
 middleware_auth_check($act, $arrRouteNeedAuth);
 
@@ -70,7 +75,8 @@ match ($act) {
   // CRUD Contact
   'contacts' => contactListAll(),
   'contact-detail' => contactShowOne($_GET['id']),
-  'contact-delete' => contactDelete($_GET['id']),
+  'contact-processed' => contactProcessed($_GET['id']),
+  'contact-no-process' => contactNoProcess($_GET['id']),
 
   // Authen
   'login' => authenShowFormLogin(),

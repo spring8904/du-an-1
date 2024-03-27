@@ -22,7 +22,7 @@
               <th>Ngày nhập</th>
               <th>Số lượng</th>
               <th>Trạng thái</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tfoot>
@@ -35,7 +35,7 @@
               <th>Ngày nhập</th>
               <th>Số lượng</th>
               <th>Trạng thái</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </tfoot>
           <tbody>
@@ -56,7 +56,8 @@
                 <td><?= $product['ngay_nhap'] ?></td>
                 <td><?= $product['so_luong'] ?></td>
                 <td>
-                  <h5><span class="badge badge-<?= $product['trang_thai'] == 'show' ? 'success' : 'warning' ?>"><?= $product['trang_thai'] ?></span></h5>
+                  <?php $status = showOne('tb_trang_thai', $product['id_tt']); ?>
+                  <h5><span class="badge badge-<?= $status['id'] == '1' ? 'success' : 'danger' ?>"><?= $status['ten_tt'] ?></span></h5>
                 </td>
                 <td>
                   <a href="<?= BASE_URL_ADMIN . '?act=product-detail&id=' . $product['id'] ?>" class="btn btn-info">Xem</a>

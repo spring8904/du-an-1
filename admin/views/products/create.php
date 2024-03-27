@@ -50,9 +50,9 @@
 
             <div class="mb-3">
               <label class="form-label" for="trang_thai">Trạng thái:<span class="text-danger">*</span></label>
-              <select class="form-select" id="trang_thai" name="trang_thai" required>
-                <option value="show" selected>Show</option>
-                <option value="hide">Hide</option>
+              <select class="form-select" id="trang_thai" name="id_tt" required>
+                <option value="1" selected>Hiện</option>
+                <option value="2">Ẩn</option>
               </select>
             </div>
           </div>

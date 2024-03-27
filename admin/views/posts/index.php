@@ -19,10 +19,10 @@
               <th>Tiêu đề bài viết</th>
               <th>Mô tả bài viết</th>
               <th>Người viết</th>
-              <th>Avatar</th>
+              <th>Ảnh đại diện</th>
               <th>Ngày đăng</th>
               <th>Ngày sửa</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tfoot>
@@ -32,10 +32,10 @@
               <th>Tiêu đề bài viết</th>
               <th>Mô tả bài viết</th>
               <th>Người viết</th>
-              <th>Avatar</th>
+              <th>Ảnh đại diện</th>
               <th>Ngày đăng</th>
               <th>Ngày sửa</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </tfoot>
           <tbody>

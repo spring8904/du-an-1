@@ -1,33 +1,52 @@
 <?php
 
-function contactListAll() {
-    $title = 'Danh sách thông tin Liên hệ Khách hàng';
-    $view = 'contacts/index';
-    $styles = ['styles/datatable'];
-    $scripts = ['scripts/datatable'];
-  
-    $contacts = listAll('tb_lien_he');
-  
-    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+function contactListAll()
+{
+  $title = 'Danh sách thông tin Liên hệ Khách hàng';
+  $view = 'contacts/index';
+  $styles = ['styles/datatable'];
+  $scripts = ['scripts/datatable'];
+
+  $contacts = listAll('tb_lien_he');
+
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function contactShowOne($id) {
-    $contact = showOne('tb_lien_he', $id);
+function contactShowOne($id)
+{
+  $contact = showOne('tb_lien_he', $id);
   if (empty($contact)) {
     e404();
   }
-  $title = $contact['ten_kh'];
+  $title = $contact['tieu_de'];
   $view = 'contacts/detail';
   $styles = ['styles/datatable'];
   $scripts = ['scripts/datatable'];
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';
-  
 }
 
-function contactDelete($id) {
-    $tableName = 'tb_lien_he';
+function contactProcessed($id)
+{
+  $tableName = 'tb_lien_he';
 
-    delete($tableName, $id);
-  
-    header('Location: ./?act=contacts');
+  $data = [
+    'id_tt' => 4,
+  ];
+
+  update($tableName, $id, $data);
+
+  header('Location: ./?act=contacts');
+}
+
+function contactNoProcess($id)
+{
+  $tableName = 'tb_lien_he';
+
+  $data = [
+    'id_tt' => 3,
+  ];
+
+  update($tableName, $id, $data);
+
+  header('Location: ./?act=contacts');
 }

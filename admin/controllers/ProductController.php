@@ -37,7 +37,7 @@ function productCreate()
       'gia_sp' => $_POST['gia_sp'],
       'ngay_nhap' => $_POST['ngay_nhap'],
       'so_luong' => $_POST['so_luong'],
-      'trang_thai' => $_POST['trang_thai'],
+      'id_tt' => $_POST['id_tt'],
     ];
 
     $id_sp = insert_get_last_id($tableName, $data);
@@ -65,7 +65,7 @@ function productUpdate($id)
       'gia_sp' => $_POST['gia_sp'],
       'ngay_nhap' => $_POST['ngay_nhap'],
       'so_luong' => $_POST['so_luong'],
-      'trang_thai' => $_POST['trang_thai'],
+      'id_tt' => $_POST['id_tt'],
     ];
 
     update($tableName, $id, $data);

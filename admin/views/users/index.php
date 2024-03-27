@@ -15,28 +15,28 @@
           <thead>
             <tr>
               <th>STT</th>
-              <th>Avatar</th>
+              <th>Ảnh đại diện</th>
               <th>Email</th>
               <th>Họ Tên</th>
               <th>Chức vụ</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>STT</th>
-              <th>Avatar</th>
+              <th>Ảnh đại diện</th>
               <th>Email</th>
               <th>Họ Tên</th>
               <th>Chức vụ</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </tfoot>
           <tbody>
             <?php
             $stt = 1;
             foreach ($users as $user) {
-              $role = showOne('tb_chuc_vu', $user['id_cv'])['chuc_vu'];
+              $role = showOne('tb_chuc_vu', $user['id_cv']);
             ?>
               <tr>
                 <td><?= $stt++ ?></td>
@@ -48,11 +48,11 @@
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['ho_ten'] ?></td>
                 <td>
-                  <h5><span class="badge badge-<?= $role == 'admin' ? 'success' : 'warning' ?>"><?= $role ?></span></h5>
+                  <h5><span class="badge badge-<?= $role['id'] == 1 ? 'danger' : 'success' ?>"><?= $role['chuc_vu'] ?></span></h5>
                 </td>
                 <td>
                   <a href="<?= BASE_URL_ADMIN . '?act=user-detail&id=' . $user['id'] ?>" class="btn btn-info">Xem</a>
-                  <?php if ($role != 'admin') { ?>
+                  <?php if ($role['id'] != 1) { ?>
                     <a href="<?= BASE_URL_ADMIN . '?act=user-update&id=' . $user['id'] ?>" class="btn btn-warning">Sửa</a>
                     <a href="<?= BASE_URL_ADMIN . '?act=user-delete&id=' . $user['id']  ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng <?= $user['email'] ?>')">Xóa</a>
                   <?php } ?>

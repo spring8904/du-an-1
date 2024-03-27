@@ -41,7 +41,7 @@
               <td><?= $post['us_name'] ?></td>
             </tr>
             <tr>
-              <td>Avatar</td>
+              <td>Ảnh đại diện</td>
               <td><img src="<?= BASE_URL ?>../uploads/<?= $post['us_avatar'] ?>" alt="<?= $post['us_name'] ?>" width="100"></td>
             </tr>
             <tr>
