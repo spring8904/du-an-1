@@ -73,9 +73,9 @@
       <span>QL Bình luận</span></a>
   </li>
 
-  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'promotion') !== false ? "active" : "" ?>">
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'order') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=orders">
-      <i class="fa-solid fa-ticket"></i>
+      <i class="fa-solid fa-cart-shopping"></i>
       <span>QL Đơn hàng</span></a>
   </li>
 

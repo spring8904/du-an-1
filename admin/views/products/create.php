@@ -26,7 +26,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="price" class="form-label">Giá sản phẩm:<span class="text-danger">*</span></label>
+              <label for="price" class="form-label">Giá sản phẩm (VNĐ):<span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="price" name="gia_sp" placeholder="0" required>
             </div>
 
