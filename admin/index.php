@@ -39,51 +39,55 @@ middleware_auth_check($act, $arrRouteNeedAuth);
 match ($act) {
   '/' => dashboard(),
 
-  // CRUD Role
+  // Role
   'roles' => roleListAll(),
   'role-create' => roleCreate(),
   'role-update' => roleUpdate($_GET['id']),
   'role-delete' => roleDelete($_GET['id']),
 
-  // CRUD User
+  // User
   'users' => userListAll(),
   'user-detail' => userShowOne($_GET['id']),
   'user-create' => userCreate(),
   'user-update' => userUpdate($_GET['id']),
   'user-delete' => userDelete($_GET['id']),
 
-  // CRUD Pr Category
+  // Pr Category
   'prCategories' => prCategoryListAll(),
   'prCategory-create' => prCategoryCreate(),
   'prCategory-update' => prCategoryUpdate($_GET['id']),
   'prCategory-delete' => prCategoryDelete($_GET['id']),
 
-  // CRUD Product
+  // Product
   'products' => productListAll(),
   'product-detail' => productShowOne($_GET['id']),
   'product-create' => productCreate(),
   'product-update' => productUpdate($_GET['id']),
   'product-delete' => productDelete($_GET['id']),
 
-  // CRUD Post
+  // Post
   'posts' => postListAll(),
   'post-detail' => postShowOne($_GET['id']),
   'post-create' => postCreate(),
   'post-update' => postUpdate($_GET['id']),
   'post-delete' => postDelete($_GET['id']),
 
-  // CRUD Contact
+  // Contact
   'contacts' => contactListAll(),
   'contact-detail' => contactShowOne($_GET['id']),
   'contact-processed' => contactProcessed($_GET['id']),
   'contact-no-process' => contactNoProcess($_GET['id']),
 
-  // CRUD Promotion
+  // Promotion
   'promotions' => promotionListAll(),
   'promotion-detail' => promotionDetail($_GET['id']),
   'promotion-create' => promotionCreate(),
   'promotion-update' => promotionUpdate($_GET['id']),
   'promotion-delete' => promotionDelete($_GET['id']),
+
+  // Order
+  'orders' => orderListAll(),
+  'order-detail' => orderDetail($_GET['id']),
 
   // Authen
   'login' => authenShowFormLogin(),

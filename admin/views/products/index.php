@@ -55,7 +55,7 @@
                   <?php } ?>
                 </td>
                 <td><?= $product['ten_sp'] ?></td>
-                <td><?= $product['gia_sp'] ?></td>
+                <td><?= number_format($product['gia_sp']) ?> VNĐ</td>
                 <td><?= showOne('tb_danh_muc_sp', $product['id_dm'])['ten_dm'] ?></td>
                 <td><?= $product['ngay_nhap'] ?></td>
                 <td><?= $product['so_luong'] ?></td>

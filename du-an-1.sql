@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 12:21 PM
+-- Generation Time: Mar 28, 2024 at 03:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -218,13 +218,18 @@ CREATE TABLE `tb_binh_luan` (
 
 CREATE TABLE `tb_chi_tiet_dh` (
   `id` int(11) NOT NULL,
+  `id_dh` int(11) NOT NULL,
   `id_sp` int(11) NOT NULL,
-  `id_nd` int(11) NOT NULL,
-  `so_luong_sp` int(11) NOT NULL,
-  `id_ha` int(11) NOT NULL,
-  `tong_tien` float NOT NULL,
-  `ngay_dat` datetime NOT NULL DEFAULT current_timestamp()
+  `so_luong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_chi_tiet_dh`
+--
+
+INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`) VALUES
+(1, 1, 9, 2),
+(2, 1, 10, 5);
 
 -- --------------------------------------------------------
 
@@ -289,14 +294,22 @@ INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
 
 CREATE TABLE `tb_don_hang` (
   `id` int(11) NOT NULL,
-  `ma_don_hang` varchar(50) NOT NULL,
-  `ngay_dat_hang` datetime NOT NULL DEFAULT current_timestamp(),
+  `ma_dh` varchar(50) NOT NULL,
+  `ngay_dat` datetime NOT NULL DEFAULT current_timestamp(),
   `id_nd` int(11) NOT NULL,
-  `pttt` int(11) NOT NULL,
-  `trang_thai` int(11) NOT NULL,
+  `id_pttt` int(11) NOT NULL,
+  `id_tt` int(11) NOT NULL,
   `id_km` int(11) NOT NULL,
+  `tong_tien` float NOT NULL,
   `ghi_chu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_don_hang`
+--
+
+INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt`, `id_km`, `tong_tien`, `ghi_chu`) VALUES
+(1, 'QHKDOAOID', '2024-03-28 08:37:48', 1, 1, 3, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -330,7 +343,8 @@ CREATE TABLE `tb_hinh_anh_sp` (
 --
 
 INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
-(13, 9, '6603fe5aac34d.png');
+(13, 9, '6603fe5aac34d.png'),
+(14, 10, '6604d4d1d9b8d.jpg');
 
 -- --------------------------------------------------------
 
@@ -342,12 +356,21 @@ CREATE TABLE `tb_khuyen_mai` (
   `id` int(11) NOT NULL,
   `ten_km` varchar(50) NOT NULL,
   `ma_km` varchar(50) NOT NULL,
-  `so_luong` int(11) NOT NULL,
   `mo_ta` text NOT NULL,
-  `ngay_bat_dau` datetime NOT NULL DEFAULT current_timestamp(),
-  `ngay_ket_thuc` datetime NOT NULL DEFAULT current_timestamp(),
+  `ngay_bat_dau` date NOT NULL,
+  `ngay_ket_thuc` date NOT NULL,
   `giam_gia` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_khuyen_mai`
+--
+
+INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `ngay_ket_thuc`, `giam_gia`) VALUES
+(1, 'Giảm 10%', 'MGL9UYJO', '', '2024-04-04', '2024-04-05', 10),
+(2, 'Giảm 20%', 'IK86OVCT', '', '2024-03-27', '2024-08-28', 20),
+(3, 'Giảm 5%', '96F1ATVP', 'Đã hết hạn', '2024-03-25', '2024-03-26', 5),
+(4, 'Giảm 1% ', 'G6T0IZJE', '', '2024-03-27', '2024-03-29', 1);
 
 -- --------------------------------------------------------
 
@@ -403,6 +426,25 @@ INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_phuong_thuc_thanh_toan`
+--
+
+CREATE TABLE `tb_phuong_thuc_thanh_toan` (
+  `id` int(11) NOT NULL,
+  `ten_pttt` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_phuong_thuc_thanh_toan`
+--
+
+INSERT INTO `tb_phuong_thuc_thanh_toan` (`id`, `ten_pttt`) VALUES
+(1, 'Thanh toán khi nhận hàng'),
+(2, 'Thanh toán qua VNpay');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_san_pham`
 --
 
@@ -422,7 +464,8 @@ CREATE TABLE `tb_san_pham` (
 --
 
 INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
-(9, 'Iphone 13', 12000000, 5, '', '2024-03-12', 11, 1);
+(9, 'Iphone 13', 12000000, 5, '', '2024-03-12', 11, 1),
+(10, 'Iphone 14', 15000000, 5, '', '2024-03-28', 13, 1);
 
 -- --------------------------------------------------------
 
@@ -432,18 +475,23 @@ INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `id_dm`, `mo_ta`, `ngay_nha
 
 CREATE TABLE `tb_trang_thai` (
   `id` int(11) NOT NULL,
-  `ten_tt` varchar(50) NOT NULL
+  `ten_tt` varchar(50) NOT NULL,
+  `badge` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_trang_thai`
 --
 
-INSERT INTO `tb_trang_thai` (`id`, `ten_tt`) VALUES
-(1, 'Hiện'),
-(2, 'Ẩn'),
-(3, 'Chưa xử lý'),
-(4, 'Đã xử lý');
+INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
+(1, 'Hiện', 'success'),
+(2, 'Ẩn', 'danger'),
+(3, 'Chờ xử lý', 'warning'),
+(4, 'Đã hoàn thành', 'success'),
+(5, 'Đang vận chuyển', 'warning'),
+(6, 'Đã giao hàng', 'success'),
+(7, 'Hoàn trả', 'warning'),
+(8, 'Hủy bỏ', 'danger');
 
 -- --------------------------------------------------------
 
@@ -587,6 +635,12 @@ ALTER TABLE `tb_nguoi_dung`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_phuong_thuc_thanh_toan`
+--
+ALTER TABLE `tb_phuong_thuc_thanh_toan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
@@ -660,7 +714,7 @@ ALTER TABLE `tb_binh_luan`
 -- AUTO_INCREMENT for table `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_chuc_vu`
@@ -678,13 +732,13 @@ ALTER TABLE `tb_danh_gia`
 -- AUTO_INCREMENT for table `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_gio_hang`
@@ -696,13 +750,13 @@ ALTER TABLE `tb_gio_hang`
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_khuyen_mai`
 --
 ALTER TABLE `tb_khuyen_mai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_lien_he`
@@ -717,16 +771,22 @@ ALTER TABLE `tb_nguoi_dung`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `tb_phuong_thuc_thanh_toan`
+--
+ALTER TABLE `tb_phuong_thuc_thanh_toan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
