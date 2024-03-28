@@ -16,31 +16,34 @@
             </h6>
         </div>
         <div class="card-body">
-            <form method="comments" enctype="multipart/form-data" novalidate>
+            <form method="post" enctype="multipart/form-data" novalidate>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label for="name" class="form-label">Tiêu đề bình luận:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="tieu_de" name="tieu_de" required value="<?= $comments['tieu_de'] ?>">
-                        </div>
-                        <label for="image" class="form-label">Hình ảnh:</label>
+                            <input type="text" class="form-control" id="tieu_de" name="tieu_de" required autofocus>
+                        </div><label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
                         <div class="mb-3 input-group">
-                            <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh">
+                            <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh" required>
                             <label class="input-group-text" for="image">Tải lên</label>
                         </div>
                         <div class="text-center">
-                            <img id="output" <?= $comments['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/posts/' . $comments['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
+                            <img id="output" width="200px" height="200px" />
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="content" class="form-label">Nội dung bình luận:</label>
-                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13"><?= $comments['noi_dung'] ?></textarea>
+                            <label for="content" class="form-label">Nội dung bình luận:<span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13"></textarea>
                         </div>
                     </div>
                 </div>
+
                 <div class="d-flex justify-content-between mt-3">
-                    <a href="<?= BASE_URL_ADMIN ?>?act=posts" class=" btn btn-secondary">Quay trở lại</a>
+                    <div>
+                        <a href="<?= BASE_URL_ADMIN ?>?act=posts" class=" btn btn-secondary">Quay trở lại</a>
+                        <button type="reset" class="btn btn-danger">Đặt lại</button>
+                    </div>
                     <button type="submit" class="btn btn-primary">Lưu</button>
                 </div>
             </form>
