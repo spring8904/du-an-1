@@ -64,6 +64,15 @@
         </a>
       </div>
 
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+        <a class="text-reset text-center" href="<?= BASE_URL_ADMIN ?>?act=orders">
+          <div class="alert alert-primary py-4">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Đơn hàng</span>
+          </div>
+        </a>
+      </div>
+
     </div>
   </div>
 </div>

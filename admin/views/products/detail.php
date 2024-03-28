@@ -40,7 +40,7 @@
             </tr>
             <tr>
               <td>Giá sản phẩm</td>
-              <td><?= $product['gia_sp'] ?></td>
+              <td><?= number_format($product['gia_sp']) ?> VNĐ</td>
             </tr>
             <tr>
               <td>Danh mục</td>
