@@ -19,7 +19,7 @@
   </li>
 
   <!-- Divider -->
-  <hr class="sidebar-divider">
+  <!-- <hr class="sidebar-divider"> -->
 
   <!-- Nav Item - Role -->
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'role') !== false ? "active" : "" ?>">
@@ -66,6 +66,12 @@
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=promotions">
       <i class="fa-solid fa-ticket"></i>
       <span>QL Khuyến mãi</span></a>
+  </li>
+
+  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'promotion') !== false ? "active" : "" ?>">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=orders">
+      <i class="fa-solid fa-ticket"></i>
+      <span>QL Đơn hàng</span></a>
   </li>
 
   <!-- Divider -->

@@ -20,12 +20,17 @@
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="<?= BASE_URL_ADMIN . '?act=user-detail&id=' . $_SESSION['user']['id'] ?>">
           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-          Profile
+          Trang cá nhân
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<?= BASE_URL ?>">
+          <i class="fa-solid fa-cart-shopping fa-sm fa-fw mr-2 text-gray-400"></i>
+          Mua hàng
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<?= BASE_URL . '?act=logout' ?>">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-          Logout
+          Đăng xuất
         </a>
       </div>
     </li>
