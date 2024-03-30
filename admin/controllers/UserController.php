@@ -31,7 +31,7 @@ function userCreate()
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tableName = 'tb_nguoi_dung';
 
-    $err = validateUser(true);
+    $err = validateUser();
 
     if (!empty($err)) {
       $_SESSION['error'] = $err;
@@ -45,8 +45,13 @@ function userCreate()
         'ngay_sinh' => $_POST['ngay_sinh'],
         'so_dien_thoai' => $_POST['so_dien_thoai'],
         'id_cv' => 2,
-        'avatar' => uploadImage($_FILES['avatar'], 'users'),
+        'avatar' => 'default.png',
       ];
+
+      if ($_FILES['avatar']['size'] !== 0) {
+        $data['avatar'] = uploadImage($_FILES['avatar'], 'users');
+      }
+
       insert($tableName, $data);
       $_SESSION['success'] = 'Thêm người dùng thành công!';
       header('Location: ./?act=users');
@@ -121,7 +126,7 @@ function userDelete($id)
   header('Location: ./?act=users');
 }
 
-function validateUser($checkImage = false)
+function validateUser()
 {
   $err = [];
 
@@ -129,20 +134,20 @@ function validateUser($checkImage = false)
     $err[] = 'Vui lòng nhập email.';
   } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $err[] = 'Email không hợp lệ.';
+  } elseif (getUserClientByEmail($_POST['email'])) {
+    $err[] = 'Email đã tồn tại.';
   }
 
   if (empty($_POST['mat_khau'])) {
     $err[] = 'Vui lòng nhập mật khẩu.';
   } elseif (strlen($_POST['mat_khau']) < 8) {
     $err[] = 'Mật khẩu phải có ít nhất 8 ký tự.';
+  } elseif ($_POST['mat_khau'] !== $_POST['password_conf']) {
+    $err[] = 'Mật khẩu không khớp.';
   }
 
   if (empty($_POST['ho_ten'])) {
     $err[] = 'Vui lòng nhập họ tên.';
-  }
-
-  if (empty($_POST['gioi_tinh'])) {
-    $err[] = 'Vui lòng chọn giới tính.';
   }
 
   if (empty($_POST['dia_chi'])) {
@@ -161,7 +166,7 @@ function validateUser($checkImage = false)
     $err[] = 'Số điện thoại không hợp lệ.';
   }
 
-  if ($checkImage) {
+  if (isset($_FILES['avatar']) && $_FILES['avatar']['size'] !== 0) {
     $error = validateImage($_FILES['avatar']);
     if ($error) {
       $err[] = $error;

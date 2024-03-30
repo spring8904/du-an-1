@@ -7,6 +7,8 @@ require_once './common/connect-db.php';
 require_once './common/model.php';
 
 // Require file trong controllers và models
+require_file(PATH_CONTROLLER_ADMIN);
+require_file(PATH_MODEL_ADMIN);
 require_file(PATH_CONTROLLER);
 require_file(PATH_MODEL);
 
@@ -39,6 +41,7 @@ match ($act) {
 
     // Authen
     'login' => authenShowFormLogin(),
+    'signup' => authenShowFormSignup(),
     'logout' => authenLogout(),
 };
 

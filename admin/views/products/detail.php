@@ -29,9 +29,11 @@
             <tr>
               <td>Hình ảnh</td>
               <td>
-                <?php if (getImageProduct($product['id'])) { ?>
-                  <img src="<?= BASE_URL . 'uploads/products/' . getImageProduct($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="100">
-                <?php } ?>
+                <?php if ($images) {
+                  foreach ($images as $image) { ?>
+                    <img class="me-2" src="<?= BASE_URL . 'uploads/products/' . $image['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="100">
+                <?php }
+                } ?>
               </td>
             </tr>
             <tr>

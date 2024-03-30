@@ -25,7 +25,7 @@
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<?= BASE_URL ?>">
           <i class="fa-solid fa-cart-shopping fa-sm fa-fw mr-2 text-gray-400"></i>
-          Mua hàng
+          Website
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<?= BASE_URL . '?act=logout' ?>">
