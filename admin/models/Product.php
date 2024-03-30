@@ -36,6 +36,23 @@ function getImageProduct($id_sp)
   }
 }
 
+function getImageProducts($id_sp)
+{
+  try {
+    $sql = "SELECT * FROM tb_hinh_anh_sp WHERE id_sp = :id_sp ORDER BY id";
+
+    $stmt = $GLOBALS['conn']->prepare($sql);
+
+    $stmt->bindParam(':id_sp', $id_sp);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  } catch (\Exception $e) {
+    debug($e);
+  }
+}
+
 function deleteImageProduct($id)
 {
   try {
