@@ -21,7 +21,8 @@
               <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
-              <th>Giá</th>
+              <th>Giá gốc</th>
+              <th>Giá khuyến mãi</th>
               <th>Danh mục</th>
               <th>Ngày nhập</th>
               <th>Số lượng</th>
@@ -34,7 +35,8 @@
               <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
-              <th>Giá</th>
+              <th>Giá gốc</th>
+              <th>Giá khuyến mãi</th>
               <th>Danh mục</th>
               <th>Ngày nhập</th>
               <th>Số lượng</th>
@@ -56,6 +58,7 @@
                 </td>
                 <td><?= $product['ten_sp'] ?></td>
                 <td><?= number_format($product['gia_sp']) ?> VNĐ</td>
+                <td><?= $product['gia_km'] != 0 ? number_format($product['gia_km']) . 'VNĐ' : '' ?></td>
                 <td><?= showOne('tb_danh_muc_sp', $product['id_dm'])['ten_dm'] ?></td>
                 <td><?= $product['ngay_nhap'] ?></td>
                 <td><?= $product['so_luong'] ?></td>

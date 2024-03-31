@@ -43,6 +43,9 @@ match ($act) {
     'login' => authenShowFormLogin(),
     'signup' => authenShowFormSignup(),
     'logout' => authenLogout(),
+
+    //Products
+    'product' => productIndex($_GET['id']),
 };
 
 require_once './common/disconnect-db.php';

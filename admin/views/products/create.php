@@ -31,8 +31,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="price2" class="form-label">Giá khuyến mãi (VNĐ):<span class="text-danger">*</span></label>
-              <input type="number" class="form-control" id="price2" name="gia_km" placeholder="0" required>
+              <label for="price2" class="form-label">Giá khuyến mãi (VNĐ):</label>
+              <input type="number" class="form-control" id="price2" name="gia_km" placeholder="0">
             </div>
 
             <div class="mb-3">

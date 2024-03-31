@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 03:54 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Mar 31, 2024 at 09:27 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carts` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `id` int NOT NULL,
+  `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,10 +39,10 @@ CREATE TABLE `carts` (
 --
 
 CREATE TABLE `cart_items` (
-  `id` int(11) NOT NULL,
-  `cart_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `id` int NOT NULL,
+  `cart_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -52,8 +52,8 @@ CREATE TABLE `cart_items` (
 --
 
 CREATE TABLE `catalogues` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -71,7 +71,7 @@ INSERT INTO `catalogues` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `costumer` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `email` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
   `full_name` varchar(50) NOT NULL,
@@ -80,8 +80,8 @@ CREATE TABLE `costumer` (
   `address` varchar(100) NOT NULL,
   `date_of_birth` date NOT NULL,
   `phone` varchar(12) NOT NULL,
-  `id_cv` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id_cv` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -90,17 +90,17 @@ CREATE TABLE `costumer` (
 --
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `user_phone` varchar(10) NOT NULL,
-  `user_address` text NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `user_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_phone` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_address` text COLLATE utf8mb4_general_ci NOT NULL,
   `total_bill` float NOT NULL,
-  `status_delivery` int(11) NOT NULL COMMENT 'Trang thái vận chuyển đơn hàng: \r\nDưới đây đang lấy theo trạng thái của shopee.\r\n0: chờ xác nhận\r\n1: chờ lấy hàng\r\n2: chờ giao hàng\r\n3: đã giao\r\n-1: đã hủy\r\n',
-  `status_payment` int(11) NOT NULL COMMENT 'Trạng thái thanh toán:\r\n0: chưa thanh toán\r\n1: đã thanh toán\r\n-1: đơn hàng đã hủy',
-  `created_at` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'ngày tạo đơn hàng',
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'ngày cập nhật cuối cùng'
+  `status_delivery` int NOT NULL COMMENT 'Trang thái vận chuyển đơn hàng: \r\nDưới đây đang lấy theo trạng thái của shopee.\r\n0: chờ xác nhận\r\n1: chờ lấy hàng\r\n2: chờ giao hàng\r\n3: đã giao\r\n-1: đã hủy\r\n',
+  `status_payment` int NOT NULL COMMENT 'Trạng thái thanh toán:\r\n0: chưa thanh toán\r\n1: đã thanh toán\r\n-1: đơn hàng đã hủy',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ngày tạo đơn hàng',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ngày cập nhật cuối cùng'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -110,11 +110,11 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `order_items` (
-  `id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL COMMENT 'ưu tiên lưu giá price hơn regular.'
+  `id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `price` int NOT NULL COMMENT 'ưu tiên lưu giá price hơn regular.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -124,17 +124,17 @@ CREATE TABLE `order_items` (
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `catalogue_id` int(11) NOT NULL COMMENT 'ID danh mục sản phẩm',
-  `name` varchar(255) NOT NULL,
-  `img_thumbnail` varchar(255) NOT NULL,
-  `overview` varchar(255) NOT NULL COMMENT 'tổng quan',
-  `price_regular` int(11) NOT NULL COMMENT 'giá bán thường',
-  `price_sale` int(11) DEFAULT NULL COMMENT 'giá khuyến mãi',
-  `content` int(11) DEFAULT NULL COMMENT 'mô tả chi tiết sản phẩm',
-  `rate` tinyint(1) NOT NULL DEFAULT 5 COMMENT 'số sao đánh giá từ 1->5',
-  `created_at` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'ngày tạo sản phẩm',
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'ngày cập nhật mới nhất'
+  `id` int NOT NULL,
+  `catalogue_id` int NOT NULL COMMENT 'ID danh mục sản phẩm',
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `img_thumbnail` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `overview` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'tổng quan',
+  `price_regular` int NOT NULL COMMENT 'giá bán thường',
+  `price_sale` int DEFAULT NULL COMMENT 'giá khuyến mãi',
+  `content` int DEFAULT NULL COMMENT 'mô tả chi tiết sản phẩm',
+  `rate` tinyint(1) NOT NULL DEFAULT '5' COMMENT 'số sao đánh giá từ 1->5',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ngày tạo sản phẩm',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ngày cập nhật mới nhất'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -159,11 +159,11 @@ INSERT INTO `products` (`id`, `catalogue_id`, `name`, `img_thumbnail`, `overview
 --
 
 CREATE TABLE `product_portfolio` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `ten_dm` varchar(100) NOT NULL,
   `hinh_anh` blob NOT NULL,
   `trang_thai` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `product_portfolio`
@@ -179,13 +179,13 @@ INSERT INTO `product_portfolio` (`id`, `ten_dm`, `hinh_anh`, `trang_thai`) VALUE
 --
 
 CREATE TABLE `tb_bai_viet` (
-  `id` int(11) NOT NULL,
-  `id_nd` int(11) NOT NULL,
-  `tieu_de` varchar(100) NOT NULL,
-  `hinh_anh` varchar(255) NOT NULL,
-  `noi_dung` text NOT NULL,
-  `ngay_dang` datetime NOT NULL DEFAULT current_timestamp(),
-  `ngay_sua` datetime NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `id_nd` int NOT NULL,
+  `tieu_de` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `hinh_anh` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `noi_dung` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ngay_dang` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ngay_sua` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -203,11 +203,11 @@ INSERT INTO `tb_bai_viet` (`id`, `id_nd`, `tieu_de`, `hinh_anh`, `noi_dung`, `ng
 --
 
 CREATE TABLE `tb_binh_luan` (
-  `id` int(11) NOT NULL,
-  `id_nd` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `noi_dung` text NOT NULL,
-  `thoi_gian` datetime NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `id_nd` int NOT NULL,
+  `id_sp` int NOT NULL,
+  `noi_dung` text COLLATE utf8mb4_general_ci NOT NULL,
+  `thoi_gian` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -217,10 +217,10 @@ CREATE TABLE `tb_binh_luan` (
 --
 
 CREATE TABLE `tb_chi_tiet_dh` (
-  `id` int(11) NOT NULL,
-  `id_dh` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `so_luong` int(11) NOT NULL
+  `id` int NOT NULL,
+  `id_dh` int NOT NULL,
+  `id_sp` int NOT NULL,
+  `so_luong` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -238,8 +238,8 @@ INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`) VALUES
 --
 
 CREATE TABLE `tb_chuc_vu` (
-  `id` int(11) NOT NULL,
-  `chuc_vu` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `chuc_vu` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -257,12 +257,12 @@ INSERT INTO `tb_chuc_vu` (`id`, `chuc_vu`) VALUES
 --
 
 CREATE TABLE `tb_danh_gia` (
-  `id` int(11) NOT NULL,
-  `id_nd` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `diem` int(11) NOT NULL,
-  `danh_gia` text DEFAULT NULL,
-  `ngay_dg` datetime NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `id_nd` int NOT NULL,
+  `id_sp` int NOT NULL,
+  `diem` int NOT NULL,
+  `danh_gia` text COLLATE utf8mb4_general_ci,
+  `ngay_dg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -272,10 +272,10 @@ CREATE TABLE `tb_danh_gia` (
 --
 
 CREATE TABLE `tb_danh_muc_sp` (
-  `id` int(11) NOT NULL,
-  `ten_dm` varchar(50) NOT NULL,
-  `mo_ta` text DEFAULT NULL,
-  `hinh_anh` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `ten_dm` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `mo_ta` text COLLATE utf8mb4_general_ci,
+  `hinh_anh` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -284,8 +284,7 @@ CREATE TABLE `tb_danh_muc_sp` (
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
 (5, 'iPhone', '', '6603fe059878d.png'),
-(6, 'Samsung', '', '6603fdd506f78.png'),
-(15, 'iPhone1111', '', '');
+(6, 'Samsung', '', '6603fdd506f78.png');
 
 -- --------------------------------------------------------
 
@@ -294,15 +293,15 @@ INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
 --
 
 CREATE TABLE `tb_don_hang` (
-  `id` int(11) NOT NULL,
-  `ma_dh` varchar(50) NOT NULL,
-  `ngay_dat` datetime NOT NULL DEFAULT current_timestamp(),
-  `id_nd` int(11) NOT NULL,
-  `id_pttt` int(11) NOT NULL,
-  `id_tt` int(11) NOT NULL,
-  `id_km` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `ma_dh` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `ngay_dat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_nd` int NOT NULL,
+  `id_pttt` int NOT NULL,
+  `id_tt` int NOT NULL,
+  `id_km` int NOT NULL,
   `tong_tien` float NOT NULL,
-  `ghi_chu` text NOT NULL
+  `ghi_chu` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -319,12 +318,12 @@ INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt
 --
 
 CREATE TABLE `tb_gio_hang` (
-  `id` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `id_nd` int(11) NOT NULL,
-  `so_dien_thoai` int(50) NOT NULL,
-  `dia_chi` varchar(100) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `id_sp` int NOT NULL,
+  `id_nd` int NOT NULL,
+  `so_dien_thoai` int NOT NULL,
+  `dia_chi` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -334,9 +333,9 @@ CREATE TABLE `tb_gio_hang` (
 --
 
 CREATE TABLE `tb_hinh_anh_sp` (
-  `id` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `hinh_anh` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `id_sp` int NOT NULL,
+  `hinh_anh` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -356,10 +355,10 @@ INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
 --
 
 CREATE TABLE `tb_khuyen_mai` (
-  `id` int(11) NOT NULL,
-  `ten_km` varchar(50) NOT NULL,
-  `ma_km` varchar(50) NOT NULL,
-  `mo_ta` text NOT NULL,
+  `id` int NOT NULL,
+  `ten_km` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `ma_km` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `mo_ta` text COLLATE utf8mb4_general_ci NOT NULL,
   `ngay_bat_dau` date NOT NULL,
   `ngay_ket_thuc` date NOT NULL,
   `giam_gia` float NOT NULL
@@ -382,15 +381,15 @@ INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `
 --
 
 CREATE TABLE `tb_lien_he` (
-  `id` int(11) NOT NULL,
-  `tieu_de` text NOT NULL,
-  `ten_kh` varchar(50) NOT NULL,
-  `so_dien_thoai` varchar(15) NOT NULL,
-  `dia_chi` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `noi_dung` text NOT NULL,
-  `id_tt` int(11) NOT NULL,
-  `ngay_gui` date NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `tieu_de` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ten_kh` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `so_dien_thoai` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `dia_chi` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `noi_dung` text COLLATE utf8mb4_general_ci NOT NULL,
+  `id_tt` int NOT NULL,
+  `ngay_gui` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -407,16 +406,16 @@ INSERT INTO `tb_lien_he` (`id`, `tieu_de`, `ten_kh`, `so_dien_thoai`, `dia_chi`,
 --
 
 CREATE TABLE `tb_nguoi_dung` (
-  `id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `mat_khau` varchar(50) NOT NULL,
-  `ho_ten` varchar(50) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `id_cv` int(11) NOT NULL,
-  `gioi_tinh` varchar(50) NOT NULL,
-  `dia_chi` varchar(100) NOT NULL,
+  `id` int NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `mat_khau` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `ho_ten` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_cv` int NOT NULL,
+  `gioi_tinh` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `dia_chi` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `ngay_sinh` date NOT NULL,
-  `so_dien_thoai` varchar(15) NOT NULL
+  `so_dien_thoai` varchar(15) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -434,8 +433,8 @@ INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_
 --
 
 CREATE TABLE `tb_phuong_thuc_thanh_toan` (
-  `id` int(11) NOT NULL,
-  `ten_pttt` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `ten_pttt` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -453,15 +452,15 @@ INSERT INTO `tb_phuong_thuc_thanh_toan` (`id`, `ten_pttt`) VALUES
 --
 
 CREATE TABLE `tb_san_pham` (
-  `id` int(11) NOT NULL,
-  `ten_sp` varchar(50) NOT NULL,
-  `gia_sp` float NOT NULL,
-  `gia_km` float NOT NULL,
-  `id_dm` int(11) NOT NULL,
-  `mo_ta` text NOT NULL,
+  `id` int NOT NULL,
+  `ten_sp` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `gia_sp` float NOT NULL DEFAULT '0',
+  `gia_km` float NOT NULL DEFAULT '0',
+  `id_dm` int NOT NULL,
+  `mo_ta` text COLLATE utf8mb4_general_ci NOT NULL,
   `ngay_nhap` date NOT NULL,
-  `so_luong` int(11) NOT NULL,
-  `id_tt` int(11) NOT NULL DEFAULT 1
+  `so_luong` int NOT NULL,
+  `id_tt` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -471,7 +470,7 @@ CREATE TABLE `tb_san_pham` (
 INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
 (9, 'Iphone 13', 12000000, 0, 5, '', '2024-03-12', 11, 1),
 (10, 'Iphone 14', 15000000, 0, 5, '', '2024-03-28', 13, 1),
-(11, 'Iphone 13', 1211210, 0, 6, '', '2024-03-21', 12121212, 1);
+(11, 'Iphone 13', 1211210, 1100000, 6, '', '2024-03-21', 12121212, 1);
 
 -- --------------------------------------------------------
 
@@ -480,9 +479,9 @@ INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`,
 --
 
 CREATE TABLE `tb_trang_thai` (
-  `id` int(11) NOT NULL,
-  `ten_tt` varchar(50) NOT NULL,
-  `badge` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `ten_tt` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `badge` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -506,12 +505,12 @@ INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'true(1): admin, false(0): member'
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'true(1): admin, false(0): member'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -672,133 +671,133 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `catalogues`
 --
 ALTER TABLE `catalogues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_chuc_vu`
 --
 ALTER TABLE `tb_chuc_vu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_gio_hang`
 --
 ALTER TABLE `tb_gio_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_khuyen_mai`
 --
 ALTER TABLE `tb_khuyen_mai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_nguoi_dung`
 --
 ALTER TABLE `tb_nguoi_dung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_phuong_thuc_thanh_toan`
 --
 ALTER TABLE `tb_phuong_thuc_thanh_toan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

@@ -44,6 +44,12 @@
               <td>Giá sản phẩm</td>
               <td><?= number_format($product['gia_sp']) ?> VNĐ</td>
             </tr>
+            <?php if ($product['gia_km']) { ?>
+              <tr>
+                <td>Giá khuyến mãi</td>
+                <td><?= number_format($product['gia_km']) ?> VNĐ</td>
+              </tr>
+            <?php } ?>
             <tr>
               <td>Danh mục</td>
               <td><?= showOne('tb_danh_muc_sp', $product['id_dm'])['ten_dm'] ?></td>
