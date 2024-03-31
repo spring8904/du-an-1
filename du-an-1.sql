@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2024 at 03:36 AM
+-- Generation Time: Mar 31, 2024 at 03:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -284,7 +284,8 @@ CREATE TABLE `tb_danh_muc_sp` (
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
 (5, 'iPhone', '', '6603fe059878d.png'),
-(6, 'Samsung', '', '6603fdd506f78.png');
+(6, 'Samsung', '', '6603fdd506f78.png'),
+(15, 'iPhone1111', '', '');
 
 -- --------------------------------------------------------
 
@@ -344,7 +345,9 @@ CREATE TABLE `tb_hinh_anh_sp` (
 
 INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
 (13, 9, '6603fe5aac34d.png'),
-(14, 10, '6604d4d1d9b8d.jpg');
+(15, 10, '66051d1daacbf.png'),
+(16, 11, '660520106606d.png'),
+(17, 11, '6605201066a3b.png');
 
 -- --------------------------------------------------------
 
@@ -370,7 +373,7 @@ INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `
 (1, 'Giảm 10%', 'MGL9UYJO', '', '2024-04-04', '2024-04-05', 10),
 (2, 'Giảm 20%', 'IK86OVCT', '', '2024-03-27', '2024-08-28', 20),
 (3, 'Giảm 5%', '96F1ATVP', 'Đã hết hạn', '2024-03-25', '2024-03-26', 5),
-(4, 'Giảm 1% ', 'G6T0IZJE', '', '2024-03-27', '2024-03-29', 1);
+(4, 'Giảm 1% ', 'G6T0IZJE', '', '2024-03-29', '2024-03-30', 1);
 
 -- --------------------------------------------------------
 
@@ -421,7 +424,8 @@ CREATE TABLE `tb_nguoi_dung` (
 --
 
 INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_cv`, `gioi_tinh`, `dia_chi`, `ngay_sinh`, `so_dien_thoai`) VALUES
-(1, 'admin@gmail.com', '12345678', 'Admin', '6603fd317d032.png', 1, 'male', 'Hà Nội', '2024-03-24', '0339735022');
+(1, 'admin@gmail.com', '12345678', 'Admin', '6603fd317d032.png', 1, 'male', 'Hà Nội', '2024-03-24', '0339735022'),
+(10, 'client@gmail.com', '12345678', 'Client', 'default.png', 2, 'male', 'Hải Phòng', '2024-03-05', '0339735555');
 
 -- --------------------------------------------------------
 
@@ -452,6 +456,7 @@ CREATE TABLE `tb_san_pham` (
   `id` int(11) NOT NULL,
   `ten_sp` varchar(50) NOT NULL,
   `gia_sp` float NOT NULL,
+  `gia_km` float NOT NULL,
   `id_dm` int(11) NOT NULL,
   `mo_ta` text NOT NULL,
   `ngay_nhap` date NOT NULL,
@@ -463,9 +468,10 @@ CREATE TABLE `tb_san_pham` (
 -- Dumping data for table `tb_san_pham`
 --
 
-INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
-(9, 'Iphone 13', 12000000, 5, '', '2024-03-12', 11, 1),
-(10, 'Iphone 14', 15000000, 5, '', '2024-03-28', 13, 1);
+INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
+(9, 'Iphone 13', 12000000, 0, 5, '', '2024-03-12', 11, 1),
+(10, 'Iphone 14', 15000000, 0, 5, '', '2024-03-28', 13, 1),
+(11, 'Iphone 13', 1211210, 0, 6, '', '2024-03-21', 12121212, 1);
 
 -- --------------------------------------------------------
 
@@ -732,7 +738,7 @@ ALTER TABLE `tb_danh_gia`
 -- AUTO_INCREMENT for table `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_don_hang`
@@ -750,7 +756,7 @@ ALTER TABLE `tb_gio_hang`
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_khuyen_mai`
@@ -768,7 +774,7 @@ ALTER TABLE `tb_lien_he`
 -- AUTO_INCREMENT for table `tb_nguoi_dung`
 --
 ALTER TABLE `tb_nguoi_dung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_phuong_thuc_thanh_toan`
@@ -780,7 +786,7 @@ ALTER TABLE `tb_phuong_thuc_thanh_toan`
 -- AUTO_INCREMENT for table `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_trang_thai`

@@ -9,7 +9,7 @@
 		<nav>
 			<div id="logo">
 				<a href="./">
-					<img src="imgs/logo/logo-black.png" alt="error" width="35px" />
+					<img src="imgs/logo/logo-black.png" alt="error" />
 				</a>
 			</div>
 
