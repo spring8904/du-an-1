@@ -147,6 +147,10 @@ function validateProduct($checkImage = false)
     $err[] = 'Giá sản phẩm không được để trống!';
   }
 
+  if ($_POST['gia_km'] > $_POST['gia_sp']) {
+    $err[] = 'Giá khuyến mãi không hợp lệ!';
+  }
+
   if (empty($_POST['so_luong'])) {
     $err[] = 'Số lượng không được để trống!';
   } else if ($_POST['so_luong'] < 0) {
