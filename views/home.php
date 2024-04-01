@@ -68,7 +68,7 @@
                       <span class="discount-span">-<?= round(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                     <?php } ?>
 
-                    <img src="<?= BASE_URL . 'uploads/products/' .  getImageProduct($product['id'])['hinh_anh'] ?>" />
+                    <img src="<?= BASE_URL . 'uploads/products/' .  getProductImage($product['id'])['hinh_anh'] ?>" />
 
                     <span class="article-title">
                       <?= $product['ten_sp'] ?>
@@ -108,7 +108,7 @@
                         <span class="discount-span">-<?= round(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                       <?php } ?>
 
-                      <img src="<?= BASE_URL . 'uploads/products/' .  getImageProduct($product['id'])['hinh_anh'] ?>" />
+                      <img src="<?= BASE_URL . 'uploads/products/' .  getProductImage($product['id'])['hinh_anh'] ?>" />
 
                       <span class="article-title">
                         <?= $product['ten_sp'] ?>

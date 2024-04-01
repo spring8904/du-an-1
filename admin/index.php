@@ -25,7 +25,8 @@ $arrRouteNeedAuth = [
   'prCategories', 'prCategory-create', 'prCategory-update', 'prCategory-delete',
   'posts', 'post-detail', 'post-create', 'post-update', 'post-delete',
   'contacts', 'contact-detail', 'contact-delete',
-
+  'promotions', 'promotion-detail', 'promotion-create', 'promotion-update', 'promotion-delete',
+  'orders', 'order-detail',
 ];
 
 if ($_SESSION['user']['id_cv'] != 1 && in_array($act, $arrRouteNeedAuth)) {

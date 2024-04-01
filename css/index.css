@@ -288,10 +288,10 @@ main {
   display: none;
   position: absolute;
 
-  width: 128px;
+  width: 190px;
 
   top: 7px;
-  left: -95px;
+  left: -155px;
 
   color: #fff;
   border: var(--color-2) 1px solid;

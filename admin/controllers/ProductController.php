@@ -20,7 +20,7 @@ function productShowOne($id)
   if (empty($product)) {
     e404();
   }
-  $images = getImageProducts($id);
+  $images = getProductImages($id);
   $title = $product['ten_sp'];
   $view = 'products/detail';
   $styles = ['styles/datatable'];
