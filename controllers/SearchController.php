@@ -2,18 +2,22 @@
 
 function searchIndex()
 {
-  if (isset($_GET['category_id'])) {
-    $category_id = $_GET['category_id'];
-    $products = getProductsByCategory($category_id);
-    $header_text = 'Danh mục: ' . showOne('tb_danh_muc_sp', $category_id)['ten_dm'];
-  } elseif (isset($_GET['keyword'])) {
-    $keyword = $_GET['keyword'];
-    $products = searchProducts($keyword);
-    $header_text = 'Kết quả tìm kiếm cho: ' . $keyword;
-  } else {
-    $products = listAll('tb_san_pham');
-    $header_text = 'All products';
+  $products = listAll('tb_san_pham');
+
+  $categories = listAll('tb_danh_muc_sp');
+
+  if (isset($_GET["search"])) {
+    $header_text = "Kết quả tìm kiếm";
+    $category_id = isset($_GET["category_id"]) ? $_GET["category_id"] : null;
+
+    $product_name = isset($_GET["product_name"]) ? $_GET["product_name"] : null;
+
+    $price_min = isset($_GET["price_min"]) ? $_GET["price_min"] : null;
+
+    $price_max = isset($_GET["price_max"]) ? $_GET["price_max"] : null;
+
+    $products = getSearchProduct($category_id, $product_name, $price_min, $price_max);
   }
 
-  require_once PATH_VIEW . 'products/index.php';
+  require_once PATH_VIEW . 'search.php';
 }

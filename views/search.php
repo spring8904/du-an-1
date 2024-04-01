@@ -5,8 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="favicon.png" />
-  <!-- <title>RTECH For Tech Materials</title> -->
+  <title>Tìm kiếm</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/general.css" />
   <link rel="stylesheet" href="css/aside.css">
   <link rel="stylesheet" href="css/footer.css">
@@ -38,7 +39,7 @@
                 <a href="?act=product&id=<?= $product['id'] ?>">
 
                   <?php if ($product['gia_km']) { ?>
-                    <span class="discount-span">-<?= round(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
+                    <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                   <?php } ?>
 
                   <img src="uploads/products/<?= getProductImage($product['id'])['hinh_anh'] ?>" />
@@ -77,36 +78,6 @@
                 <?php } ?>
               </div>
             <?php } ?>
-          </div>
-        </section>
-        <!-- galaxy s9 special offer -->
-        <section id="s9-special-offer" class="special-offer">
-          <div class="special-offer-img">
-            <img src="img/special_offers/s9_special_offer.png" alt="">
-          </div>
-          <div class="special-offer-text">
-            <h1>Galaxy S9</h1>
-            <p>
-              With a camera that works like your eye.
-            </p>
-            <a href="article?article_id=51" class="styled-btn">
-              ORDER NOW
-            </a>
-          </div>
-        </section>
-        <!-- airpods special offer -->
-        <section id="airpods-special-offer" class="special-offer">
-          <div class="special-offer-text">
-            <h1>AirPods Pro</h1>
-            <p>
-              AirPods deliver effortless, all-day audio on the go.
-            </p>
-            <a href="article?article_id=1" class="styled-btn">
-              ORDER NOW
-            </a>
-          </div>
-          <div class="special-offer-img">
-            <img src="img/special_offers/airpods_special_offer.png" alt="">
           </div>
         </section>
       </div>
