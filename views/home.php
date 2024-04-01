@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?= BASE_URL ?>imgs/logo/logo-pink.png" />
-    <!-- <title>RTECH For Tech Materials</title> -->
+    <title>Trang chủ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/general.css" />
     <link rel="stylesheet" href="css/aside.css">
@@ -58,14 +58,12 @@
 
             <div id="trending" class="fadein-article-container" style="display: block;">
               <?php
-              $products = listAll('tb_san_pham');
-
               foreach ($products as $product) { ?>
                 <div class="article">
                   <a href="?act=product&id=<?= $product['id'] ?>">
 
                     <?php if ($product['gia_km']) { ?>
-                      <span class="discount-span">-<?= round(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
+                      <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                     <?php } ?>
 
                     <img src="<?= BASE_URL . 'uploads/products/' .  getProductImage($product['id'])['hinh_anh'] ?>" />
@@ -89,7 +87,7 @@
                   </a>
                   <?php if ($product['so_luong'] > 0) { ?>
                     <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
-                      <span>Add to cart</span>
+                      <span>Thêm vào giỏ hàng</span>
                       <img src="imgs/shopping-cart.png" />
                     </button>
                   <?php } ?>
@@ -105,7 +103,7 @@
                     <a href="?act=product&id=<?= $product['id'] ?>">
 
                       <?php if ($product['gia_km']) { ?>
-                        <span class="discount-span">-<?= round(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
+                        <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                       <?php } ?>
 
                       <img src="<?= BASE_URL . 'uploads/products/' .  getProductImage($product['id'])['hinh_anh'] ?>" />

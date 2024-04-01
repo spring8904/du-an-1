@@ -62,7 +62,7 @@
             <div class="buy-field">
               <span class="label">giảm giá:</span>
               <span id="on-discount-per-span">
-                -<?= round(($product['gia_km']) / ($product['gia_sp'])) ?>%
+                -<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%
               </span>
             </div>
           <?php endif ?>
