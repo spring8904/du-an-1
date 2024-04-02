@@ -7,7 +7,6 @@ function searchIndex()
   $categories = listAll('tb_danh_muc_sp');
 
   if (isset($_GET["search"])) {
-    $header_text = "Kết quả tìm kiếm";
     $category_id = isset($_GET["category_id"]) ? $_GET["category_id"] : null;
 
     $product_name = isset($_GET["product_name"]) ? $_GET["product_name"] : null;
