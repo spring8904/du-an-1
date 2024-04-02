@@ -66,7 +66,16 @@
                       <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                     <?php } ?>
 
-                    <img src="<?= BASE_URL . 'uploads/products/' .  getProductImage($product['id'])['hinh_anh'] ?>" />
+                    <img src="uploads/products/<?= getProductImage($product['id'])['hinh_anh'] ?>" />
+
+                    <div class="article-brand">
+                      <span class="label">Danh mục:</span>
+                      <?php $category  = showOne('tb_danh_muc_sp', $product['id_dm']);
+                      if (!empty($category['hinh_anh'])) { ?>
+                        <img src="uploads/prCategories/<?= $category['hinh_anh'] ?>" />
+                      <?php } ?>
+                      <span><?= $category['ten_dm'] ?></span>
+                    </div>
 
                     <span class="article-title">
                       <?= $product['ten_sp'] ?>
@@ -106,7 +115,16 @@
                         <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
                       <?php } ?>
 
-                      <img src="<?= BASE_URL . 'uploads/products/' .  getProductImage($product['id'])['hinh_anh'] ?>" />
+                      <img src="uploads/products/<?= getProductImage($product['id'])['hinh_anh'] ?>" />
+
+                      <div class="article-brand">
+                        <span class="label">Danh mục:</span>
+                        <?php $category  = showOne('tb_danh_muc_sp', $product['id_dm']);
+                        if (!empty($category['hinh_anh'])) { ?>
+                          <img src="uploads/prCategories/<?= $category['hinh_anh'] ?>" />
+                        <?php } ?>
+                        <span><?= $category['ten_dm'] ?></span>
+                      </div>
 
                       <span class="article-title">
                         <?= $product['ten_sp'] ?>
@@ -125,16 +143,45 @@
                         <span class="front-stars" <?= 'style="width:' . getAverageRating($product['id']) * 100 / 5 . '%"' ?>>★★★★★</span>
                       </div>
                     </a>
-
                     <?php if ($product['so_luong'] > 0) { ?>
                       <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
-                        <span>Add to cart</span>
+                        <span>Thêm vào giỏ hàng</span>
                         <img src="imgs/shopping-cart.png" />
                       </button>
                     <?php } ?>
                   </div>
               <?php }
               } ?>
+            </div>
+          </section>
+          <!-- galaxy s9 special offer -->
+          <section id="s9-special-offer" class="special-offer">
+            <div class="special-offer-img">
+              <img src="imgs/special_offers/s9_special_offer.png" alt="">
+            </div>
+            <div class="special-offer-text">
+              <h1>Galaxy S9</h1>
+              <p>
+                With a camera that works like your eye.
+              </p>
+              <a href="article?article_id=51" class="styled-btn">
+                ORDER NOW
+              </a>
+            </div>
+          </section>
+          <!-- airpods special offer -->
+          <section id="airpods-special-offer" class="special-offer">
+            <div class="special-offer-text">
+              <h1>AirPods Pro</h1>
+              <p>
+                AirPods deliver effortless, all-day audio on the go.
+              </p>
+              <a href="article?article_id=1" class="styled-btn">
+                ORDER NOW
+              </a>
+            </div>
+            <div class="special-offer-img">
+              <img src="imgs/special_offers/airpods_special_offer.png" alt="">
             </div>
           </section>
         </div>
