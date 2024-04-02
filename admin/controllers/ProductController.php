@@ -20,6 +20,8 @@ function productShowOne($id)
   if (empty($product)) {
     e404();
   }
+  $comments = getCommentsByProductId($id);
+  $reviews = getReviewsByProductId($id);
   $images = getProductImages($id);
   $title = $product['ten_sp'];
   $view = 'products/detail';

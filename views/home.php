@@ -82,7 +82,7 @@
 
                     <div class="rating-container">
                       <span class="back-stars">☆☆☆☆☆</span>
-                      <span class="front-stars" <?= 'style="width:' . 0 . '%"' ?>>★★★★★</span>
+                      <span class="front-stars" <?= 'style="width:' . getAverageRating($product['id']) * 100 / 5 . '%"' ?>>★★★★★</span>
                     </div>
                   </a>
                   <?php if ($product['so_luong'] > 0) { ?>
@@ -122,7 +122,7 @@
 
                       <div class="rating-container">
                         <span class="back-stars">☆☆☆☆☆</span>
-                        <span class="front-stars" <?= 'style="width:' . 0 . '%"' ?>>★★★★★</span>
+                        <span class="front-stars" <?= 'style="width:' . getAverageRating($product['id']) * 100 / 5 . '%"' ?>>★★★★★</span>
                       </div>
                     </a>
 

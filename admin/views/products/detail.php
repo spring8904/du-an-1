@@ -77,4 +77,93 @@
       </div>
     </div>
   </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">
+        Danh sách đánh giá
+      </h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Người dùng</th>
+              <th>Số sao</th>
+              <th>Nội dung</th>
+              <th>Thời gian</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>STT</th>
+              <th>Người dùng</th>
+              <th>Số sao</th>
+              <th>Nội dung</th>
+              <th>Thời gian</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <?php
+            $stt = 1;
+            foreach ($reviews as $review) {
+            ?>
+              <tr>
+                <td><?= $stt++ ?></td>
+                <td><?= showOne('tb_nguoi_dung', $review['id_nd'])['email'] ?></td>
+                <td><?= $review['so_sao'] ?></td>
+                <td><?= $review['danh_gia'] ?></td>
+                <td><?= formatDate($review['ngay_dg']) ?></td>
+              </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">
+        Danh sách bình luận
+      </h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Người dùng</th>
+              <th>Nội dung</th>
+              <th>Thời gian</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>STT</th>
+              <th>Người dùng</th>
+              <th>Nội dung</th>
+              <th>Thời gian</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <?php
+            $stt = 1;
+            foreach ($comments as $comment) {
+            ?>
+              <tr>
+                <td><?= $stt++ ?></td>
+                <td><?= showOne('tb_nguoi_dung', $comment['id_nd'])['email'] ?></td>
+                <td><?= $comment['noi_dung'] ?></td>
+                <td><?= formatDate($comment['thoi_gian']) ?></td>
+              </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

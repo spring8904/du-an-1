@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="shortcut icon" href="<?= BASE_URL ?>imgs/logo/logo-pink.png" />
   <title>Tìm kiếm</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
 
                   <div class="rating-container">
                     <span class="back-stars">☆☆☆☆☆</span>
-                    <span class="front-stars" <?= 'style="width:' . 0 . '%"' ?>>★★★★★</span>
+                    <span class="front-stars" <?= 'style="width:' . getAverageRating($product['id']) * 100 / 5 . '%"' ?>>★★★★★</span>
                   </div>
                 </a>
                 <?php if ($product['so_luong'] > 0) { ?>

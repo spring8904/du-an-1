@@ -66,11 +66,6 @@
       <i class="fa-solid fa-ticket"></i>
       <span>QL Khuyến mãi</span></a>
   </li>
-  <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'comment') !== false ? "active" : "" ?>">
-    <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=comments">
-      <i class="fa-solid fa-ticket"></i>
-      <span>QL Bình luận</span></a>
-  </li>
 
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'order') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=orders">

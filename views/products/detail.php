@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="shortcut icon" href="<?= BASE_URL ?>imgs/logo/logo-pink.png" />
   <title><?= $product['ten_sp'] ?></title>
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="css/general.css" />
   <link rel="stylesheet" href="css/article.css" />
   <link rel="stylesheet" href="css/index.css">
@@ -50,7 +50,7 @@
           </h1>
 
           <div class="buy-field" id="article-brand">
-            <span class="label">danh mục:</span>
+            <span class="label">Danh mục:</span>
             <?php $category  = showOne('tb_danh_muc_sp', $product['id_dm']);
             if (!empty($category['hinh_anh'])) { ?>
               <img src="uploads/prCategories/<?= $category['hinh_anh'] ?>" />
@@ -60,7 +60,7 @@
 
           <?php if ($product['gia_km']) : ?>
             <div class="buy-field">
-              <span class="label">giảm giá:</span>
+              <span class="label">Giảm giá:</span>
               <span id="on-discount-per-span">
                 -<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%
               </span>
@@ -68,13 +68,13 @@
           <?php endif ?>
 
           <div class="buy-field" id="article-price">
-            <span class="label">giá:</span>
+            <span class="label">Giá:</span>
 
             <?php if ($product['gia_km']) { ?>
-              <span><?= $product['gia_km'] ?> VNĐ</span>
-              <span id="old-price"><?= $product['gia_sp'] ?> VNĐ</span>
+              <span><?= number_format($product['gia_km']) ?> VNĐ</span>
+              <span id="old-price"><?= number_format($product['gia_sp']) ?> VNĐ</span>
             <?php } else {  ?>
-              <span><?= $product['gia_sp'] ?> VNĐ</span>
+              <span><?= number_format($product['gia_sp']) ?> VNĐ</span>
             <?php } ?>
           </div>
 
@@ -82,7 +82,7 @@
             <span class="label">
               <?=
               $product['so_luong']
-                ? "Còn -  {$product['so_luong']}  sản phẩm"
+                ? "Còn {$product['so_luong']}  sản phẩm"
                 : 'Hết hàng'
               ?>
             </span>
@@ -92,7 +92,7 @@
             <span class="label">Đánh giá:</span>
             <div class="article-rating-container">
               <span class="article-back-stars">☆☆☆☆☆</span>
-              <span class="article-front-stars" style="width:<?= 0 ?>%">★★★★★</span>
+              <span class="article-front-stars" style="width:<?= getAverageRating($product['id']) * 100 / 5 ?>%">★★★★★</span>
             </div>
             <span>(<?= 0 ?>% - <?= 0 ?> đánh giá)</span>
           </div>
@@ -110,12 +110,135 @@
           </div>
         </div>
       </section>
+
       <section class="detail-section">
         <h2>Mô tả</h2>
         <p>
           <?= $product['mo_ta'] ?>
         </p>
       </section>
+
+      <section class="detail-section">
+        <section class="detail-section">
+          <h2>Đánh giá</h2>
+          <!-- users reviews -->
+          <div class="reviews-container">
+            <?php if (!empty($reviews)) : ?>
+              <?php foreach ($reviews as $review) : ?>
+                <?php $user = showOne('tb_nguoi_dung', $review['id_nd']) ?>
+                <div class="review">
+                  <div class="review-row">
+                    <img class="review-avatar" src="<?= BASE_URL . 'uploads/users/' . $user['avatar'] ?>" alt="avatar">
+                    <h3 class="review-name">
+                      <?= $user['ho_ten'] ?>
+                    </h3>
+                    <div class="rating-container">
+                      <span class="back-stars">☆☆☆☆☆</span>
+                      <span class="front-stars" style="
+										width:<?= $review['so_sao'] * 100 / 5 ?>%
+										">★★★★★</span>
+                    </div>
+                  </div>
+                  <span>
+                    Ngày viết <?= $review['ngay_dg'] ?>
+                  </span>
+                  <p>
+                    <?= $review['danh_gia'] ?>
+                  </p>
+                </div>
+              <?php endforeach ?>
+            <?php else : ?>
+              <h3>Sản phẩm này không có đánh giá</h3>
+            <?php endif ?>
+          </div>
+          <!-- loged user review -->
+          <?php if (isset($_SESSION['user']) && $_SESSION['user']['id']) { ?>
+            <div class="review-write-container">
+              <h3>Bạn đã mua sản phẩm này trước đây, đã đủ điều kiện để dánh giá</h3>
+              <form method="POST">
+                <label class="review-write-label">Đánh giá:</label>
+                <div class="review-write-star-input">
+                  <label>
+                    <input type="radio" name="so_sao" value="1" required />
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="so_sao" value="2" required />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="so_sao" value="3" required />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="so_sao" value="4" required />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="so_sao" value="5" required />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                </div>
+
+                <label class="review-write-label">Nội dung:</label>
+                <textarea name="danh_gia" class="review-write-input" required></textarea>
+
+                <button type="submit" class="review-write-submit styled-btn" name="review">
+                  Gửi
+                </button>
+              </form>
+            </div>
+          <?php } ?>
+        </section>
+
+        <section class="detail-section">
+          <h2>Bình luận</h2>
+          <div class="reviews-container">
+            <?php if (!empty($comments)) : ?>
+              <?php foreach ($comments as $comment) : ?>
+                <?php $user = showOne('tb_nguoi_dung', $comment['id_nd']) ?>
+                <div class="review">
+                  <div class="review-row">
+                    <img class="review-avatar" src="<?= BASE_URL . 'uploads/users/' . $user['avatar'] ?>" alt="avatar">
+                    <h3 class="review-name">
+                      <?= $user['ho_ten'] ?>
+                    </h3>
+                  </div>
+                  <span>
+                    Ngày viết <?= $comment['thoi_gian'] ?>
+                  </span>
+                  <p>
+                    <?= $comment['noi_dung'] ?>
+                  </p>
+                </div>
+              <?php endforeach ?>
+            <?php else : ?>
+              <h3>Sản phẩm này không có bình luận</h3>
+            <?php endif ?>
+          </div>
+
+          <?php if (isset($_SESSION['user']) && $_SESSION['user']['id']) { ?>
+            <div class="review-write-container">
+              <form method="POST">
+                <label class="review-write-label">Bình luận:</label>
+                <textarea name="noi_dung" class="review-write-input" required></textarea>
+                <button type="submit" class="review-write-submit styled-btn" name="comment">
+                  Đăng
+                </button>
+              </form>
+            </div>
+          <?php } ?>
+        </section>
     </main>
   </div>
 
