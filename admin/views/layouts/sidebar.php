@@ -21,6 +21,13 @@
   <!-- <hr class="sidebar-divider"> -->
 
   <!-- Nav Item - Role -->
+  <li class="nav-item">
+    <a class="nav-link" href="<?= BASE_URL ?>">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Website
+    </a>
+  </li>
+
   <li class="nav-item <?= isset($_GET['act']) && strpos($_GET['act'], 'role') !== false ? "active" : "" ?>">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=roles">
       <i class="fa-solid fa-user"></i>
