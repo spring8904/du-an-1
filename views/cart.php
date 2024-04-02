@@ -29,6 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= BASE_URL . '?act=singup' ?>">Đăng ký</a>
+                </li>
             </ul>
         </div>
     </nav>

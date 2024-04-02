@@ -71,3 +71,17 @@ function getReviewsByProductId($id)
         debug($e);
     }
 }
+
+function getCommentsByProductId($id)
+{
+    try {
+        $sql = "SELECT * FROM tb_binh_luan WHERE id_sp = :id ORDER BY id DESC";
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (\Exception $e) {
+        // Xử lý ngoại lệ ở đây
+        debug($e);
+    }
+}

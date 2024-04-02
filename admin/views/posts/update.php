@@ -16,12 +16,12 @@
             </h6>
         </div>
         <div class="card-body">
-            <form method="comments" enctype="multipart/form-data" novalidate>
+            <form method="post" enctype="multipart/form-data" novalidate>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Tiêu đề bình luận:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="tieu_de" name="tieu_de" required value="<?= $comments['tieu_de'] ?>">
+                            <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="tieu_de" name="tieu_de" required value="<?= $post['tieu_de'] ?>">
                         </div>
                         <label for="image" class="form-label">Hình ảnh:</label>
                         <div class="mb-3 input-group">
@@ -29,13 +29,13 @@
                             <label class="input-group-text" for="image">Tải lên</label>
                         </div>
                         <div class="text-center">
-                            <img id="output" <?= $comments['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/posts/' . $comments['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
+                            <img id="output" <?= $post['hinh_anh'] ? 'src="' . BASE_URL . 'uploads/posts/' . $post['hinh_anh'] . '"' : '' ?> width="200px" height="200px" />
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="content" class="form-label">Nội dung bình luận:</label>
-                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13"><?= $comments['noi_dung'] ?></textarea>
+                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13"><?= $post['noi_dung'] ?></textarea>
                         </div>
                     </div>
                 </div>
