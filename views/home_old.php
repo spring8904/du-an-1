@@ -26,6 +26,9 @@
                             <a class="nav-link" href="<?= BASE_URL . '?act=cart' ?>">Giỏ hàng</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_URL . '?act=cart' ?>">Liên hệ</a>
+                        </li>
+                        <li class="nav-item">
                             <?php if (empty($_SESSION['user'])) { ?>
                                 <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
                             <?php } else { ?>
