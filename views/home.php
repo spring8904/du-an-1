@@ -127,10 +127,15 @@
                     </a>
 
                     <?php if ($product['so_luong'] > 0) { ?>
-                      <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
-                        <span>Add to cart</span>
-                        <img src="imgs/shopping-cart.png" />
-                      </button>
+                        <a href="<?= BASE_URL . 
+                                        '?act=addToCart&id_sp=' . $product['id'] .
+                                        '&product_name=' . $product['ten_sp'] .
+                                        '&product_image=' . getProductImage($product['id'])['hinh_anh'] .
+                                        '&product_price=' . $product['gia_km'] != 0 ? $product['gia_km'] : $product['gia_sp']
+                                        ?>" class="btn btn-primary"
+                                        onclick="return confirm('Bạn có muốn thêm sản phẩm vào giỏ hàng không?')">
+                                        <span>Thêm vào giỏ hàng</span>
+                                      </a>
                     <?php } ?>
                   </div>
               <?php }

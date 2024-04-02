@@ -2,39 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="<?= BASE_URL ?>imgs/logo/logo-pink.png" />
+    <title>Trang chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/index.css" />
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
+    <script src="js/index.js"></script>
+    <script defer src="js/big_slideshow.js"></script>
+  </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL ?>">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL . '?act=cart' ?>">Giỏ hàng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL . '?act=singup' ?>">Đăng ký</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Header -->
+    <?php include(PATH_VIEW . '/layouts/header.php') ?>
 
     <div class="container mt-4">
         <h2>Giỏ hàng của bạn</h2>

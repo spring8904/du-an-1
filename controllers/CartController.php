@@ -2,9 +2,9 @@
 // Hàm thêm sản phẩm vào giỏ hàng
 function addToCart()
 {
-    if (isset($_GET["id_product"])) {
+    if (isset($_GET["id_sp"])) {
 
-        $productId = $_GET["id_product"];
+        $productId = $_GET["id_sp"];
 
         // Nếu chưa có giỏ hàng SESSion thì tiến hành tạo
         if (!isset($_SESSION["cart"])) {
@@ -31,7 +31,7 @@ function addToCart()
 
         if (empty($cartUser)) {
             // Nếu ko có thì sẽ tạo giỏ hàng mới trong db và lấy ra id của giỏ hàng đấy
-            $cart_id = insert_get_last_id('carts', ['user_id' => $_SESSION['user']['id']]);
+            $cart_id = insert_get_last_id('tb_gio_hang', ['id_nd' => $_SESSION['user']['id']]);
         } else {
             $cart_id = $cartUser['id'];
         }
@@ -44,11 +44,11 @@ function addToCart()
         } else {
             if ($cart_id !== null) {
                 $cartItemData = [
-                    'cart_id' => $cart_id,
-                    'product_id' => $productId,
-                    'quantity' => 1
+                    'id_gh' => $cart_id,
+                    'id_sp' => $productId,
+                    'so_luong' => 1
                 ];
-                insert('cart_items', $cartItemData);
+                insert('tb_muc_gh', $cartItemData);
             }
         }
     }
@@ -71,8 +71,8 @@ function cartIndex()
 // Hàm cập nhật số lượng của sản phẩm trong giỏ hàng
 function updateQuantity()
 {
-    if (isset($_GET['change']) && isset($_GET['id_product'])) {
-        $productId = $_GET["id_product"];
+    if (isset($_GET['change']) && isset($_GET['id_sp'])) {
+        $productId = $_GET["id_sp"];
 
         $change = $_GET['change'];
 
@@ -82,8 +82,8 @@ function updateQuantity()
         $productInCartItems = getProductInCartItem($cartUser['id']);
 
         if ($productInCartItems) {
-            $quantity = $productInCartItems['quantity'] + $change; // Số lượng mới trong cơ sở dữ liệu
-            $quantitySession = $_SESSION["cart"][$productId]['quantity'] + $change; // Số lượng mới trong session
+            $quantity = $productInCartItems['so_luong'] + $change; // Số lượng mới trong cơ sở dữ liệu
+            $quantitySession = $_SESSION["cart"][$productId]['so_luong'] + $change; // Số lượng mới trong session
 
             // Kiểm tra nếu số lượng mới nhỏ hơn hoặc bằng 0, thì cập nhật lại thành 1
             if ($quantity <= 0 || $quantitySession <= 0) {
@@ -95,7 +95,7 @@ function updateQuantity()
             updateQuantityCartItem($quantity, $cartUser['id']);
 
             // Cập nhật số lượng trong session
-            $_SESSION["cart"][$productId]['quantity'] = $quantitySession;
+            $_SESSION["cart"][$productId]['so_luong'] = $quantitySession;
         }
 
         header('Location: ' . BASE_URL . '?act=cart');
