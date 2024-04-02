@@ -1,59 +1,52 @@
 <?php
 
-function showFormContact()
+function contactListAll()
 {
-    if ($_POST) {
-        contactSend();
-    }
+  $title = 'Danh sách liên hệ';
+  $view = 'contacts/index';
+  $styles = ['styles/datatable'];
+  $scripts = ['scripts/datatable'];
 
-    require_once PATH_VIEW . 'contact.php';
-    unset($_SESSION['success']);
+  $contacts = listAll('tb_lien_he');
+
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function contactSend()
+function contactShowOne($id)
 {
-    $err = validateContact();
-
-    if (!empty($err)) {
-        $_SESSION['error'] = $err;
-    } else {
-        $data = [
-            'ten_kh' => $_POST['ten_kh'],
-            'email' => $_POST['email'],
-            'so_dien_thoai' => $_POST['so_dien_thoai'],
-            'dia_chi' => $_POST['dia_chi'],
-            'tieu_de' => $_POST['tieu_de'],
-            'noi_dung' => $_POST['noi_dung'],
-        ];
-
-        insert('tb_lien_he', $data);
-
-        $_SESSION['success'] = 'Gửi thông tin thành công!';
-
-        header('Location: ' . BASE_URL . '?act=contact');
-        exit();
-    }
+  $contact = showOne('tb_lien_he', $id);
+  if (empty($contact)) {
+    e404();
+  }
+  $title = $contact['tieu_de'];
+  $view = 'contacts/detail';
+  $styles = ['styles/datatable'];
+  $scripts = ['scripts/datatable'];
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateContact()
+function contactProcessed($id)
 {
-    $err = [];
+  $tableName = 'tb_lien_he';
 
-    if (empty($_POST['ten_kh'])) {
-        $err['ten_kh'] = 'Vui lòng nhập Họ tên';
-    }
-    if (empty($_POST['email'])) {
-        $err['email'] = 'Vui lòng nhập email';
-    }
-    if (empty($_POST['so_dien_thoai'])) {
-        $err['so_dien_thoai'] = 'Vui bạn số điện thoại';
-    }
-    if (empty($_POST['tieu_de'])) {
-        $err['tieu_de'] = 'Vui lòng nhập tiêu đề';
-    }
-    if (empty($_POST['noi_dung'])) {
-        $err['noi_dung'] = 'Vui lòng nhập lời nhắn';
-    }
+  $data = [
+    'id_tt' => 4,
+  ];
 
-    return $err;
+  update($tableName, $id, $data);
+
+  header('Location: ./?act=contacts');
+}
+
+function contactNoProcess($id)
+{
+  $tableName = 'tb_lien_he';
+
+  $data = [
+    'id_tt' => 3,
+  ];
+
+  update($tableName, $id, $data);
+
+  header('Location: ./?act=contacts');
 }

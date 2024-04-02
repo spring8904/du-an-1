@@ -74,7 +74,10 @@ match ($act) {
   'post-delete' => postDelete($_GET['id']),
 
   // Contact
-  'contact' => showFormContact(),
+  'contacts' => contactListAll(),
+  'contact-detail' => contactShowOne($_GET['id']),
+  'contact-processed' => contactProcessed($_GET['id']),
+  'contact-no-process' => contactNoProcess($_GET['id']),
 
   // Promotion
   'promotions' => promotionListAll(),
