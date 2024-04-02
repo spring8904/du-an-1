@@ -56,7 +56,7 @@
                     $total = 0;
                     ?>
                     <?php foreach ($cartItems as $item) : ?>
-                        
+
                         <tr>
                             <td><?= $stt++ ?></td>
                             <td><img src="<?= BASE_URL . $item['product_image'] ?>" style="width: 100px;"></td>

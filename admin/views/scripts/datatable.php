@@ -6,3 +6,8 @@
       $('#dataTable').DataTable();
     });
   </script>
+  <script>
+    $(document).ready(function() {
+      $('#dataTable2').DataTable();
+    });
+  </script>

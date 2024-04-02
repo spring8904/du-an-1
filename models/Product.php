@@ -57,3 +57,17 @@ if (!function_exists('getSearchProduct')) {
         }
     }
 }
+
+function getReviewsByProductId($id)
+{
+    try {
+        $sql = "SELECT * FROM tb_danh_gia WHERE id_sp = :id ORDER BY id DESC";
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (\Exception $e) {
+        // Xử lý ngoại lệ ở đây
+        debug($e);
+    }
+}
