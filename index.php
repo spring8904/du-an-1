@@ -49,6 +49,9 @@ match ($act) {
 
     // Search
     'search' => searchIndex(),
+
+    // Contact
+    'contact' => showFormContact(),
 };
 
 require_once './common/disconnect-db.php';
