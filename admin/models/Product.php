@@ -19,7 +19,7 @@ if (!function_exists('getProductsByCategory')) {
   }
 }
 
-function getImageProduct($id_sp)
+function getProductImage($id_sp)
 {
   try {
     $sql = "SELECT * FROM tb_hinh_anh_sp WHERE id_sp = :id_sp ORDER BY id LIMIT 1";
@@ -36,7 +36,7 @@ function getImageProduct($id_sp)
   }
 }
 
-function getImageProducts($id_sp)
+function getProductImages($id_sp)
 {
   try {
     $sql = "SELECT * FROM tb_hinh_anh_sp WHERE id_sp = :id_sp ORDER BY id";

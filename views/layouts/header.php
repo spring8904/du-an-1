@@ -9,13 +9,14 @@
 		<nav>
 			<div id="logo">
 				<a href="./">
-					<img src="imgs/logo/logo-black.png" alt="error" width="35px" />
+					<img src="imgs/logo/logo-black.png" alt="error" />
 				</a>
 			</div>
 
-			<form method="GET" action="search" id="research">
-				<input type="search" name="research_input" minlength="4" placeholder="VD: iPhone, Samsung ..." required />
-				<button type="submit">
+			<form method="GET" action="" id="research">
+				<input type="text" name="act" value="search" hidden>
+				<input type="search" name="product_name" minlength="2" placeholder="VD: iPhone, Samsung ..." required />
+				<button type="submit" name="search">
 					<img src="imgs/search.png" alt="error" />
 					<span>Tìm kiếm</span>
 				</button>

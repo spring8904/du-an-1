@@ -20,7 +20,7 @@ function productShowOne($id)
   if (empty($product)) {
     e404();
   }
-  $images = getImageProducts($id);
+  $images = getProductImages($id);
   $title = $product['ten_sp'];
   $view = 'products/detail';
   $styles = ['styles/datatable'];
@@ -43,6 +43,7 @@ function productCreate()
         'mo_ta' => $_POST['mo_ta'],
         'id_dm' => $_POST['id_dm'],
         'gia_sp' => $_POST['gia_sp'],
+        'gia_km' => $_POST['gia_km'],
         'ngay_nhap' => $_POST['ngay_nhap'],
         'so_luong' => $_POST['so_luong'],
         'id_tt' => $_POST['id_tt'],
@@ -80,6 +81,7 @@ function productUpdate($id)
         'mo_ta' => $_POST['mo_ta'],
         'id_dm' => $_POST['id_dm'],
         'gia_sp' => $_POST['gia_sp'],
+        'gia_km' => $_POST['gia_km'],
         'ngay_nhap' => $_POST['ngay_nhap'],
         'so_luong' => $_POST['so_luong'],
         'id_tt' => $_POST['id_tt'],
@@ -143,6 +145,10 @@ function validateProduct($checkImage = false)
 
   if (empty($_POST['gia_sp'])) {
     $err[] = 'Giá sản phẩm không được để trống!';
+  }
+
+  if ($_POST['gia_km'] > $_POST['gia_sp']) {
+    $err[] = 'Giá khuyến mãi không hợp lệ!';
   }
 
   if (empty($_POST['so_luong'])) {
