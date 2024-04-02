@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2024 at 04:35 AM
+-- Generation Time: Apr 02, 2024 at 05:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -299,9 +299,8 @@ CREATE TABLE `tb_danh_muc_sp` (
 --
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
-(5, 'iPhone', '', '6603fe059878d.png'),
-(6, 'Samsung', '', '6603fdd506f78.png'),
-(15, 'iPhone1111', '', '');
+(5, 'iPhone', '', '660b7a44ec022.png'),
+(6, 'Samsung', '', '660b7a3bce5b9.png');
 
 -- --------------------------------------------------------
 
@@ -360,10 +359,10 @@ CREATE TABLE `tb_hinh_anh_sp` (
 --
 
 INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
-(13, 9, '6603fe5aac34d.png'),
-(15, 10, '66051d1daacbf.png'),
-(16, 11, '660520106606d.png'),
-(17, 11, '6605201066a3b.png');
+(22, 10, '660b7ad3c950a.png'),
+(23, 10, '660b7ad3c9931.png'),
+(24, 9, '660b7b1390809.png'),
+(25, 9, '660b7b1390b97.png');
 
 -- --------------------------------------------------------
 
@@ -440,8 +439,8 @@ CREATE TABLE `tb_nguoi_dung` (
 --
 
 INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_cv`, `gioi_tinh`, `dia_chi`, `ngay_sinh`, `so_dien_thoai`) VALUES
-(1, 'admin@gmail.com', '12345678', 'Admin', '6603fd317d032.png', 1, 'male', 'Hà Nội', '2024-03-24', '0339735022'),
-(10, 'client@gmail.com', '12345678', 'Client', 'default.png', 2, 'male', 'Hải Phòng', '2024-03-05', '0339735555');
+(1, 'admin@gmail.com', '12345678', 'Admin', '660b7a0d022c4.png', 1, 'male', 'Hà Nội', '2024-03-24', '0339735022'),
+(10, 'client@gmail.com', '12345678', 'Client', '660b7a2c6cbe3.jpg', 2, 'male', 'Hải Phòng', '2024-03-05', '0339735555');
 
 -- --------------------------------------------------------
 
@@ -486,8 +485,7 @@ CREATE TABLE `tb_san_pham` (
 
 INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
 (9, 'Iphone 13', 12000000, 0, 5, '', '2024-03-12', 11, 1),
-(10, 'Iphone 14', 15000000, 13000000, 5, '', '2024-03-28', 13, 1),
-(11, 'Iphone 13', 1211210, 130000, 6, '', '2024-03-21', 12121212, 1);
+(10, 'Iphone 14', 15000000, 13000000, 5, '', '2024-03-28', 13, 1);
 
 -- --------------------------------------------------------
 
@@ -772,7 +770,7 @@ ALTER TABLE `tb_gio_hang`
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tb_khuyen_mai`

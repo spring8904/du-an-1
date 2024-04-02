@@ -29,7 +29,7 @@
         <section style="min-height: 789px;">
           <div class="section-header">
             <h1 class="specific-section-header">
-              <?= $header_text ?>
+              Kết quả tìm kiếm
             </h1>
           </div>
           <div>
@@ -45,7 +45,7 @@
                   <img src="uploads/products/<?= getProductImage($product['id'])['hinh_anh'] ?>" />
 
                   <div class="article-brand">
-                    <span class="label">danh mục:</span>
+                    <span class="label">Danh mục:</span>
                     <?php $category  = showOne('tb_danh_muc_sp', $product['id_dm']);
                     if (!empty($category['hinh_anh'])) { ?>
                       <img src="uploads/prCategories/<?= $category['hinh_anh'] ?>" />

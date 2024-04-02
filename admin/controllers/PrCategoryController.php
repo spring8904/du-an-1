@@ -47,6 +47,10 @@ function prCategoryCreate()
 function prCategoryUpdate($id)
 {
   $tableName = 'tb_danh_muc_sp';
+  $prCategory = showOne($tableName, $id);
+  if (empty($prCategory)) {
+    e404();
+  }
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -62,6 +66,9 @@ function prCategoryUpdate($id)
     } else {
       if ($_FILES['hinh_anh']['size'] != 0) {
         $data['hinh_anh'] = uploadImage($_FILES['hinh_anh'], 'prCategories');
+        if ($prCategory['hinh_anh'] && file_exists(PATH_UPLOADS . 'prCategories/' . $prCategory['hinh_anh'])) {
+          unlink(PATH_UPLOADS . 'prCategories/' . $prCategory['hinh_anh']);
+        }
       }
       update($tableName, $id, $data);
       $_SESSION['success'] = 'Cập nhật danh mục sản phẩm thành công!';
@@ -70,10 +77,7 @@ function prCategoryUpdate($id)
     }
   }
 
-  $prCategory = showOne($tableName, $id);
-  if (empty($prCategory)) {
-    e404();
-  }
+
   $title = 'Cập nhật danh mục sản phẩm';
   $view = 'prCategories/update';
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';

@@ -64,6 +64,10 @@ function postCreate()
 function postUpdate($id)
 {
     $tableName = 'tb_bai_viet';
+    $post = showOne($tableName, $id);
+    if (empty($post)) {
+        e404();
+    }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $err = validatePost();
@@ -80,6 +84,9 @@ function postUpdate($id)
             if ($_FILES['hinh_anh']['size'] !== 0) {
                 $imgThumbnail = uploadImage($_FILES['hinh_anh'], 'posts');
                 $data['hinh_anh'] = $imgThumbnail;
+                if ($post['hinh_anh'] && file_exists(PATH_UPLOADS . 'posts/' . $post['hinh_anh'])) {
+                    unlink(PATH_UPLOADS . 'posts/' . $post['hinh_anh']);
+                }
             }
 
             update($tableName, $id, $data);
@@ -89,10 +96,7 @@ function postUpdate($id)
         }
     }
 
-    $post = showOne($tableName, $id);
-    if (empty($post)) {
-        e404();
-    }
+
 
     $title = 'Cập nhật bài viết';
     $view = 'posts/update';

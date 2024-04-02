@@ -68,6 +68,10 @@ function userCreate()
 function userUpdate($id)
 {
   $tableName = 'tb_nguoi_dung';
+  $user = showOne($tableName, $id);
+  if (empty($user)) {
+    e404();
+  }
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -88,6 +92,9 @@ function userUpdate($id)
 
       if ($_FILES['avatar']['size'] !== 0) {
         $data['avatar'] = uploadImage($_FILES['avatar'], 'users');
+        if ($user['avatar'] && file_exists(PATH_UPLOADS . 'users/' . $user['avatar']) && $user['avatar'] !== 'default.png') {
+          unlink(PATH_UPLOADS . 'users/' . $user['avatar']);
+        }
       }
 
       update($tableName, $id, $data);
@@ -95,11 +102,6 @@ function userUpdate($id)
       header('Location: ./?act=users');
       exit();
     }
-  }
-
-  $user = showOne($tableName, $id);
-  if (empty($user)) {
-    e404();
   }
 
   $title = 'Cập nhật người dùng';
@@ -117,7 +119,7 @@ function userDelete($id)
     e404();
   }
 
-  if ($user['avatar'] && file_exists(PATH_UPLOADS . 'users/' . $user['avatar'])) {
+  if ($user['avatar'] && file_exists(PATH_UPLOADS . 'users/' . $user['avatar']) && $user['avatar'] !== 'default.png') {
     unlink(PATH_UPLOADS . 'users/' . $user['avatar']);
   }
 
@@ -134,7 +136,7 @@ function validateUser()
     $err[] = 'Vui lòng nhập email.';
   } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $err[] = 'Email không hợp lệ.';
-  } elseif (getUserClientByEmail($_POST['email'])) {
+  } elseif (getUserClientByEmail($_POST['email']) && isset($_POST['create'])) {
     $err[] = 'Email đã tồn tại.';
   }
 
@@ -142,7 +144,7 @@ function validateUser()
     $err[] = 'Vui lòng nhập mật khẩu.';
   } elseif (strlen($_POST['mat_khau']) < 8) {
     $err[] = 'Mật khẩu phải có ít nhất 8 ký tự.';
-  } elseif ($_POST['mat_khau'] !== $_POST['password_conf']) {
+  } elseif ($_POST['mat_khau'] !== $_POST['password_conf'] && isset($_POST['create'])) {
     $err[] = 'Mật khẩu không khớp.';
   }
 

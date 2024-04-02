@@ -92,6 +92,12 @@ function productUpdate($id)
       update($tableName, $id, $data);
       $_SESSION['success'] = 'Cập nhật sản phẩm thành công!';
       if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['name'][0] !== '') {
+        $images = getProductImages($id);
+        foreach ($images as $image) {
+          if ($image['hinh_anh'] && file_exists(PATH_UPLOADS . 'products/' . $image['hinh_anh'])) {
+            unlink(PATH_UPLOADS . 'products/' . $image['hinh_anh']);
+          }
+        }
         deleteImageProduct($id);
         uploadMultipleProductImages($_FILES['hinh_anh'], $id);
       }
@@ -115,11 +121,21 @@ function productUpdate($id)
 function productDelete($id)
 {
   $tableName = 'tb_san_pham';
-
+  $product = showOne($tableName, $id);
+  if (empty($product)) {
+    e404();
+  }
   delete($tableName, $id);
   $_SESSION['success'] = 'Xóa sản phẩm thành công!';
-  deleteImageProduct($id);
 
+  $images = getProductImages($id);
+  foreach ($images as $image) {
+    if ($image['hinh_anh'] && file_exists(PATH_UPLOADS . 'products/' . $image['hinh_anh'])) {
+      unlink(PATH_UPLOADS . 'products/' . $image['hinh_anh']);
+    }
+  }
+
+  deleteImageProduct($id);
   header('Location: ./?act=products');
 }
 
