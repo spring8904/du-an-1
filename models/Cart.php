@@ -1,14 +1,14 @@
 <?php
 // Lấy dữ liệu của giỏ hàng theo của người dùng
 if (!function_exists('getCartByUserID')) {
-    function getCartByUserID($user_id)
+    function getCartByUserID($id_nd)
     {
         try {
-            $sql = "SELECT * FROM carts WHERE user_id = :user_id";
+            $sql = "SELECT * FROM tb_gio_hang WHERE id_nd = :id_nd";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
-            $stmt->bindParam(":user_id", $user_id);
+            $stmt->bindParam(":id_nd", $id_nd);
 
             $stmt->execute();
 
@@ -21,16 +21,16 @@ if (!function_exists('getCartByUserID')) {
 
 // Lấy ra thông tất cả sản phẩm có trong giỏ hàng của khách hàng
 if (!function_exists('getProductInCartItem')) {
-    function getProductInCartItem($cart_id)
+    function getProductInCartItem($id_gh)
     {
         try {
-            $sql = "SELECT * FROM cart_items WHERE cart_id = :cart_id AND product_id = :product_id";
+            $sql = "SELECT * FROM tb_muc_gh WHERE id_gh = :id_gh AND id_sp = :id_sp";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
-            $stmt->bindParam(":cart_id", $cart_id);
+            $stmt->bindParam(":id_gh", $id_gh);
 
-            $stmt->bindParam(":product_id", $_GET["id_product"]);
+            $stmt->bindParam(":id_sp", $_GET["id_sp"]);
 
             $stmt->execute();
 
@@ -43,18 +43,18 @@ if (!function_exists('getProductInCartItem')) {
 
 // Cập nhật số lượng của sản phẩm trong giỏ hàng
 if (!function_exists('updateQuantityCartItem')) {
-    function updateQuantityCartItem($quantity, $cart_id)
+    function updateQuantityCartItem($so_luong, $id_gh)
     {
         try {
-            $sqlUpdate = "UPDATE cart_items SET quantity = :quantity WHERE cart_id = :cart_id AND product_id = :product_id";
+            $sqlUpdate = "UPDATE tb_muc_gh SET so_luong = :so_luong WHERE id_gh = :id_gh AND id_sp = :id_sp";
 
             $stmtUpdate = $GLOBALS['conn']->prepare($sqlUpdate);
 
-            $stmtUpdate->bindParam(":quantity", $quantity);
+            $stmtUpdate->bindParam(":so_luong", $so_luong);
 
-            $stmtUpdate->bindParam(":cart_id", $cart_id);
+            $stmtUpdate->bindParam(":id_gh", $id_gh);
 
-            $stmtUpdate->bindParam(":product_id", $_GET["id_product"]);
+            $stmtUpdate->bindParam(":id_sp", $_GET["id_sp"]);
 
             $stmtUpdate->execute();
         } catch (\Exception $e) {
@@ -65,15 +65,15 @@ if (!function_exists('updateQuantityCartItem')) {
 
 // Xóa toàn bộ sản phẩm trong giỏ hàng
 if (!function_exists('remoteAllCartItem')) {
-    function remoteAllCartItem($cart_id)
+    function remoteAllCartItem($id_gh)
     {
         try {
-            // Xóa toàn bộ mục trong bảng cart_items có cart_id tương ứng
-            $sql_delete_items = "DELETE FROM cart_items WHERE cart_id = :cart_id";
+            // Xóa toàn bộ mục trong bảng tb_muc_gh có id_gh tương ứng
+            $sql_delete_items = "DELETE FROM tb_muc_gh WHERE id_gh = :id_gh";
 
             $stmt_delete_items = $GLOBALS['conn']->prepare($sql_delete_items);
 
-            $stmt_delete_items->bindParam(':cart_id', $cart_id);
+            $stmt_delete_items->bindParam(':id_gh', $id_gh);
 
             $stmt_delete_items->execute();
         } catch (\Exception $e) {
