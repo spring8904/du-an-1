@@ -14,7 +14,7 @@
 
     <script src="js/index.js"></script>
     <script defer src="js/big_slideshow.js"></script>
-  </head>
+</head>
 
 <body>
     <!-- Header -->
@@ -46,7 +46,7 @@
 
                         <tr>
                             <td><?= $stt++ ?></td>
-                            <td><img src="<?= BASE_URL . $item['product_image'] ?>" style="width: 100px;"></td>
+                            <td><img src="<?= BASE_URL . 'uploads/products/' . $item['product_image'] ?>" style="width: 100px;"></td>
                             <td><?= $item['product_name'] ?></td>
                             <td><?= number_format($item['product_price']) ?></td>
                             <td>
@@ -75,6 +75,19 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <h4>Tổng tiền: <?= number_format($total) ?></h4>
+                    <div class="col-md-6">
+                        <!-- Chọn phương thức thanh toán -->
+                        <?php $paymentMethods = listAll('tb_phuong_thuc_thanh_toan'); ?>
+                        <h4><label for="">Phương thức thanh toán:</label></h4>
+                        <select class="form-control" name="payment_method">
+                            <option value="">Chọn phương thức</option>
+                            <?php foreach ($paymentMethods as $paymentMethod) : ?>
+                                <option value="<?= $paymentMethod['id'] ?>"><?= $paymentMethod['ten_pttt'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Đường dẫn để thanh toán giỏ hàng -->
                     <a href="<?= BASE_URL . '?act=order' ?>" class="btn btn-primary">Thanh toán</a>
                 </div>
             </div>
