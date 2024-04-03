@@ -96,18 +96,28 @@
             </div>
             <span>(<?= 0 ?>% - <?= 0 ?> đánh giá)</span>
           </div>
+          <?php if ($product['so_luong'] > 0) {
+            $gia = $product['gia_km'] != 0 ? $product['gia_km'] : $product['gia_sp'];
+          ?>
+            <form method="get">
+              <div id=" add-to-cart-container">
+                <input type="text" name="act" value="addToCart" hidden>
+                <input type="text" name="id_sp" value="<?= $product['id'] ?>" hidden>
+                <input type="text" name="product_name" value="<?= $product['ten_sp'] ?>" hidden>
+                <input type="text" name="product_image" value="<?= getProductImage($product['id'])['hinh_anh'] ?>" hidden>
+                <input type="text" name="product_price" value="<?= $gia ?>" hidden>
+                <div class=" buy-field">
+                  <span class="label">Số lượng:</span>
+                  <input type="number" name="quantity" id="add-to-cart-input" value="1" min="1" max="<?= $product['so_luong'] ?>">
+                </div>
 
-          <div id=" add-to-cart-container">
-            <div class="buy-field">
-              <span class="label">Số lượng:</span>
-              <input type="number" id="add-to-cart-input" value="1" min="1" max="<?= $product['so_luong'] ?>">
-            </div>
-
-            <button article_id="<?= $product['id'] ?>" id="add-to-cart-button" <?= $product['so_luong'] ? '' : 'disabled' ?>>
-              <img src="imgs/shopping-cart.png" />
-              <span>Thêm vào giỏ hàng</span>
-            </button>
-          </div>
+                <button article_id="<?= $product['id'] ?>" id="add-to-cart-button" <?= $product['so_luong'] ? '' : 'disabled' ?>>
+                  <img src="imgs/shopping-cart.png" />
+                  <span>Thêm vào giỏ hàng</span>
+                </button>
+              <?php } ?>
+              </div>
+            </form>
         </div>
       </section>
 
