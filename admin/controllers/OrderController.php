@@ -49,3 +49,35 @@ function getTotalMoney($id)
   }
   return number_format($totalMoney);
 }
+
+function orderUpdate($id)
+{
+  $order = showOne('tb_don_hang', $id);
+
+  if (empty($order)) {
+    e404();
+  }
+
+  $title = 'Cập nhật trạng thái đơn hàng ' . $order['ma_dh'];
+  $view = 'orders/update';
+  $styles = [];
+  $scripts = [];
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $data = $_POST;
+    $data['id_tt'] = $_POST['id_tt'];
+
+    if ($data['id_tt'] < $order['id_tt']) {
+      $_SESSION['error'] = 'Trạng thái không hợp lệ, cập nhật thất bại';
+    }
+
+    update('tb_don_hang', $id, $data);
+    $_SESSION['success'] = 'Cập nhật trạng thái đơn hàng thành công';
+    header('Location: ' . BASE_URL_ADMIN . '?act=orders');
+    exit();
+  }
+
+
+  require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+  unset($_SESSION['error']);
+}

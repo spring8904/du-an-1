@@ -55,7 +55,7 @@
 		<h2>Gorgeous.</h2>
 		<h3>iPhone 11 Pro Max</h3>
 
-		<a href="article?article_id=52" class="styled-btn">
+		<a href="#" class="styled-btn">
 			Order Now
 		</a>
 	</div>
@@ -71,20 +71,21 @@
 	<div class="aside-articles-container">
 		<?php
 		$aside_products = getSearchProduct(null, null, null, 15000000);
-		foreach ($aside_products as $aside_product) : ?>
-			<div class="aside-articles-container">
+		for ($i = 0; $i < 3; $i++) {
+			if (isset($aside_products[$i])) {
+		?>
 				<div class="aside-article article">
-					<a href="?act=product?id=<?= $aside_product['id'] ?>">
+					<a href="?act=product?id=<?= $aside_products[$i]['id'] ?>">
 
-						<?php if ($aside_product['gia_km']) { ?>
-							<span class="discount-span">-<?= ceil(($aside_product['gia_km']) / ($aside_product['gia_sp'])) ?>%</span>
+						<?php if ($aside_products[$i]['gia_km']) { ?>
+							<span class="discount-span">-<?= ceil(($aside_products[$i]['gia_km']) / ($aside_products[$i]['gia_sp'])) ?>%</span>
 						<?php } ?>
 
-						<img src="uploads/products/<?= getProductImage($aside_product['id'])['hinh_anh'] ?>" />
+						<img src="uploads/products/<?= getProductImage($aside_products[$i]['id'])['hinh_anh'] ?>" />
 
 						<div class="article-brand">
 							<span class="label">Danh mục:</span>
-							<?php $category  = showOne('tb_danh_muc_sp', $aside_product['id_dm']);
+							<?php $category  = showOne('tb_danh_muc_sp', $aside_products[$i]['id_dm']);
 							if (!empty($category['hinh_anh'])) { ?>
 								<img src="uploads/prCategories/<?= $category['hinh_anh'] ?>" />
 							<?php } ?>
@@ -92,17 +93,18 @@
 						</div>
 
 						<span class="article-title">
-							<?= $aside_product['ten_sp'] ?>
+							<?= $aside_products[$i]['ten_sp'] ?>
 						</span>
 
-						<?php if (!$aside_product['gia_km']) { ?>
-							<span class="article-price"><?= number_format($aside_product['gia_sp']) ?> VNĐ</span>
+						<?php if (!$aside_products[$i]['gia_km']) { ?>
+							<span class="article-price"><?= number_format($aside_products[$i]['gia_sp']) ?> VNĐ</span>
 						<?php } else { ?>
-							<span class="article-price"><?= number_format($aside_product['gia_km']) ?> VNĐ
+							<span class="article-price"><?= number_format($aside_products[$i]['gia_km']) ?> VNĐ
 							</span>
 						<?php } ?>
 					</a>
 				</div>
-			<?php endforeach ?>
-			</div>
+		<?php }
+		} ?>
+	</div>
 </section>

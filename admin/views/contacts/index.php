@@ -41,9 +41,9 @@
                 <td>
                   <a href="<?= BASE_URL_ADMIN . '?act=contact-detail&id=' . $contact['id'] ?>" class="btn btn-info">Xem</a>
                   <?php if ($status['id'] == 3) { ?>
-                    <a href="<?= BASE_URL_ADMIN . '?act=contact-processed&id=' . $contact['id']  ?>" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn đã xử lý liên hệ này')">Đã xử lý</a>
+                    <a href="<?= BASE_URL_ADMIN . '?act=contact-processed&id=' . $contact['id']  ?>" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn đã xử lý liên hệ này')">Đánh dấu là đã xử lý</a>
                   <?php } elseif ($status['id'] != 3) { ?>
-                    <a href="<?= BASE_URL_ADMIN . '?act=contact-no-process&id=' . $contact['id']  ?>" class="btn btn-danger">Chưa xử lý</a>
+                    <a href="<?= BASE_URL_ADMIN . '?act=contact-no-process&id=' . $contact['id']  ?>" class="btn btn-danger">Đánh dấu là chưa xử lý</a>
                   <?php } ?>
                 </td>
               </tr>

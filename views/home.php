@@ -164,7 +164,7 @@
               <p>
                 With a camera that works like your eye.
               </p>
-              <a href="article?article_id=51" class="styled-btn">
+              <a href="#" class="styled-btn">
                 ORDER NOW
               </a>
             </div>
@@ -176,7 +176,7 @@
               <p>
                 AirPods deliver effortless, all-day audio on the go.
               </p>
-              <a href="article?article_id=1" class="styled-btn">
+              <a href="#" class="styled-btn">
                 ORDER NOW
               </a>
             </div>
