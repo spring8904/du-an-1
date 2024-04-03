@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 02, 2024 at 05:28 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 03, 2024 lúc 04:01 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `du-an-1`
+-- Cơ sở dữ liệu: `du-an-1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts`
+-- Cấu trúc bảng cho bảng `carts`
 --
 
 CREATE TABLE `carts` (
@@ -35,7 +35,7 @@ CREATE TABLE `carts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart_items`
+-- Cấu trúc bảng cho bảng `cart_items`
 --
 
 CREATE TABLE `cart_items` (
@@ -48,7 +48,7 @@ CREATE TABLE `cart_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogues`
+-- Cấu trúc bảng cho bảng `catalogues`
 --
 
 CREATE TABLE `catalogues` (
@@ -57,7 +57,7 @@ CREATE TABLE `catalogues` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `catalogues`
+-- Đang đổ dữ liệu cho bảng `catalogues`
 --
 
 INSERT INTO `catalogues` (`id`, `name`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `catalogues` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `costumer`
+-- Cấu trúc bảng cho bảng `costumer`
 --
 
 CREATE TABLE `costumer` (
@@ -86,7 +86,7 @@ CREATE TABLE `costumer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -106,7 +106,7 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_items`
+-- Cấu trúc bảng cho bảng `order_items`
 --
 
 CREATE TABLE `order_items` (
@@ -120,7 +120,7 @@ CREATE TABLE `order_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -138,7 +138,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `catalogue_id`, `name`, `img_thumbnail`, `overview`, `price_regular`, `price_sale`, `content`, `rate`, `created_at`, `updated_at`) VALUES
@@ -155,7 +155,7 @@ INSERT INTO `products` (`id`, `catalogue_id`, `name`, `img_thumbnail`, `overview
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_portfolio`
+-- Cấu trúc bảng cho bảng `product_portfolio`
 --
 
 CREATE TABLE `product_portfolio` (
@@ -166,7 +166,7 @@ CREATE TABLE `product_portfolio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `product_portfolio`
+-- Đang đổ dữ liệu cho bảng `product_portfolio`
 --
 
 INSERT INTO `product_portfolio` (`id`, `ten_dm`, `hinh_anh`, `trang_thai`) VALUES
@@ -175,7 +175,7 @@ INSERT INTO `product_portfolio` (`id`, `ten_dm`, `hinh_anh`, `trang_thai`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_bai_viet`
+-- Cấu trúc bảng cho bảng `tb_bai_viet`
 --
 
 CREATE TABLE `tb_bai_viet` (
@@ -189,7 +189,7 @@ CREATE TABLE `tb_bai_viet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_bai_viet`
+-- Đang đổ dữ liệu cho bảng `tb_bai_viet`
 --
 
 INSERT INTO `tb_bai_viet` (`id`, `id_nd`, `tieu_de`, `hinh_anh`, `noi_dung`, `ngay_dang`, `ngay_sua`) VALUES
@@ -199,7 +199,7 @@ INSERT INTO `tb_bai_viet` (`id`, `id_nd`, `tieu_de`, `hinh_anh`, `noi_dung`, `ng
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_binh_luan`
+-- Cấu trúc bảng cho bảng `tb_binh_luan`
 --
 
 CREATE TABLE `tb_binh_luan` (
@@ -211,7 +211,7 @@ CREATE TABLE `tb_binh_luan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_binh_luan`
+-- Đang đổ dữ liệu cho bảng `tb_binh_luan`
 --
 
 INSERT INTO `tb_binh_luan` (`id`, `id_nd`, `id_sp`, `noi_dung`, `thoi_gian`) VALUES
@@ -221,7 +221,7 @@ INSERT INTO `tb_binh_luan` (`id`, `id_nd`, `id_sp`, `noi_dung`, `thoi_gian`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_chi_tiet_dh`
+-- Cấu trúc bảng cho bảng `tb_chi_tiet_dh`
 --
 
 CREATE TABLE `tb_chi_tiet_dh` (
@@ -232,7 +232,7 @@ CREATE TABLE `tb_chi_tiet_dh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_chi_tiet_dh`
+-- Đang đổ dữ liệu cho bảng `tb_chi_tiet_dh`
 --
 
 INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`) VALUES
@@ -242,7 +242,7 @@ INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_chuc_vu`
+-- Cấu trúc bảng cho bảng `tb_chuc_vu`
 --
 
 CREATE TABLE `tb_chuc_vu` (
@@ -251,7 +251,7 @@ CREATE TABLE `tb_chuc_vu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_chuc_vu`
+-- Đang đổ dữ liệu cho bảng `tb_chuc_vu`
 --
 
 INSERT INTO `tb_chuc_vu` (`id`, `chuc_vu`) VALUES
@@ -261,7 +261,7 @@ INSERT INTO `tb_chuc_vu` (`id`, `chuc_vu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_danh_gia`
+-- Cấu trúc bảng cho bảng `tb_danh_gia`
 --
 
 CREATE TABLE `tb_danh_gia` (
@@ -274,7 +274,7 @@ CREATE TABLE `tb_danh_gia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_danh_gia`
+-- Đang đổ dữ liệu cho bảng `tb_danh_gia`
 --
 
 INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_dg`) VALUES
@@ -284,7 +284,7 @@ INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_danh_muc_sp`
+-- Cấu trúc bảng cho bảng `tb_danh_muc_sp`
 --
 
 CREATE TABLE `tb_danh_muc_sp` (
@@ -295,7 +295,7 @@ CREATE TABLE `tb_danh_muc_sp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_danh_muc_sp`
+-- Đang đổ dữ liệu cho bảng `tb_danh_muc_sp`
 --
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
@@ -305,7 +305,7 @@ INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_don_hang`
+-- Cấu trúc bảng cho bảng `tb_don_hang`
 --
 
 CREATE TABLE `tb_don_hang` (
@@ -321,7 +321,7 @@ CREATE TABLE `tb_don_hang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_don_hang`
+-- Đang đổ dữ liệu cho bảng `tb_don_hang`
 --
 
 INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt`, `id_km`, `tong_tien`, `ghi_chu`) VALUES
@@ -330,7 +330,7 @@ INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_gio_hang`
+-- Cấu trúc bảng cho bảng `tb_gio_hang`
 --
 
 CREATE TABLE `tb_gio_hang` (
@@ -342,10 +342,17 @@ CREATE TABLE `tb_gio_hang` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tb_gio_hang`
+--
+
+INSERT INTO `tb_gio_hang` (`id`, `id_sp`, `id_nd`, `so_dien_thoai`, `dia_chi`, `email`) VALUES
+(3, 0, 10, 0, '', '');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_hinh_anh_sp`
+-- Cấu trúc bảng cho bảng `tb_hinh_anh_sp`
 --
 
 CREATE TABLE `tb_hinh_anh_sp` (
@@ -355,7 +362,7 @@ CREATE TABLE `tb_hinh_anh_sp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_hinh_anh_sp`
+-- Đang đổ dữ liệu cho bảng `tb_hinh_anh_sp`
 --
 
 INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
@@ -367,7 +374,7 @@ INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_khuyen_mai`
+-- Cấu trúc bảng cho bảng `tb_khuyen_mai`
 --
 
 CREATE TABLE `tb_khuyen_mai` (
@@ -381,7 +388,7 @@ CREATE TABLE `tb_khuyen_mai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_khuyen_mai`
+-- Đang đổ dữ liệu cho bảng `tb_khuyen_mai`
 --
 
 INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `ngay_ket_thuc`, `giam_gia`) VALUES
@@ -393,7 +400,7 @@ INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_lien_he`
+-- Cấu trúc bảng cho bảng `tb_lien_he`
 --
 
 CREATE TABLE `tb_lien_he` (
@@ -401,24 +408,47 @@ CREATE TABLE `tb_lien_he` (
   `tieu_de` text NOT NULL,
   `ten_kh` varchar(50) NOT NULL,
   `so_dien_thoai` varchar(15) NOT NULL,
-  `dia_chi` varchar(50) NOT NULL,
+  `dia_chi` varchar(50) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `noi_dung` text NOT NULL,
-  `id_tt` int(11) NOT NULL,
-  `ngay_gui` date NOT NULL
+  `id_tt` int(11) NOT NULL DEFAULT 3,
+  `ngay_gui` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_lien_he`
+-- Đang đổ dữ liệu cho bảng `tb_lien_he`
 --
 
 INSERT INTO `tb_lien_he` (`id`, `tieu_de`, `ten_kh`, `so_dien_thoai`, `dia_chi`, `email`, `noi_dung`, `id_tt`, `ngay_gui`) VALUES
-(1, '', 'Khúc Trọng Kiên', '0321456792', 'Thái Bình', 'demo1@gmail.com', 'Demo Contact', 4, '2024-03-25');
+(1, '', 'Khúc Trọng Kiên', '0321456792', 'Thái Bình', 'demo1@gmail.com', 'Demo Contact', 4, '2024-03-25'),
+(2, 'Demo contact', 'Demo contact', '0321546479', 'Demo contact', 'demo1@gmail.com', 'Demo contact', 3, '2024-04-02'),
+(3, 'Demo contact 2', 'Demo contact 2', '0321546479', 'Demo contact 2', 'demo1@gmail.com', 'Demo contact 2', 3, '2024-04-02');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_nguoi_dung`
+-- Cấu trúc bảng cho bảng `tb_muc_gh`
+--
+
+CREATE TABLE `tb_muc_gh` (
+  `id` int(11) NOT NULL,
+  `id_gh` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `so_luong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_muc_gh`
+--
+
+INSERT INTO `tb_muc_gh` (`id`, `id_gh`, `id_sp`, `so_luong`) VALUES
+(4, 3, 10, 1),
+(5, 3, 9, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_nguoi_dung`
 --
 
 CREATE TABLE `tb_nguoi_dung` (
@@ -435,7 +465,7 @@ CREATE TABLE `tb_nguoi_dung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_nguoi_dung`
+-- Đang đổ dữ liệu cho bảng `tb_nguoi_dung`
 --
 
 INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_cv`, `gioi_tinh`, `dia_chi`, `ngay_sinh`, `so_dien_thoai`) VALUES
@@ -445,7 +475,7 @@ INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_phuong_thuc_thanh_toan`
+-- Cấu trúc bảng cho bảng `tb_phuong_thuc_thanh_toan`
 --
 
 CREATE TABLE `tb_phuong_thuc_thanh_toan` (
@@ -454,7 +484,7 @@ CREATE TABLE `tb_phuong_thuc_thanh_toan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_phuong_thuc_thanh_toan`
+-- Đang đổ dữ liệu cho bảng `tb_phuong_thuc_thanh_toan`
 --
 
 INSERT INTO `tb_phuong_thuc_thanh_toan` (`id`, `ten_pttt`) VALUES
@@ -464,7 +494,7 @@ INSERT INTO `tb_phuong_thuc_thanh_toan` (`id`, `ten_pttt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_san_pham`
+-- Cấu trúc bảng cho bảng `tb_san_pham`
 --
 
 CREATE TABLE `tb_san_pham` (
@@ -480,7 +510,7 @@ CREATE TABLE `tb_san_pham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_san_pham`
+-- Đang đổ dữ liệu cho bảng `tb_san_pham`
 --
 
 INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
@@ -490,7 +520,7 @@ INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_trang_thai`
+-- Cấu trúc bảng cho bảng `tb_trang_thai`
 --
 
 CREATE TABLE `tb_trang_thai` (
@@ -500,7 +530,7 @@ CREATE TABLE `tb_trang_thai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_trang_thai`
+-- Đang đổ dữ liệu cho bảng `tb_trang_thai`
 --
 
 INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
@@ -516,7 +546,7 @@ INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -529,25 +559,25 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `type`) VALUES
 (1, 'thiethnph45900', 'thiethnph45900@fpt.edu.vn', '12345678', '/uploads/avatar/thiethnph45900.jpg', 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `carts`
+-- Chỉ mục cho bảng `carts`
 --
 ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `cart_items`
+-- Chỉ mục cho bảng `cart_items`
 --
 ALTER TABLE `cart_items`
   ADD PRIMARY KEY (`id`),
@@ -555,20 +585,20 @@ ALTER TABLE `cart_items`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `catalogues`
+-- Chỉ mục cho bảng `catalogues`
 --
 ALTER TABLE `catalogues`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `order_items`
+-- Chỉ mục cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
@@ -576,276 +606,288 @@ ALTER TABLE `order_items`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `catalogue_id` (`catalogue_id`);
 
 --
--- Indexes for table `tb_bai_viet`
+-- Chỉ mục cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_binh_luan`
+-- Chỉ mục cho bảng `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_chi_tiet_dh`
+-- Chỉ mục cho bảng `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_chuc_vu`
+-- Chỉ mục cho bảng `tb_chuc_vu`
 --
 ALTER TABLE `tb_chuc_vu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_danh_gia`
+-- Chỉ mục cho bảng `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_danh_muc_sp`
+-- Chỉ mục cho bảng `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_don_hang`
+-- Chỉ mục cho bảng `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_gio_hang`
+-- Chỉ mục cho bảng `tb_gio_hang`
 --
 ALTER TABLE `tb_gio_hang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_hinh_anh_sp`
+-- Chỉ mục cho bảng `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_khuyen_mai`
+-- Chỉ mục cho bảng `tb_khuyen_mai`
 --
 ALTER TABLE `tb_khuyen_mai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_lien_he`
+-- Chỉ mục cho bảng `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_nguoi_dung`
+-- Chỉ mục cho bảng `tb_muc_gh`
+--
+ALTER TABLE `tb_muc_gh`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tb_nguoi_dung`
 --
 ALTER TABLE `tb_nguoi_dung`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_phuong_thuc_thanh_toan`
+-- Chỉ mục cho bảng `tb_phuong_thuc_thanh_toan`
 --
 ALTER TABLE `tb_phuong_thuc_thanh_toan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_san_pham`
+-- Chỉ mục cho bảng `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_trang_thai`
+-- Chỉ mục cho bảng `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `carts`
+-- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `cart_items`
+-- AUTO_INCREMENT cho bảng `cart_items`
 --
 ALTER TABLE `cart_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `catalogues`
+-- AUTO_INCREMENT cho bảng `catalogues`
 --
 ALTER TABLE `catalogues`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `order_items`
+-- AUTO_INCREMENT cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `tb_bai_viet`
+-- AUTO_INCREMENT cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_binh_luan`
+-- AUTO_INCREMENT cho bảng `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_chi_tiet_dh`
+-- AUTO_INCREMENT cho bảng `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_chuc_vu`
+-- AUTO_INCREMENT cho bảng `tb_chuc_vu`
 --
 ALTER TABLE `tb_chuc_vu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tb_danh_gia`
+-- AUTO_INCREMENT cho bảng `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_danh_muc_sp`
+-- AUTO_INCREMENT cho bảng `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `tb_don_hang`
+-- AUTO_INCREMENT cho bảng `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_gio_hang`
+-- AUTO_INCREMENT cho bảng `tb_gio_hang`
 --
 ALTER TABLE `tb_gio_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_hinh_anh_sp`
+-- AUTO_INCREMENT cho bảng `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tb_khuyen_mai`
+-- AUTO_INCREMENT cho bảng `tb_khuyen_mai`
 --
 ALTER TABLE `tb_khuyen_mai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_lien_he`
+-- AUTO_INCREMENT cho bảng `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_nguoi_dung`
+-- AUTO_INCREMENT cho bảng `tb_muc_gh`
+--
+ALTER TABLE `tb_muc_gh`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_nguoi_dung`
 --
 ALTER TABLE `tb_nguoi_dung`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tb_phuong_thuc_thanh_toan`
+-- AUTO_INCREMENT cho bảng `tb_phuong_thuc_thanh_toan`
 --
 ALTER TABLE `tb_phuong_thuc_thanh_toan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_san_pham`
+-- AUTO_INCREMENT cho bảng `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tb_trang_thai`
+-- AUTO_INCREMENT cho bảng `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `carts`
+-- Các ràng buộc cho bảng `carts`
 --
 ALTER TABLE `carts`
   ADD CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `cart_items`
+-- Các ràng buộc cho bảng `cart_items`
 --
 ALTER TABLE `cart_items`
   ADD CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`),
   ADD CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `order_items`
+-- Các ràng buộc cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `products`
+-- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`catalogue_id`) REFERENCES `catalogues` (`id`);
