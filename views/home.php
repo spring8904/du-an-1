@@ -102,11 +102,12 @@
                                 '&product_name=' . $product['ten_sp'] .
                                 '&product_image=' . getProductImage($product['id'])['hinh_anh'] .
                                 '&product_price=' . $gia
-                              ?>" onclick="alert('Bạn có muốn thêm sản phẩm vào giỏ hàng không?')" >
+                              ?>" onclick="alert('Đã thêm sản phẩm vào giỏ hàng')">
                       <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
                         <span>Thêm vào giỏ hàng</span>
                         <img src="imgs/shopping-cart.png" />
-                      </button></a>
+                      </button>
+                    </a>
                   <?php } ?>
                 </div>
               <?php } ?>

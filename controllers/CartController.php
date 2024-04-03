@@ -11,15 +11,17 @@ function addToCart()
             $_SESSION["cart"] = [];
         }
 
+        $quantity = $_GET["quantity"] ?? 1;
+
         // Thêm sản phẩm vào giỏ hàng trong session
         if (isset($_SESSION["cart"][$productId])) {
             // Nếu đã có sản phẩm trong giỏ hàng session thì + 1 vào số lượng
-            $_SESSION["cart"][$productId]['quantity'] += 1;
+            $_SESSION["cart"][$productId]['quantity'] += $quantity;
         } else {
             // Nếu chưa cso thì thêm sản phẩm mới và để số lượng là 1
             $_SESSION["cart"][$productId] = [
                 'id' => $productId,
-                "quantity" => 1,
+                "quantity" => $quantity,
                 'product_name' => $_GET["product_name"],
                 'product_image' => $_GET["product_image"],
                 'product_price' => $_GET["product_price"],
