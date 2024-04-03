@@ -2,7 +2,7 @@
 <script defer src="js/category.js"></script>
 
 <!-- categories -->
-<section id="category-container">
+<section>
 	<h4>Bộ lọc</h4>
 	<form action="" method="GET">
 		<input type="text" name="act" id="" value="search" hidden>
@@ -37,12 +37,74 @@
 		<?php
 		$categories = listAll('tb_danh_muc_sp');
 		foreach ($categories as $category) : ?>
-			<a href="?act=search&category_id=<?= $category['id'] ?>" data-category-id="<?= $category['id'] ?>" class="category-button">
+			<a href="?act=search&category_id=<?= $category['id'] ?>&search=" data-category-id="<?= $category['id'] ?>" class="category-button">
 				<?php if (!empty($category['hinh_anh'])) { ?>
 					<img src="<?= BASE_URL ?>uploads/prCategories/<?= $category['hinh_anh'] ?>" alt="category icon" />
 				<?php } ?>
 				<span><?= $category['ten_dm'] ?></span>
 			</a>
 		<?php endforeach ?>
+	</div>
+</section>
+
+<!-- iphone special offer -->
+<section class="aside-special-offer">
+	<div class="aside-special-offer-text">
+		<h2>Fast.</h2>
+		<h2>Robust.</h2>
+		<h2>Gorgeous.</h2>
+		<h3>iPhone 11 Pro Max</h3>
+
+		<a href="#" class="styled-btn">
+			Order Now
+		</a>
+	</div>
+	<div class="aside-special-offer-img">
+		<img src="imgs/article/52/2.jpg" alt="iPhone 11 Pro" loading="lazy">
+		<img src="imgs/article/52/3.jpg" alt="iPhone 11 Pro" loading="lazy">
+		<img src="imgs/article/52/1.jpg" alt="iPhone 11 Pro" loading="lazy">
+	</div>
+</section>
+<!-- under 30000 articles -->
+<section class="aside-articles aside-sticky">
+	<h3>Dưới 15,000,000 VNĐ</h3>
+	<div class="aside-articles-container">
+		<?php
+		$aside_products = getSearchProduct(null, null, null, 15000000);
+		for ($i = 0; $i < 3; $i++) {
+			if (isset($aside_products[$i])) {
+		?>
+				<div class="aside-article article">
+					<a href="?act=product?id=<?= $aside_products[$i]['id'] ?>">
+
+						<?php if ($aside_products[$i]['gia_km']) { ?>
+							<span class="discount-span">-<?= ceil(($aside_products[$i]['gia_km']) / ($aside_products[$i]['gia_sp'])) ?>%</span>
+						<?php } ?>
+
+						<img src="uploads/products/<?= getProductImage($aside_products[$i]['id'])['hinh_anh'] ?>" />
+
+						<div class="article-brand">
+							<span class="label">Danh mục:</span>
+							<?php $category  = showOne('tb_danh_muc_sp', $aside_products[$i]['id_dm']);
+							if (!empty($category['hinh_anh'])) { ?>
+								<img src="uploads/prCategories/<?= $category['hinh_anh'] ?>" />
+							<?php } ?>
+							<span><?= $category['ten_dm'] ?></span>
+						</div>
+
+						<span class="article-title">
+							<?= $aside_products[$i]['ten_sp'] ?>
+						</span>
+
+						<?php if (!$aside_products[$i]['gia_km']) { ?>
+							<span class="article-price"><?= number_format($aside_products[$i]['gia_sp']) ?> VNĐ</span>
+						<?php } else { ?>
+							<span class="article-price"><?= number_format($aside_products[$i]['gia_km']) ?> VNĐ
+							</span>
+						<?php } ?>
+					</a>
+				</div>
+		<?php }
+		} ?>
 	</div>
 </section>

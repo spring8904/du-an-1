@@ -80,6 +80,21 @@
             <?php } ?>
           </div>
         </section>
+        <!-- galaxy s9 special offer -->
+        <section id="s9-special-offer" class="special-offer">
+          <div class="special-offer-img">
+            <img src="imgs/special_offers/s9_special_offer.png" alt="">
+          </div>
+          <div class="special-offer-text">
+            <h1>Galaxy S9</h1>
+            <p>
+              With a camera that works like your eye.
+            </p>
+            <a href="#" class="styled-btn">
+              ORDER NOW
+            </a>
+          </div>
+        </section>
       </div>
     </div>
   </main>
