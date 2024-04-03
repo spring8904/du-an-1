@@ -1,8 +1,20 @@
 <!-- script -->
 <script defer src="js/category.js"></script>
 
+<style>
+	section.filter {
+		display: block;
+		width: 100%;
+		padding: 8px;
+		margin-bottom: 15px;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+		background-color: var(--color-1);
+	}
+</style>
+
 <!-- categories -->
-<section>
+<section class="filter">
 	<h4>Bộ lọc</h4>
 	<form action="" method="GET">
 		<input type="text" name="act" id="" value="search" hidden>

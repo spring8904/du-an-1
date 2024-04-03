@@ -128,7 +128,7 @@ function userDelete($id)
   header('Location: ./?act=users');
 }
 
-function validateUser()
+function validateUser($password = true)
 {
   $err = [];
 
@@ -140,12 +140,14 @@ function validateUser()
     $err[] = 'Email đã tồn tại.';
   }
 
-  if (empty($_POST['mat_khau'])) {
-    $err[] = 'Vui lòng nhập mật khẩu.';
-  } elseif (strlen($_POST['mat_khau']) < 8) {
-    $err[] = 'Mật khẩu phải có ít nhất 8 ký tự.';
-  } elseif ($_POST['mat_khau'] !== $_POST['password_conf'] && isset($_POST['create'])) {
-    $err[] = 'Mật khẩu không khớp.';
+  if ($password) {
+    if (empty($_POST['mat_khau'])) {
+      $err[] = 'Vui lòng nhập mật khẩu.';
+    } elseif (strlen($_POST['mat_khau']) < 8) {
+      $err[] = 'Mật khẩu phải có ít nhất 8 ký tự.';
+    } elseif ($_POST['mat_khau'] !== $_POST['password_conf'] && isset($_POST['create'])) {
+      $err[] = 'Mật khẩu không khớp.';
+    }
   }
 
   if (empty($_POST['ho_ten'])) {

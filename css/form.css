@@ -40,7 +40,7 @@ textarea {
   padding: 50px;
 }
 
-.form-container form input,
+.form-container form input:not([type='radio']),
 .form-container form select,
 .form-container form textarea {
   font-size: 16px;
