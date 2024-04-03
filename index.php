@@ -52,6 +52,8 @@ match ($act) {
 
     // Contact
     'contact' => showFormContact(),
+
+    'account' => accountIndex(),
 };
 
 require_once './common/disconnect-db.php';

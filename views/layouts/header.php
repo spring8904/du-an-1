@@ -55,7 +55,7 @@
 								</a>
 							<?php endif ?>
 
-							<a href="account" class="nht-login-button" style="margin-bottom: 8px">
+							<a href="<?= BASE_URL ?>?act=account" class="nht-login-button" style="margin-bottom: 8px">
 								<img src="imgs/information.png" alt="image error" />
 								<span>Thông tin</span>
 							</a>
@@ -69,7 +69,7 @@
 
 							<a href="<?= BASE_URL ?>?act=logout" class="nht-login-button">
 								<img src="imgs/logout.png" alt="image error" />
-								<span>Đăng xuát</span>
+								<span>Đăng xuất</span>
 							</a>
 						</div>
 					</li>
