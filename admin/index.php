@@ -89,6 +89,7 @@ match ($act) {
   // Order
   'orders' => orderListAll(),
   'order-detail' => orderDetail($_GET['id']),
+  'order-update' => orderUpdate($_GET['id']),
 
   // Authen
   'login' => authenShowFormLogin(),

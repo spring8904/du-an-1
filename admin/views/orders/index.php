@@ -49,7 +49,10 @@
                   <h5><span class="badge badge-<?= $status['badge'] ?? 'secondary' ?>"><?= $status['ten_tt'] ?></span></h5>
                 </td>
                 <td>
-                  <a href="<?= BASE_URL_ADMIN ?>/?act=order-detail&id=<?= $order['id'] ?>" class="btn btn-info">Chi tiết</a>
+                  <a href="<?= BASE_URL_ADMIN ?>?act=order-detail&id=<?= $order['id'] ?>" class="btn btn-info">Chi tiết</a>
+                  <?php if ($order['id_tt'] != 8) { ?>
+                    <a href="<?= BASE_URL_ADMIN ?>?act=order-update&id=<?= $order['id'] ?>" class="btn btn-warning">Cập nhật trạng thái</a>
+                  <?php } ?>
                 </td>
               </tr>
             <?php } ?>
