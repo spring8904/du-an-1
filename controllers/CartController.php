@@ -83,7 +83,7 @@ function updateQuantity()
 
         if ($productInCartItems) {
             $quantity = $productInCartItems['so_luong'] + $change; // Số lượng mới trong cơ sở dữ liệu
-            $quantitySession = $_SESSION["cart"][$productId]['so_luong'] + $change; // Số lượng mới trong session
+            $quantitySession = $_SESSION["cart"][$productId]['quantity'] + $change; // Số lượng mới trong session
 
             // Kiểm tra nếu số lượng mới nhỏ hơn hoặc bằng 0, thì cập nhật lại thành 1
             if ($quantity <= 0 || $quantitySession <= 0) {
@@ -95,7 +95,7 @@ function updateQuantity()
             updateQuantityCartItem($quantity, $cartUser['id']);
 
             // Cập nhật số lượng trong session
-            $_SESSION["cart"][$productId]['so_luong'] = $quantitySession;
+            $_SESSION["cart"][$productId]['quantity'] = $quantitySession;
         }
 
         header('Location: ' . BASE_URL . '?act=cart');
@@ -106,17 +106,17 @@ function updateQuantity()
 // Hàm xóa sản phẩm trong giỏ hàng
 function remoteCartItem()
 {
-    if (isset($_GET["id_product"])) {
+    if (isset($_GET["id_sp"])) {
         // Lấy ra thông tin giỏ hàng của người dùng
         $cartUser = getCartByUserID($_SESSION['user']['id']);
         // Lấy ra sản phẩm người dùng có trong giỏ hàng
         $productInCartItems = getProductInCartItem($cartUser['id']);
 
         // Xóa sản phẩm có trong giỏ hàng
-        delete('cart_items', $productInCartItems["id"]);
+        delete('tb_muc_gh', $productInCartItems["id"]);
 
         // Xóa sản phẩm khỏi giỏ hàng trong session
-        unset($_SESSION['cart'][$_GET["id_product"]]);
+        unset($_SESSION['cart'][$_GET["id_sp"]]);
 
         header('Location: ' . BASE_URL . '?act=cart');
         exit;
@@ -133,7 +133,7 @@ function remoteAllCart()
         remoteAllCartItem($cartUser['id']);
 
         // Xóa giỏ hàng
-        delete('carts', $cartUser['id']);
+        delete('tb_gio_hang', $cartUser['id']);
 
         // Xóa toàn bộ giỏ hàng trong session
         unset($_SESSION['cart']);

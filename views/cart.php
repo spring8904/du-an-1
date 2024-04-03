@@ -50,9 +50,9 @@
                             <td><?= $item['product_name'] ?></td>
                             <td><?= number_format($item['product_price']) ?></td>
                             <td>
-                                <a class="btn btn-light" href="<?= BASE_URL . '?act=updateQuantity&change=-1&id_product=' . $item['id'] ?>" role="button">-</a>
+                                <a class="btn btn-light" href="<?= BASE_URL . '?act=updateQuantity&change=-1&id_sp=' . $item['id'] ?>" role="button">-</a>
                                 <?= $item['quantity'] ?>
-                                <a class="btn btn-light" href="<?= BASE_URL . '?act=updateQuantity&change=1&id_product=' . $item['id'] ?>" role="button">+</a>
+                                <a class="btn btn-light" href="<?= BASE_URL . '?act=updateQuantity&change=1&id_sp=' . $item['id'] ?>" role="button">+</a>
                             </td>
                             <?php
                             $subtotal = $item['product_price'] * $item['quantity'];
@@ -61,7 +61,7 @@
                             <td><?= number_format($subtotal) ?></td>
                             <td>
                                 <!-- Đường dẫn để xóa sản phẩm khỏi giỏ hàng -->
-                                <a href="<?= BASE_URL . '?act=remoteCartItem&id_product=' . $item['id'] ?>" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa sản phẩm trong giỏ hàng không?')">Xóa</a>
+                                <a href="<?= BASE_URL . '?act=remoteCartItem&id_sp=' . $item['id'] ?>" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa sản phẩm trong giỏ hàng không?')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -121,14 +121,11 @@
 			</ul>
 
 			<div id="cart-container">
-				<button id="cart-button">
-					<img src="imgs/shopping-cart.png" alt="image error" />
-				</button>
-				<div id="cart">
-					<div id="cart-items-container"></div>
-					<div id="cart-pay-section"></div>
-					<a href="checkout"><button id="pay-button" class="styled-btn">Thanh toán</button></a>
-				</div>
+				<a href="<?= BASE_URL ?>?act=cart">
+					<button id="cart-button">
+						<img src="imgs/shopping-cart.png" alt="image error" />
+					</button>
+				</a>
 			</div>
 		</nav>
 	</header>
