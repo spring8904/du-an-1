@@ -17,6 +17,10 @@
   </head>
 
   <body>
+    <?php if (isset($_SESSION['error'])) {
+      echo '<script>alert("' . $_SESSION['error'] . '")</script>';
+      unset($_SESSION['error']);
+    } ?>
     <!-- Header -->
     <?php include(PATH_VIEW . '/layouts/header.php') ?>
     <main>
@@ -102,7 +106,7 @@
                                 '&product_name=' . $product['ten_sp'] .
                                 '&product_image=' . getProductImage($product['id'])['hinh_anh'] .
                                 '&product_price=' . $gia
-                              ?>" onclick="alert('Đã thêm sản phẩm vào giỏ hàng')">
+                              ?>">
                       <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
                         <span>Thêm vào giỏ hàng</span>
                         <img src="imgs/shopping-cart.png" />
@@ -161,7 +165,7 @@
                                   '&product_name=' . $product['ten_sp'] .
                                   '&product_image=' . getProductImage($product['id'])['hinh_anh'] .
                                   '&product_price=' . $gia
-                                ?>" onclick="alert('Sản phẩm đã được thêm vào giỏ hàng')">
+                                ?>">
                         <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
                           <span>Thêm vào giỏ hàng</span>
                           <img src="imgs/shopping-cart.png" />

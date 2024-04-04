@@ -23,6 +23,10 @@
     <main>
         <div class="container mt-4 mb-5">
             <h2>Giỏ hàng của bạn</h2>
+            <?php if (isset($_SESSION['error'])) { ?>
+                <p class="alert alert-danger"><?= $_SESSION['error'] ?></p>
+            <?php unset($_SESSION['error']);
+            } ?>
 
             <?php if (!empty($cartItems)) { ?>
                 <table class="table">
@@ -48,7 +52,7 @@
                             <tr>
                                 <td><?= $stt++ ?></td>
                                 <td><img src="<?= BASE_URL . 'uploads/products/' . $item['product_image'] ?>" style="width: 100px;"></td>
-                                <td><?= $item['product_name'] ?></td>
+                                <td><a href="<?= BASE_URL . '?act=product&id=' . $item['id'] ?>" class="text-decoration-underline text-primary"><?= $item['product_name'] ?></a></td>
                                 <td><?= number_format($item['product_price']) ?></td>
                                 <td>
                                     <a class="btn btn-light" href="<?= BASE_URL . '?act=updateQuantity&change=-1&id_sp=' . $item['id'] ?>" role="button">-</a>

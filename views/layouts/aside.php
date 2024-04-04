@@ -87,10 +87,10 @@
 			if (isset($aside_products[$i])) {
 		?>
 				<div class="aside-article article">
-					<a href="?act=product?id=<?= $aside_products[$i]['id'] ?>">
+					<a href="?act=product&id=<?= $aside_products[$i]['id'] ?>">
 
 						<?php if ($aside_products[$i]['gia_km']) { ?>
-							<span class="discount-span">-<?= ceil(($aside_products[$i]['gia_km']) / ($aside_products[$i]['gia_sp'])) ?>%</span>
+							<span class="discount-span">-<?= ceil(100 - ($aside_products[$i]['gia_km']) / ($aside_products[$i]['gia_sp']) * 100) ?>%</span>
 						<?php } ?>
 
 						<img src="uploads/products/<?= getProductImage($aside_products[$i]['id'])['hinh_anh'] ?>" />

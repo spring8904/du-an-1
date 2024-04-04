@@ -72,6 +72,12 @@
                   </td>
                   <td>
                     <a href="<?= BASE_URL ?>?act=order-detail&id=<?= $order['id'] ?>" class="btn btn-info">Chi tiết</a>
+                    <?php if ($order['id_tt'] == 3) { ?>
+                      <a href="<?= BASE_URL ?>?act=order-update&id=<?= $order['id'] ?>&id_tt=7" class="btn btn-danger">Hủy</a>
+                    <?php }
+                    if ($order['id_tt'] == 5) { ?>
+                      <a href="<?= BASE_URL ?>?act=order-update&id=<?= $order['id'] ?>&id_tt=6" class="btn btn-success">Đã nhận hàng</a>
+                    <?php } ?>
                   </td>
                 </tr>
               <?php } ?>

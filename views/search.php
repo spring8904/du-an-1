@@ -17,6 +17,10 @@
 </head>
 
 <body>
+  <?php if (isset($_SESSION['error'])) {
+    echo '<script>alert("' . $_SESSION['error'] . '")</script>';
+    unset($_SESSION['error']);
+  } ?>
   <!-- Header -->
   <?php include(PATH_VIEW . 'layouts/header.php') ?>
 
@@ -70,11 +74,20 @@
                     <span class="front-stars" <?= 'style="width:' . getAverageRating($product['id']) * 100 / 5 . '%"' ?>>★★★★★</span>
                   </div>
                 </a>
-                <?php if ($product['so_luong'] > 0) { ?>
-                  <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
-                    <span>Thêm vào giỏ hàng</span>
-                    <img src="imgs/shopping-cart.png" />
-                  </button>
+                <?php if ($product['so_luong'] > 0) {
+                  $gia = $product['gia_km'] != 0 ? $product['gia_km'] : $product['gia_sp'];
+                ?>
+                  <a href="<?= BASE_URL .
+                              '?act=addToCart&id_sp=' . $product['id'] .
+                              '&product_name=' . $product['ten_sp'] .
+                              '&product_image=' . getProductImage($product['id'])['hinh_anh'] .
+                              '&product_price=' . $gia
+                            ?>">
+                    <button article_id="<?= $product['id'] ?>" class="article-add-to-cart-btn">
+                      <span>Thêm vào giỏ hàng</span>
+                      <img src="imgs/shopping-cart.png" />
+                    </button>
+                  </a>
                 <?php } ?>
               </div>
             <?php } ?>
