@@ -27,7 +27,7 @@
                 <option value="<?= $status['id'] ?>" selected hidden><?= $status['ten_tt'] ?></option>
                 <?php
                 $statuses = array_reverse(listAll('tb_trang_thai'));
-                for ($i = $status['id']; $i <= 7; $i++) {
+                for ($i = $status['id']; $i <= 8; $i++) {
                 ?>
                   <option value="<?= $statuses[$i]['id'] ?>"><?= $statuses[$i]['ten_tt'] ?></option>
                 <?php
