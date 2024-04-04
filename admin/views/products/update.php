@@ -16,7 +16,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data" novalidate>
+      <form method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md">
 
@@ -66,23 +66,21 @@
               </div>
             </div>
 
-            <div class="col-md">
-              <div class="mb-3">
-                <label class="form-label" for="date">Ngày nhập:<span class="text-danger">*</span></label>
-                <input type="date" class="form-control" name="ngay_nhap" id="date" required value="<?= $product['ngay_nhap'] ?>">
-              </div>
-              <div class="mb-3">
-                <label for="description" class="form-label">Mô tả:</label>
-                <textarea type="text" class="form-control" id="description" name="mo_ta" rows="2"><?= $product['mo_ta'] ?></textarea>
-              </div>
-              <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
-              <div class="mb-3 input-group">
-                <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh[]" multiple>
-                <label class="input-group-text" for="image">Tải lên</label>
-              </div>
-              <div class="text-center">
-                <img id="output" width="200px" height="200px" <?= getProductImage($product['id']) ? 'src="' . BASE_URL . 'uploads/products/' . getProductImage($product['id'])['hinh_anh'] . '"'  : '' ?> />
-              </div>
+            <div class="mb-3">
+              <label class="form-label" for="date">Ngày nhập:<span class="text-danger">*</span></label>
+              <input type="date" class="form-control" name="ngay_nhap" id="date" required value="<?= $product['ngay_nhap'] ?>">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Mô tả:</label>
+              <textarea type="text" class="form-control" id="description" name="mo_ta" rows="2"><?= $product['mo_ta'] ?></textarea>
+            </div>
+            <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
+            <div class="mb-3 input-group">
+              <input type="file" class="form-control" id="image" accept="image/*" onchange="loadFile(event)" name="hinh_anh[]" multiple>
+              <label class="input-group-text" for="image">Tải lên</label>
+            </div>
+            <div class="text-center">
+              <img id="output" width="200px" height="200px" <?= getProductImage($product['id']) ? 'src="' . BASE_URL . 'uploads/products/' . getProductImage($product['id'])['hinh_anh'] . '"'  : '' ?> />
             </div>
           </div>
 

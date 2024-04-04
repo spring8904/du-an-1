@@ -16,7 +16,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data" novalidate>
+      <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="name" class="form-label">Tên danh mục sản phẩm:<span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="name" name="ten_dm" required autofocus>

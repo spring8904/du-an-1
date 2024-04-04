@@ -16,7 +16,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data" novalidate>
+      <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="role" class="form-label">Tên chức vụ:<span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="role" name="chuc_vu" required value="<?= $role['chuc_vu'] ?>">

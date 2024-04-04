@@ -63,7 +63,7 @@
                   <a href="?act=product&id=<?= $product['id'] ?>">
 
                     <?php if ($product['gia_km']) { ?>
-                      <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
+                      <span class="discount-span">-<?= ceil(100 - ($product['gia_km']) / ($product['gia_sp']) * 100) ?>%</span>
                     <?php } ?>
 
                     <img src="uploads/products/<?= getProductImage($product['id'])['hinh_anh'] ?>" />
@@ -121,7 +121,7 @@
                     <a href="?act=product&id=<?= $product['id'] ?>">
 
                       <?php if ($product['gia_km']) { ?>
-                        <span class="discount-span">-<?= ceil(($product['gia_km']) / ($product['gia_sp'])) ?>%</span>
+                        <span class="discount-span">-<?= ceil(100 - ($product['gia_km']) / ($product['gia_sp']) * 100) ?>%</span>
                       <?php } ?>
 
                       <img src="uploads/products/<?= getProductImage($product['id'])['hinh_anh'] ?>" />

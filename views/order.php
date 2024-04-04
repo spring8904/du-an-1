@@ -67,7 +67,7 @@
                     <form action="" method="post">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Mã khuyến mãi</span>
-                            <input type="text" class="form-control" name="ma_km" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" name="ma_km" aria-label="Username" aria-describedby="basic-addon1" required>
                             <button class="btn btn-success" type="submit">Áp dụng</button>
                         </div>
                     </form>
@@ -88,19 +88,19 @@
                     <form action="<?= BASE_URL . '?act=addOrder' ?>" method="POST">
                         <div class="mb-3">
                             <label for="user_name" class="form-label">Họ và tên:</label>
-                            <input type="text" class="form-control" id="user_name" name="ho_ten" value="<?= $_SESSION['user']['ho_ten'] ?>">
+                            <input type="text" class="form-control" id="user_name" name="ho_ten" value="<?= $_SESSION['user']['ho_ten'] ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="user_email" class="form-label">Email:</label>
-                            <input type="text" class="form-control" id="user_email" name="email" value="<?= $_SESSION['user']['email'] ?>">
+                            <input type="text" class="form-control" id="user_email" name="email" value="<?= $_SESSION['user']['email'] ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="user_phone" class="form-label">Số điện thoại:</label>
-                            <input type="phone" class="form-control" id="user_phone" name="so_dien_thoai" value="<?= $_SESSION['user']['so_dien_thoai'] ?>">
+                            <input type="phone" class="form-control" id="user_phone" name="so_dien_thoai" value="<?= $_SESSION['user']['so_dien_thoai'] ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="user_address" class="form-label">Địa chỉ:</label>
-                            <textarea class="form-control" id="user_address" name="dia_chi"><?= $_SESSION['user']['dia_chi'] ?></textarea>
+                            <textarea class="form-control" id="user_address" name="dia_chi" required><?= $_SESSION['user']['dia_chi'] ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="user_address" class="form-label">Ghi chú:</label>
@@ -110,7 +110,7 @@
                         <div class="mb-3">
                             <?php $paymentMethods = listAll('tb_phuong_thuc_thanh_toan'); ?>
                             <label for="" class="form-label">Phương thức thanh toán:</label>
-                            <select class="form-control" name="id_pttt">
+                            <select class="form-control" name="id_pttt" required>
                                 <option value="">Chọn phương thức</option>
                                 <?php foreach ($paymentMethods as $paymentMethod) : ?>
                                     <option value="<?= $paymentMethod['id'] ?>"><?= $paymentMethod['ten_pttt'] ?></option>

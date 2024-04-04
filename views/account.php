@@ -54,7 +54,7 @@
               <p class="alert alert-success"><?= $_SESSION['success'] ?></p>
             <?php } ?>
             <!-- info -->
-            <form method="POST" novalidate enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
               <div class="form-header">
                 <img src="imgs/account.png" alt="image error" />
                 <h2>Thông tin của tôi</h2>
@@ -107,7 +107,7 @@
             </form>
             <hr>
             <!-- password -->
-            <form method="POST" novalidate>
+            <form method="POST">
               <div class="form-header">
                 <h2>Mật khẩu của tôi</h2>
               </div>

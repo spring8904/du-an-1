@@ -32,17 +32,17 @@
       <form name="signup" method="POST">
         <div id="sections-container">
           <div class="section">
-            <input name="ho_ten" type="text" minlength="2" maxlength="155" placeholder="Họ và tên" />
-            <input name="email" type="email" maxlength="155" placeholder="Email" />
-            <input name="mat_khau" type="password" minlength="4" maxlength="155" placeholder="Mật khẩu" />
-            <input name="password_conf" type="password" placeholder="Xác nhận mật khẩu" />
+            <input name="ho_ten" type="text" minlength="2" maxlength="155" placeholder="Họ và tên" required />
+            <input name="email" type="email" maxlength="155" placeholder="Email" required />
+            <input name="mat_khau" type="password" minlength="4" maxlength="155" placeholder="Mật khẩu" required />
+            <input name="password_conf" type="password" placeholder="Xác nhận mật khẩu" required />
           </div>
           <div class="splitter"></div>
           <div class="section">
-            <input name="dia_chi" type="text" maxlength="155" placeholder="Địa chỉ" />
-            <input name="so_dien_thoai" type="text" maxlength="155" placeholder="Số điện thoại" />
+            <input name="dia_chi" type="text" maxlength="155" placeholder="Địa chỉ" required />
+            <input name="so_dien_thoai" type="text" maxlength="155" placeholder="Số điện thoại" required />
             <br /><span>Ngày sinh</span>
-            <input name="ngay_sinh" type="date" min="1900-01-01" max="<?= date("Y-m-d") ?>" />
+            <input name="ngay_sinh" type="date" min="1900-01-01" max="<?= date("Y-m-d") ?>" required />
           </div>
         </div>
         <button type="submit" onclick="validatePassword();">

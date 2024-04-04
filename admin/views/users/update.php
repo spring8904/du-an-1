@@ -16,7 +16,7 @@
       </h6>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data" novalidate>
+      <form method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col">
             <div class="mb-3">

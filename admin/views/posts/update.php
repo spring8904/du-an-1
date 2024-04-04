@@ -16,7 +16,7 @@
             </h6>
         </div>
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data" novalidate>
+            <form method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
@@ -35,7 +35,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="content" class="form-label">Nội dung bình luận:</label>
-                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13"><?= $post['noi_dung'] ?></textarea>
+                            <textarea class="form-control" id="noi_dung" name="noi_dung" rows="13" required><?= $post['noi_dung'] ?></textarea>
                         </div>
                     </div>
                 </div>

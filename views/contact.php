@@ -30,7 +30,7 @@
                 <p class="alert alert-success"><?= $_SESSION['success'] ?></p>
             <?php } ?>
 
-            <form novalidate method="post">
+            <form method="post">
                 <div id="sections-container">
                     <div>
                         <input name="tieu_de" type="text" placeholder="Tiêu đề" required />
