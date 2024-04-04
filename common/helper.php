@@ -88,7 +88,7 @@ if (!function_exists('reArrayFiles')) {
 function validateImage($file)
 {
     $err = null;
-    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+    $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'webp');
 
     if ($file['size'] == 0) {
         $err = 'Hình ảnh không được để trống!';
