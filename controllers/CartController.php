@@ -5,6 +5,7 @@ function addToCart()
     if (isset($_GET["id_sp"])) {
 
         $productId = $_GET["id_sp"];
+        $productQuantity = showOne('tb_san_pham', $productId)['so_luong'];
 
         // Nếu chưa có giỏ hàng SESSion thì tiến hành tạo
         if (!isset($_SESSION["cart"])) {
@@ -16,7 +17,11 @@ function addToCart()
         // Thêm sản phẩm vào giỏ hàng trong session
         if (isset($_SESSION["cart"][$productId])) {
             // Nếu đã có sản phẩm trong giỏ hàng session thì + 1 vào số lượng
-            $_SESSION["cart"][$productId]['quantity'] += $quantity;
+            if ($_SESSION["cart"][$productId]['quantity'] + $quantity > $productQuantity) {
+                $_SESSION['error'] = 'Số lượng sản phẩm vượt quá số lượng hiện có';
+            } else {
+                $_SESSION["cart"][$productId]['quantity'] += $quantity;
+            }
         } else {
             // Nếu chưa cso thì thêm sản phẩm mới và để số lượng là 1
             $_SESSION["cart"][$productId] = [
@@ -52,7 +57,13 @@ function updateQuantity()
 
         $change = $_GET['change'];
 
-        $quantitySession = $_SESSION["cart"][$productId]['quantity'] + $change; // Số lượng mới trong session
+        $realQuantity = showOne('tb_san_pham', $productId)['so_luong'];
+        if ($_SESSION["cart"][$productId]['quantity'] + $change > $realQuantity) {
+            $_SESSION['error'] = 'Số lượng sản phẩm vượt quá số lượng hiện có';
+            $quantitySession = $_SESSION["cart"][$productId]['quantity']; // Số lượng mới trong session
+        } else {
+            $quantitySession = $_SESSION["cart"][$productId]['quantity'] + $change; // Số lượng mới trong session
+        }
 
         // Kiểm tra nếu số lượng mới nhỏ hơn hoặc bằng 0, thì cập nhật lại thành 1
         if ($quantitySession <= 0) {

@@ -147,3 +147,28 @@ function orderDetailIndex($id)
     $title = 'Chi tiết đơn hàng ' . $order['ma_dh'];
     require_once PATH_VIEW . 'order-detail.php';
 }
+
+function orderUpdateClient($id, $id_tt)
+{
+    $order = showOne('tb_don_hang', $id);
+
+    if (empty($order)) {
+        echo "<script>alert('Đơn hàng không tồn tại')</script>";
+        header('location: ' . BASE_URL . '?act=myOrder');
+        exit();
+    }
+
+    if (empty($id_tt) || $id_tt != 6 && $id_tt != 7) {
+        echo "<script>alert('Trạng thái không hợp lệ')</script>";
+        header('location: ' . BASE_URL . '?act=myOrder');
+        exit();
+    }
+
+    $orderData = [
+        'id_tt' => $id_tt,
+    ];
+
+    update('tb_don_hang', $id, $orderData);
+
+    header('location: ' . BASE_URL . '?act=myOrder');
+}

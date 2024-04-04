@@ -94,13 +94,12 @@
               <span class="article-back-stars">☆☆☆☆☆</span>
               <span class="article-front-stars" style="width:<?= getAverageRating($product['id']) * 100 / 5 ?>%">★★★★★</span>
             </div>
-            <span>(<?= 0 ?>% - <?= 0 ?> đánh giá)</span>
           </div>
           <?php if ($product['so_luong'] > 0) {
             $gia = $product['gia_km'] != 0 ? $product['gia_km'] : $product['gia_sp'];
           ?>
             <form method="get">
-              <div id=" add-to-cart-container">
+              <div>
                 <input type="text" name="act" value="addToCart" hidden>
                 <input type="text" name="id_sp" value="<?= $product['id'] ?>" hidden>
                 <input type="text" name="product_name" value="<?= $product['ten_sp'] ?>" hidden>

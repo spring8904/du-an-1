@@ -69,7 +69,8 @@
             <tr>
               <td>Trạng thái</td>
               <td>
-                <h5><span class="badge badge-<?= $product['trang_thai'] == 'show' ? 'success' : 'warning' ?>"><?= $product['trang_thai'] ?></span></h5>
+                <?php $status = showOne('tb_trang_thai', $product['id_tt']); ?>
+                <h5><span class="badge badge-<?= $status['id'] == '1' ? 'success' : 'danger' ?>"><?= $status['ten_tt'] ?></span></h5>
               </td>
             </tr>
           </tbody>
