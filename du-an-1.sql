@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2024 at 08:28 AM
+-- Generation Time: Apr 04, 2024 at 10:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -88,7 +88,9 @@ CREATE TABLE `tb_chi_tiet_dh` (
 INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`, `gia`) VALUES
 (11, 8, 10, 1, 13000000),
 (12, 9, 10, 1, 13000000),
-(13, 10, 14, 1, 29900000);
+(13, 10, 14, 1, 29900000),
+(14, 11, 19, 1, 9000000),
+(15, 11, 18, 2, 26000000);
 
 -- --------------------------------------------------------
 
@@ -183,9 +185,10 @@ CREATE TABLE `tb_don_hang` (
 --
 
 INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt`, `id_km`, `tong_tien`, `ghi_chu`, `ho_ten`, `email`, `so_dien_thoai`, `dia_chi`) VALUES
-(8, 'DH1712199127', '2024-04-04 09:52:07', 1, 1, 3, 0, 13000000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(8, 'DH1712199127', '2024-04-04 09:52:07', 1, 1, 7, 0, 13000000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
 (9, 'DH1712199360', '2024-04-04 09:56:00', 10, 1, 3, 0, 13000000, '', 'Client', 'client@gmail.com', '0339735555', 'Hải Phòng'),
-(10, 'DH1712204478', '2024-04-04 11:21:18', 10, 1, 9, 0, 23920000, '', 'Client', 'client@gmail.com', '0339735555', 'Hải Phòng');
+(10, 'DH1712204478', '2024-04-04 11:21:18', 10, 1, 3, 0, 23920000, '', 'Client', 'client@gmail.com', '0339735555', 'Hải Phòng'),
+(11, 'DH1712216348', '2024-04-04 14:39:08', 1, 1, 6, 0, 48800000, 'abc', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -372,13 +375,11 @@ CREATE TABLE `tb_trang_thai` (
 INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
 (1, 'Hiện', 'success'),
 (2, 'Ẩn', 'danger'),
-(3, 'Chờ xử lý', 'warning'),
-(4, 'Đã xử lý', 'warning'),
+(3, 'Chờ xác nhận', 'warning'),
+(4, 'Đang xử lý', 'warning'),
 (5, 'Đang vận chuyển', 'warning'),
-(6, 'Đã giao hàng', 'success'),
-(7, 'Hoàn trả', 'warning'),
-(8, 'Hủy bỏ', 'danger'),
-(9, 'Đã hoàn thành', 'success');
+(6, 'Đã hoàn thành', 'success'),
+(7, 'Hủy bỏ', 'danger');
 
 --
 -- Indexes for dumped tables
@@ -488,7 +489,7 @@ ALTER TABLE `tb_binh_luan`
 -- AUTO_INCREMENT for table `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_chuc_vu`
@@ -512,7 +513,7 @@ ALTER TABLE `tb_danh_muc_sp`
 -- AUTO_INCREMENT for table `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
