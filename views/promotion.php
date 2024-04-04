@@ -48,6 +48,7 @@
                   <th>Tên khuyến mãi</th>
                   <th>Mã khuyến mãi</th>
                   <th>Giảm giá</th>
+                  <th>Ngày kết thúc</th>
                   <th>Trạng thái</th>
                   <th></th>
                 </tr>
@@ -58,6 +59,7 @@
                   <th>Tên khuyến mãi</th>
                   <th>Mã khuyến mãi</th>
                   <th>Giảm giá</th>
+                  <th>Ngày kết thúc</th>
                   <th>Trạng thái</th>
                   <th></th>
                 </tr>
@@ -74,6 +76,7 @@
                     <td><?= $promotion['ten_km'] ?></td>
                     <td><?= $promotion['ma_km'] ?></td>
                     <td><?= $promotion['giam_gia'] ?>%</td>
+                    <td><?= $promotion['ngay_ket_thuc'] ?></td>
                     <td>
                       <h5><?= getStatusPromotion($promotion['id']) ?></h5>
                     </td>
