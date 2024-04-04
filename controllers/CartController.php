@@ -27,32 +27,6 @@ function addToCart()
                 'product_price' => $_GET["product_price"],
             ];
         }
-
-        // Thêm sản phẩm vào giỏ hàng trong cơ sở dữ liệu
-        $cartUser = getCartByUserID($_SESSION['user']['id']); // Lấy dữ liệu giỏ hàng của người dùng trong DB
-
-        if (empty($cartUser)) {
-            // Nếu ko có thì sẽ tạo giỏ hàng mới trong db và lấy ra id của giỏ hàng đấy
-            $cart_id = insert_get_last_id('tb_gio_hang', ['id_nd' => $_SESSION['user']['id']]);
-        } else {
-            $cart_id = $cartUser['id'];
-        }
-
-        $productInCartItems = getProductInCartItem($cart_id); // Lấy ra sản phẩm có trong giỏ hàng của khách hàng
-        if ($productInCartItems) {
-            // Nếu sản phẩm đó đã có thì tiến hành cộng thêm số lượng
-            $quantity = $productInCartItems['quantity'] + 1;
-            updateQuantityCartItem($quantity, $cart_id);
-        } else {
-            if ($cart_id !== null) {
-                $cartItemData = [
-                    'id_gh' => $cart_id,
-                    'id_sp' => $productId,
-                    'so_luong' => 1
-                ];
-                insert('tb_muc_gh', $cartItemData);
-            }
-        }
     }
 
     header('Location: ' . BASE_URL);
@@ -78,45 +52,26 @@ function updateQuantity()
 
         $change = $_GET['change'];
 
-        // Lấy ra thông tin giỏ hàng của người dùng
-        $cartUser = getCartByUserID($_SESSION['user']['id']);
-        // Lấy ra sản phẩm người dùng có trong giỏ hàng
-        $productInCartItems = getProductInCartItem($cartUser['id']);
+        $quantitySession = $_SESSION["cart"][$productId]['quantity'] + $change; // Số lượng mới trong session
 
-        if ($productInCartItems) {
-            $quantity = $productInCartItems['so_luong'] + $change; // Số lượng mới trong cơ sở dữ liệu
-            $quantitySession = $_SESSION["cart"][$productId]['quantity'] + $change; // Số lượng mới trong session
-
-            // Kiểm tra nếu số lượng mới nhỏ hơn hoặc bằng 0, thì cập nhật lại thành 1
-            if ($quantity <= 0 || $quantitySession <= 0) {
-                $quantity = 1;
-                $quantitySession = 1;
-            }
-
-            // Cập nhật số lượng trong cơ sở dữ liệu
-            updateQuantityCartItem($quantity, $cartUser['id']);
-
-            // Cập nhật số lượng trong session
-            $_SESSION["cart"][$productId]['quantity'] = $quantitySession;
+        // Kiểm tra nếu số lượng mới nhỏ hơn hoặc bằng 0, thì cập nhật lại thành 1
+        if ($quantitySession <= 0) {
+            $quantitySession = 1;
         }
 
-        header('Location: ' . BASE_URL . '?act=cart');
-        exit;
+        // Cập nhật số lượng trong session
+        $_SESSION["cart"][$productId]['quantity'] = $quantitySession;
     }
+
+    header('Location: ' . BASE_URL . '?act=cart');
+    exit;
 }
+
 
 // Hàm xóa sản phẩm trong giỏ hàng
 function remoteCartItem()
 {
     if (isset($_GET["id_sp"])) {
-        // Lấy ra thông tin giỏ hàng của người dùng
-        $cartUser = getCartByUserID($_SESSION['user']['id']);
-        // Lấy ra sản phẩm người dùng có trong giỏ hàng
-        $productInCartItems = getProductInCartItem($cartUser['id']);
-
-        // Xóa sản phẩm có trong giỏ hàng
-        delete('tb_muc_gh', $productInCartItems["id"]);
-
         // Xóa sản phẩm khỏi giỏ hàng trong session
         unset($_SESSION['cart'][$_GET["id_sp"]]);
 
@@ -128,19 +83,7 @@ function remoteCartItem()
 // Hàm xóa tất cả sản phẩm có trong giỏ hàng
 function remoteAllCart()
 {
-    $cartUser = getCartByUserID($_SESSION['user']['id']);
-
-    if ($cartUser) {
-        // Xóa các sản phẩm trong giỏ hàng
-        remoteAllCartItem($cartUser['id']);
-
-        // Xóa giỏ hàng
-        delete('tb_gio_hang', $cartUser['id']);
-
-        // Xóa toàn bộ giỏ hàng trong session
-        unset($_SESSION['cart']);
-    }
-
+    unset($_SESSION['cart']);
     header('Location: ' . BASE_URL . '?act=cart');
     exit;
 }

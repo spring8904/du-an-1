@@ -21,7 +21,6 @@ function orderDetail($id)
     e404();
   }
 
-  $user = showOne('tb_nguoi_dung', $order['id_nd']);
   $orderDetails = showAllDetailOrrder($id);
   $status = showOne('tb_trang_thai', $order['id_tt']);
 
