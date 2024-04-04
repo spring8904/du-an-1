@@ -162,7 +162,9 @@
             <?php endif ?>
           </div>
           <!-- loged user review -->
-          <?php if (isset($_SESSION['user']) && $_SESSION['user']['id']) { ?>
+
+          <?php
+          if (isset($_SESSION['user']) && $_SESSION['user']['id'] && checkBoughtProduct($_SESSION['user']['id'])) { ?>
             <div class="review-write-container">
               <h3>Bạn đã mua sản phẩm này trước đây, đã đủ điều kiện để dánh giá</h3>
               <form method="POST">

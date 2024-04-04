@@ -8,3 +8,12 @@ function getOrderByUserID($user_id)
   $stmt->execute();
   return $stmt->fetchAll();
 }
+
+function getOrderDetailsByOrderId($order_id)
+{
+  $sql = "SELECT * FROM tb_chi_tiet_dh WHERE id_dh = :order_id";
+  $stmt = $GLOBALS['conn']->prepare($sql);
+  $stmt->bindParam(':order_id', $order_id);
+  $stmt->execute();
+  return $stmt->fetchAll();
+}

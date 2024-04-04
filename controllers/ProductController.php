@@ -50,3 +50,20 @@ function getAverageRating($id)
   }
   return count($reviews) > 0 ? $total / count($reviews) : 0;
 }
+
+function checkBoughtProduct($id)
+{
+  $user = showOne('tb_nguoi_dung', $id);
+  $orders = getOrderByUserId($user['id']);
+  foreach ($orders as $order) {
+    if ($order['id_tt'] == 9) {
+      $orderDetails = getOrderDetailsByOrderId($order['id']);
+      foreach ($orderDetails as $orderDetail) {
+        if ($orderDetail['id_sp'] == $_GET['id']) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
