@@ -118,6 +118,12 @@
 						</a>
 					</div>
 				</li>
+
+				<li class="navigation-item">
+					<a href="<?= BASE_URL ?>?act=promotion">
+						<span>Mã khuyến mãi</span>
+					</a>
+				</li>
 			</ul>
 
 			<div id="cart-container">

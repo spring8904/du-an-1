@@ -58,6 +58,8 @@ match ($act) {
     'myOrder' => myOrderIndex(),
 
     'order-detail' => orderDetailIndex($_GET['id']),
+
+    'promotion' => promotionIndex(),
 };
 
 require_once './common/disconnect-db.php';
