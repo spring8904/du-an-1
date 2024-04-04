@@ -54,6 +54,10 @@ match ($act) {
     'contact' => showFormContact(),
 
     'account' => accountIndex(),
+
+    'myOrder' => myOrderIndex(),
+
+    'order-detail' => orderDetailIndex($_GET['id']),
 };
 
 require_once './common/disconnect-db.php';

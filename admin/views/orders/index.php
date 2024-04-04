@@ -44,7 +44,7 @@
                 <td><?= $order['ma_dh'] ?></td>
                 <td><?= $order['ngay_dat'] ?></td>
                 <td><?= showOne('tb_nguoi_dung', $order['id_nd'])['email'] ?></td>
-                <td><?= getTotalMoney($order['id']) ?> VNĐ</td>
+                <td><?= number_format($order['tong_tien']) ?> VNĐ</td>
                 <td>
                   <h5><span class="badge badge-<?= $status['badge'] ?? 'secondary' ?>"><?= $status['ten_tt'] ?></span></h5>
                 </td>

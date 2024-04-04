@@ -60,7 +60,7 @@
 								<span>Thông tin</span>
 							</a>
 
-							<a href="orders" class="nht-login-button">
+							<a href="<?= BASE_URL ?>?act=myOrder" class="nht-login-button">
 								<img src="imgs/shopping-cart.png" alt="image error" />
 								<span>Đơn hàng</span>
 							</a>

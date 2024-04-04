@@ -34,15 +34,19 @@
             </tr>
             <tr>
               <td>Tên người đặt</td>
-              <td><?= $user['ho_ten'] ?></td>
+              <td><?= $order['ho_ten'] ?></td>
             </tr>
             <tr>
               <td>Email người đặt</td>
-              <td><?= $user['email'] ?></td>
+              <td><?= $order['email'] ?></td>
             </tr>
             <tr>
-              <td>Ngày đặt</td>
-              <td><?= formatDate($order['ngay_dat']) ?></td>
+              <td>Số điện thoại người đặt</td>
+              <td><?= $order['so_dien_thoai'] ?></td>
+            </tr>
+            <tr>
+              <td>Địa chỉ người đặt</td>
+              <td><?= $order['dia_chi'] ?></td>
             </tr>
             <tr>
               <td>Phương thức thanh toán</td>
@@ -108,7 +112,7 @@
                 </td>
                 <td><?= $product['ten_sp'] ?></td>
                 <td><?= $orderDetail['so_luong'] ?></td>
-                <td><?= number_format($product['gia_sp'] * $orderDetail['so_luong']) ?> VNĐ</td>
+                <td><?= number_format($orderDetail['gia'] * $orderDetail['so_luong']) ?> VNĐ</td>
               </tr>
             <?php } ?>
           </tbody>
@@ -121,7 +125,7 @@
     <div class="card-body">
       <h5 class="d-flex justify-content-between align-items-center">
         <span>Tổng tiền:</span>
-        <span class="text-danger fw-bold"><?= getTotalMoney($order['id']) ?> VNĐ</span>
+        <span class="text-danger fw-bold"><?= number_format($order['tong_tien']) ?> VNĐ</span>
       </h5>
     </div>
   </div>
