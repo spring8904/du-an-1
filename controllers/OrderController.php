@@ -18,6 +18,8 @@ function orderIndex()
 // Hàm thêm dữ liệu đơn hàng
 function addOrder()
 {
+    $user_id = $_SESSION['user']['id'];
+
     if (isset($_POST['addOrder'])) {
 
         $err = orderValidate();
@@ -28,13 +30,12 @@ function addOrder()
             die;
         }
 
-        $user_id = $_SESSION['user']['id'];
-
         $orderData = [
-            'ma_dh' => 'DH' . time(),
+            'ma_dh' => time() . rand(1000, 9999),
             'id_nd' => $user_id,
-            'id_pttt' => $_POST['id_pttt'],
+            'id_pttt' => 1,
             'id_tt' => 3,
+            'ma_km' => $_SESSION['promotion']['ma_km'] ?? '',
             'tong_tien' => $_POST['total_bill'],
             'ho_ten' => $_POST['ho_ten'],
             'email' => $_POST['email'],
@@ -45,13 +46,144 @@ function addOrder()
 
         // Thêm thông tin người đặt và vào đơn hàng
         createOrder($orderData);
+        header('location: ' . BASE_URL . '?act=thanks&check=true');
+    }
 
-        // Xóa toàn bộ sản phẩm trong session
-        unset($_SESSION['cart']);
+    if (isset($_POST['vnpay'])) {
+        $err = orderValidate();
 
-        unset($_SESSION['promotion']);
+        if (!empty($err)) {
+            $_SESSION['error'] = $err;
+            header('location: ' . BASE_URL . '?act=order');
+            die;
+        }
 
-        header('location: ' . BASE_URL . '?act=myOrder');
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+        $orderData = [
+            'ma_dh' => time() . rand(1000, 9999),
+            'id_nd' => $user_id,
+            'id_pttt' => 1,
+            'id_tt' => 3,
+            'ten_km' => $_SESSION['promotion']['ma_km'] ?? '',
+            'tong_tien' => $_POST['total_bill'],
+            'ho_ten' => $_POST['ho_ten'],
+            'email' => $_POST['email'],
+            'so_dien_thoai' => $_POST['so_dien_thoai'],
+            'dia_chi' => $_POST['dia_chi'],
+            'ghi_chu' => $_POST['ghi_chu'] ?? '',
+        ];
+        $dataUrl = '';
+
+        foreach ($orderData as $key => $value) {
+            $dataUrl .= '&' . $key . '=' . $value;
+        }
+
+        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl =  BASE_URL . '?act=thanks&check=true' . $dataUrl;
+        $vnp_TmnCode = "CGXZLS0Z"; //Mã website tại VNPAY 
+        $vnp_HashSecret = "XNBCJFAKAZQSGTARRLGCHVZWCIOIGSHN"; //Chuỗi bí mật
+
+        $vnp_TxnRef = time() . rand(1000, 9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = 'Thanh toán đơn hàng ' . $vnp_TxnRef;
+        $vnp_OrderType = 'billpayment';
+        $vnp_Amount = $_POST['total_bill'] * 100;
+        $vnp_Locale = 'vn';
+        $vnp_BankCode = 'NCB';
+        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+        //Add Params of 2.0.1 Version
+        //$vnp_ExpireDate = $_POST['txtexpire'];
+        //Billing
+        // $vnp_Bill_Mobile = $_POST['txt_billing_mobile'];
+        // $vnp_Bill_Email = $_POST['txt_billing_email'];
+        // $fullName = trim($_POST['txt_billing_fullname']);
+        // if (isset($fullName) && trim($fullName) != '') {
+        //     $name = explode(' ', $fullName);
+        //     $vnp_Bill_FirstName = array_shift($name);
+        //     $vnp_Bill_LastName = array_pop($name);
+        // }
+        // $vnp_Bill_Address = $_POST['txt_inv_addr1'];
+        // $vnp_Bill_City = $_POST['txt_bill_city'];
+        // $vnp_Bill_Country = $_POST['txt_bill_country'];
+        // $vnp_Bill_State = $_POST['txt_bill_state'];
+        // // Invoice
+        // $vnp_Inv_Phone = $_POST['txt_inv_mobile'];
+        // $vnp_Inv_Email = $_POST['txt_inv_email'];
+        // $vnp_Inv_Customer = $_POST['txt_inv_customer'];
+        // $vnp_Inv_Address = $_POST['txt_inv_addr1'];
+        // $vnp_Inv_Company = $_POST['txt_inv_company'];
+        // $vnp_Inv_Taxcode = $_POST['txt_inv_taxcode'];
+        // $vnp_Inv_Type = $_POST['cbo_inv_type'];
+        $inputData = array(
+            "vnp_Version" => "2.1.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => $vnp_Locale,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef
+
+            // "vnp_ExpireDate" => $vnp_ExpireDate,
+            // "vnp_Bill_Mobile" => $vnp_Bill_Mobile,
+            // "vnp_Bill_Email" => $vnp_Bill_Email,
+            // "vnp_Bill_FirstName" => $vnp_Bill_FirstName,
+            // "vnp_Bill_LastName" => $vnp_Bill_LastName,
+            // "vnp_Bill_Address" => $vnp_Bill_Address,
+            // "vnp_Bill_City" => $vnp_Bill_City,
+            // "vnp_Bill_Country" => $vnp_Bill_Country,
+            // "vnp_Inv_Phone" => $vnp_Inv_Phone,
+            // "vnp_Inv_Email" => $vnp_Inv_Email,
+            // "vnp_Inv_Customer" => $vnp_Inv_Customer,
+            // "vnp_Inv_Address" => $vnp_Inv_Address,
+            // "vnp_Inv_Company" => $vnp_Inv_Company,
+            // "vnp_Inv_Taxcode" => $vnp_Inv_Taxcode,
+            // "vnp_Inv_Type" => $vnp_Inv_Type
+        );
+
+        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+            $inputData['vnp_BankCode'] = $vnp_BankCode;
+        }
+        // if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
+        //     $inputData['vnp_Bill_State'] = $vnp_Bill_State;
+        // }
+
+        //var_dump($inputData);
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+            } else {
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
+
+        $vnp_Url = $vnp_Url . "?" . $query;
+        if (isset($vnp_HashSecret)) {
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+        }
+        $returnData = array(
+            'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+        );
+        if (isset($_POST['vnpay'])) {
+            header('Location: ' . $vnp_Url);
+            die();
+        } else {
+            echo json_encode($returnData);
+        }
+        // vui lòng tham khảo thêm tại code demo
+
     }
 }
 
@@ -75,9 +207,8 @@ function createOrder($orderData)
             ];
 
             insert('tb_chi_tiet_dh', $newOrderItem);
+            update('tb_san_pham', $item["id"], ['so_luong' => $product['so_luong'] - $item["quantity"]]);
         }
-
-        echo "<script>alert('Đặt hàng thành công')</script>";
     }
 }
 
@@ -116,10 +247,6 @@ function orderValidate()
 
     if (empty($_POST['dia_chi'])) {
         $err[] = 'Vui lòng nhập địa chỉ';
-    }
-
-    if (empty($_POST['id_pttt'])) {
-        $err[] = 'Vui lòng chọn phương thức thanh toán';
     }
 
     return $err;
@@ -169,6 +296,46 @@ function orderUpdateClient($id, $id_tt)
     ];
 
     update('tb_don_hang', $id, $orderData);
+    if ($id_tt == 7) {
+        $orderDetails = showAllDetailOrrder($id);
+        foreach ($orderDetails as $orderDetail) {
+            $product = showOne('tb_san_pham', $orderDetail['id_sp']);
+            update('tb_san_pham', $orderDetail['id_sp'], ['so_luong' => $product['so_luong'] + $orderDetail['so_luong']]);
+        }
+    }
 
     header('location: ' . BASE_URL . '?act=myOrder');
+}
+
+function thanksIndex()
+{
+    if ($_GET['check'] == 'true') {
+        if (!isset($_SESSION['user']) || !isset($_SESSION['cart'])) {
+            header('location: ' . BASE_URL);
+            exit();
+        }
+
+        if (isset($_GET['vnp_ResponseCode']) && $_GET['vnp_ResponseCode'] === '00' && isset($_GET['vnp_TransactionStatus']) && $_GET['vnp_TransactionStatus'] === '00') {
+            $orderData = [
+                'ma_dh' => $_GET['vnp_TxnRef'],
+                'id_nd' => $_GET['id_nd'],
+                'id_pttt' => 2,
+                'id_tt' => 3,
+                'tong_tien' => $_GET['tong_tien'],
+                'ho_ten' => $_GET['ho_ten'],
+                'email' => $_GET['email'],
+                'so_dien_thoai' => $_GET['so_dien_thoai'],
+                'dia_chi' => $_GET['dia_chi'],
+                'ghi_chu' => $_GET['ghi_chu'] ?? '',
+            ];
+            createOrder($orderData);
+        }
+
+        unset($_SESSION['cart']);
+        unset($_SESSION['promotion']);
+
+        require_once PATH_VIEW . 'thanks.php';
+    } else {
+        header('location: ' . BASE_URL);
+    }
 }
