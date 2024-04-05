@@ -106,19 +106,9 @@
                             <label for="user_address" class="form-label">Ghi chú:</label>
                             <textarea class="form-control" id="user_address" name="ghi_chu"></textarea>
                         </div>
-                        <!-- Chọn phương thức thanh toán -->
-                        <div class="mb-3">
-                            <?php $paymentMethods = listAll('tb_phuong_thuc_thanh_toan'); ?>
-                            <label for="" class="form-label">Phương thức thanh toán:</label>
-                            <select class="form-control" name="id_pttt" required>
-                                <option value="">Chọn phương thức</option>
-                                <?php foreach ($paymentMethods as $paymentMethod) : ?>
-                                    <option value="<?= $paymentMethod['id'] ?>"><?= $paymentMethod['ten_pttt'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
                         <input type="text" name="total_bill" value="<?= $total ?>" hidden>
-                        <button type="submit" name="addOrder" class="btn btn-primary">Đặt hàng</button>
+                        <button type="submit" name="addOrder" class="btn btn-primary mb-3">Thanh toán khi nhận hàng</button>
+                        <button type="submit" name="vnpay" class="btn btn-primary mb-3">Thanh toán qua VnPay</button>
                     </form>
                 </div>
             </div>

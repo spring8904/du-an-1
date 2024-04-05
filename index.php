@@ -62,6 +62,8 @@ match ($act) {
     'promotion' => promotionIndex(),
 
     'order-update' => orderUpdateClient($_GET['id'], $_GET['id_tt']),
+
+    'thanks' => thanksIndex(),
 };
 
 require_once './common/disconnect-db.php';

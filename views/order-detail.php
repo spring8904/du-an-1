@@ -140,7 +140,7 @@
                         <img src="<?= BASE_URL . 'uploads/products/' . getProductImage($product['id'])['hinh_anh'] ?>" alt="<?= $product['ten_sp'] ?>" width="50">
                       <?php } ?>
                     </td>
-                    <td><?= $product['ten_sp'] ?></td>
+                    <td><a href="<?= BASE_URL . '?act=product&id=' . $product['id'] ?>" class="text-decoration-underline text-primary"><?= $product['ten_sp'] ?></a></td>
                     <td><?= $orderDetail['so_luong'] ?></td>
                     <td><?= number_format($orderDetail['gia'] * $orderDetail['so_luong']) ?> VNĐ</td>
                   </tr>
@@ -153,6 +153,21 @@
 
       <div class="card shadow">
         <div class="card-body">
+          <?php
+          if (!empty($order['ma_km'])) {
+            $promotion = checkPromotionCode($order['ma_km']);
+            $gia_goc = $order['tong_tien'] * 100 / (100 - $promotion['giam_gia']);
+            $giam_gia = $gia_goc - $order['tong_tien'];
+          ?>
+            <h5 class="d-flex justify-content-between align-items-center">
+              <span>Giá gốc:</span>
+              <span class="text-success fw-bold"><?= number_format($gia_goc) ?> VNĐ</span>
+            </h5>
+            <h6 class="d-flex justify-content-between align-items-center">
+              <span>Giảm giá:</span>
+              <span class="text-success fw-bold">-<?= number_format($giam_gia) ?> VNĐ</span>
+            </h6>
+          <?php } ?>
           <h5 class="d-flex justify-content-between align-items-center">
             <span>Tổng tiền:</span>
             <span class="text-danger fw-bold"><?= number_format($order['tong_tien']) ?> VNĐ</span>
