@@ -33,65 +33,37 @@
       <!-- Page Heading -->
       <h1 class="h3 mb-2 text-gray-800">Tổng hợp mã khuyến mãi</h1>
 
-      <?php if (isset($_SESSION['success'])) { ?>
-        <p class="alert alert-success"><?= $_SESSION['success'] ?></p>
-      <?php } ?>
-
-      <!-- DataTales Example -->
       <div class="card shadow mb-4">
         <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>STT</th>
-                  <th>Tên khuyến mãi</th>
-                  <th>Mã khuyến mãi</th>
-                  <th>Giảm giá</th>
-                  <th>Ngày kết thúc</th>
-                  <th>Trạng thái</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>STT</th>
-                  <th>Tên khuyến mãi</th>
-                  <th>Mã khuyến mãi</th>
-                  <th>Giảm giá</th>
-                  <th>Ngày kết thúc</th>
-                  <th>Trạng thái</th>
-                  <th></th>
-                </tr>
-              </tfoot>
-              <tbody>
-                <?php $stt = 1;
-                foreach ($promotions as $promotion) {
-                  if ($promotion['ngay_ket_thuc'] < date('Y-m-d')) {
-                    continue;
-                  }
-                ?>
-                  <tr>
-                    <td><?= $stt++ ?></td>
-                    <td><?= $promotion['ten_km'] ?></td>
-                    <td><?= $promotion['ma_km'] ?></td>
-                    <td><?= $promotion['giam_gia'] ?>%</td>
-                    <td><?= $promotion['ngay_ket_thuc'] ?></td>
-                    <td>
-                      <h5><?= getStatusPromotion($promotion['id']) ?></h5>
-                    </td>
-
-                    <td>
-                      <button class="btn btn-info" onclick="copyToClipboard('<?= $promotion['ma_km'] ?>')">Copy</button>
-                    </td>
-                  </tr>
-                <?php } ?>
-              </tbody>
-            </table>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <?php foreach ($promotions as $promotion) {
+              if ($promotion['ngay_ket_thuc'] >= date('Y-m-d') && $promotion['ngay_bat_dau'] <= date('Y-m-d')) { ?>
+                <div class="col">
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4 bg-primary d-flex align-items-center justify-content-center">
+                        <h3 class="text-white text-center">Giảm giá <?= $promotion['giam_gia'] ?>%</h3>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title text-primary"><?= $promotion['ten_km'] ?></h5>
+                          <p class="card-text">Mã khuyến mãi: <?= $promotion['ma_km'] ?></p>
+                          <button class="btn btn-info" onclick="copyToClipboard('<?= $promotion['ma_km'] ?>')">Copy</button>
+                        </div>
+                        <div class="card-footer">
+                          <p class="card-text"><small class="text-body-secondary">Ngày kết thúc: <?= $promotion['ngay_ket_thuc'] ?></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <?php }
+            } ?>
           </div>
         </div>
       </div>
     </div>
+
   </main>
 
   <!-- Footer -->
