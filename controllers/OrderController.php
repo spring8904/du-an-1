@@ -66,7 +66,7 @@ function addOrder()
             'id_nd' => $user_id,
             'id_pttt' => 1,
             'id_tt' => 3,
-            'ten_km' => $_SESSION['promotion']['ma_km'] ?? '',
+            'ma_km' => $_SESSION['promotion']['ma_km'] ?? '',
             'tong_tien' => $_POST['total_bill'],
             'ho_ten' => $_POST['ho_ten'],
             'email' => $_POST['email'],
@@ -309,18 +309,22 @@ function orderUpdateClient($id, $id_tt)
 
 function thanksIndex()
 {
-    if ($_GET['check'] == 'true') {
-        if (!isset($_SESSION['user']) || !isset($_SESSION['cart'])) {
-            header('location: ' . BASE_URL);
-            exit();
-        }
-
-        if (isset($_GET['vnp_ResponseCode']) && $_GET['vnp_ResponseCode'] === '00' && isset($_GET['vnp_TransactionStatus']) && $_GET['vnp_TransactionStatus'] === '00') {
+    if (
+        $_GET['check'] == 'true'
+        && isset($_SESSION['cart'])
+    ) {
+        if (
+            isset($_GET['vnp_ResponseCode'])
+            && $_GET['vnp_ResponseCode'] === '00'
+            && isset($_GET['vnp_TransactionStatus'])
+            && $_GET['vnp_TransactionStatus'] === '00'
+        ) {
             $orderData = [
                 'ma_dh' => $_GET['vnp_TxnRef'],
                 'id_nd' => $_GET['id_nd'],
                 'id_pttt' => 2,
                 'id_tt' => 3,
+                'ma_km' => $_GET['ma_km'] ?? '',
                 'tong_tien' => $_GET['tong_tien'],
                 'ho_ten' => $_GET['ho_ten'],
                 'email' => $_GET['email'],
@@ -329,12 +333,18 @@ function thanksIndex()
                 'ghi_chu' => $_GET['ghi_chu'] ?? '',
             ];
             createOrder($orderData);
+            require_once PATH_VIEW . 'thanks.php';
+        } else if (
+            !isset($_GET['vnp_ResponseCode'])
+            || !isset($_GET['vnp_TransactionStatus'])
+        ) {
+            require_once PATH_VIEW . 'thanks.php';
+        } else {
+            header('location: ' . BASE_URL . '?act=cart');
+            exit();
         }
-
         unset($_SESSION['cart']);
         unset($_SESSION['promotion']);
-
-        require_once PATH_VIEW . 'thanks.php';
     } else {
         header('location: ' . BASE_URL);
     }
