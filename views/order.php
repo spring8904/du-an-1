@@ -109,6 +109,7 @@
                         <input type="text" name="total_bill" value="<?= $total ?>" hidden>
                         <button type="submit" name="addOrder" class="btn btn-primary mb-3">Thanh toán khi nhận hàng</button>
                         <button type="submit" name="vnpay" class="btn btn-primary mb-3">Thanh toán qua VnPay</button>
+                        <button type="submit" name="payUrl" class="btn btn-primary mb-3">Thanh toán qua Momo</button>
                     </form>
                 </div>
             </div>
