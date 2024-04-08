@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 07, 2024 at 09:03 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 08, 2024 lúc 03:56 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,48 +18,49 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `du-an-1`
+-- Cơ sở dữ liệu: `du-an-1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_bai_viet`
+-- Cấu trúc bảng cho bảng `tb_bai_viet`
 --
 
 CREATE TABLE `tb_bai_viet` (
-  `id` int NOT NULL,
-  `id_nd` int NOT NULL,
-  `tieu_de` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `hinh_anh` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `noi_dung` text COLLATE utf8mb4_general_ci NOT NULL,
-  `ngay_dang` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ngay_sua` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `id_nd` int(11) NOT NULL,
+  `tieu_de` varchar(100) NOT NULL,
+  `mo_ta_bv` varchar(225) DEFAULT NULL,
+  `hinh_anh` varchar(255) NOT NULL,
+  `noi_dung` text NOT NULL,
+  `ngay_dang` datetime NOT NULL DEFAULT current_timestamp(),
+  `ngay_sua` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_bai_viet`
+-- Đang đổ dữ liệu cho bảng `tb_bai_viet`
 --
 
-INSERT INTO `tb_bai_viet` (`id`, `id_nd`, `tieu_de`, `hinh_anh`, `noi_dung`, `ngay_dang`, `ngay_sua`) VALUES
-(1, 4, 'zxcv', '66015eb108e27.jpg', 'qưer', '2024-03-25 12:19:31', '2024-03-26 09:21:05');
+INSERT INTO `tb_bai_viet` (`id`, `id_nd`, `tieu_de`, `mo_ta_bv`, `hinh_anh`, `noi_dung`, `ngay_dang`, `ngay_sua`) VALUES
+(5, 1, 'Bài viết 2', 'Demo bài viết', '66134d88e1686.jpg', 'Bài viết 2 check lại trang admin', '2024-04-08 03:49:39', '2024-04-08 03:51:04');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_binh_luan`
+-- Cấu trúc bảng cho bảng `tb_binh_luan`
 --
 
 CREATE TABLE `tb_binh_luan` (
-  `id` int NOT NULL,
-  `id_nd` int NOT NULL,
-  `id_sp` int NOT NULL,
-  `noi_dung` text COLLATE utf8mb4_general_ci NOT NULL,
-  `thoi_gian` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `id_nd` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `noi_dung` text NOT NULL,
+  `thoi_gian` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_binh_luan`
+-- Đang đổ dữ liệu cho bảng `tb_binh_luan`
 --
 
 INSERT INTO `tb_binh_luan` (`id`, `id_nd`, `id_sp`, `noi_dung`, `thoi_gian`) VALUES
@@ -70,30 +71,30 @@ INSERT INTO `tb_binh_luan` (`id`, `id_nd`, `id_sp`, `noi_dung`, `thoi_gian`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_chi_tiet_dh`
+-- Cấu trúc bảng cho bảng `tb_chi_tiet_dh`
 --
 
 CREATE TABLE `tb_chi_tiet_dh` (
-  `id` int NOT NULL,
-  `id_dh` int NOT NULL,
-  `id_sp` int NOT NULL,
-  `so_luong` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_dh` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `so_luong` int(11) NOT NULL,
   `gia` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_chuc_vu`
+-- Cấu trúc bảng cho bảng `tb_chuc_vu`
 --
 
 CREATE TABLE `tb_chuc_vu` (
-  `id` int NOT NULL,
-  `chuc_vu` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `chuc_vu` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_chuc_vu`
+-- Đang đổ dữ liệu cho bảng `tb_chuc_vu`
 --
 
 INSERT INTO `tb_chuc_vu` (`id`, `chuc_vu`) VALUES
@@ -103,20 +104,20 @@ INSERT INTO `tb_chuc_vu` (`id`, `chuc_vu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_danh_gia`
+-- Cấu trúc bảng cho bảng `tb_danh_gia`
 --
 
 CREATE TABLE `tb_danh_gia` (
-  `id` int NOT NULL,
-  `id_nd` int NOT NULL,
-  `id_sp` int NOT NULL,
-  `so_sao` int NOT NULL,
-  `danh_gia` text COLLATE utf8mb4_general_ci,
-  `ngay_dg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `id_nd` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `so_sao` int(11) NOT NULL,
+  `danh_gia` text DEFAULT NULL,
+  `ngay_dg` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_danh_gia`
+-- Đang đổ dữ liệu cho bảng `tb_danh_gia`
 --
 
 INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_dg`) VALUES
@@ -127,18 +128,18 @@ INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_danh_muc_sp`
+-- Cấu trúc bảng cho bảng `tb_danh_muc_sp`
 --
 
 CREATE TABLE `tb_danh_muc_sp` (
-  `id` int NOT NULL,
-  `ten_dm` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `mo_ta` text COLLATE utf8mb4_general_ci,
-  `hinh_anh` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `ten_dm` varchar(50) NOT NULL,
+  `mo_ta` text DEFAULT NULL,
+  `hinh_anh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_danh_muc_sp`
+-- Đang đổ dữ liệu cho bảng `tb_danh_muc_sp`
 --
 
 INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
@@ -150,39 +151,39 @@ INSERT INTO `tb_danh_muc_sp` (`id`, `ten_dm`, `mo_ta`, `hinh_anh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_don_hang`
+-- Cấu trúc bảng cho bảng `tb_don_hang`
 --
 
 CREATE TABLE `tb_don_hang` (
-  `id` int NOT NULL,
-  `ma_dh` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `ngay_dat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_nd` int NOT NULL,
-  `id_pttt` int NOT NULL,
-  `id_tt` int NOT NULL,
-  `ma_km` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `ma_dh` varchar(50) NOT NULL,
+  `ngay_dat` datetime NOT NULL DEFAULT current_timestamp(),
+  `id_nd` int(11) NOT NULL,
+  `id_pttt` int(11) NOT NULL,
+  `id_tt` int(11) NOT NULL,
+  `ma_km` varchar(50) NOT NULL,
   `tong_tien` float NOT NULL,
-  `ghi_chu` text COLLATE utf8mb4_general_ci NOT NULL,
-  `ho_ten` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `so_dien_thoai` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_chi` mediumtext COLLATE utf8mb4_general_ci NOT NULL
+  `ghi_chu` text NOT NULL,
+  `ho_ten` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `so_dien_thoai` varchar(10) NOT NULL,
+  `dia_chi` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_hinh_anh_sp`
+-- Cấu trúc bảng cho bảng `tb_hinh_anh_sp`
 --
 
 CREATE TABLE `tb_hinh_anh_sp` (
-  `id` int NOT NULL,
-  `id_sp` int NOT NULL,
-  `hinh_anh` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `hinh_anh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_hinh_anh_sp`
+-- Đang đổ dữ liệu cho bảng `tb_hinh_anh_sp`
 --
 
 INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
@@ -216,21 +217,21 @@ INSERT INTO `tb_hinh_anh_sp` (`id`, `id_sp`, `hinh_anh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_khuyen_mai`
+-- Cấu trúc bảng cho bảng `tb_khuyen_mai`
 --
 
 CREATE TABLE `tb_khuyen_mai` (
-  `id` int NOT NULL,
-  `ten_km` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `ma_km` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `mo_ta` text COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `ten_km` varchar(50) NOT NULL,
+  `ma_km` varchar(50) NOT NULL,
+  `mo_ta` text NOT NULL,
   `ngay_bat_dau` date NOT NULL,
   `ngay_ket_thuc` date NOT NULL,
   `giam_gia` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_khuyen_mai`
+-- Đang đổ dữ liệu cho bảng `tb_khuyen_mai`
 --
 
 INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `ngay_ket_thuc`, `giam_gia`) VALUES
@@ -242,42 +243,42 @@ INSERT INTO `tb_khuyen_mai` (`id`, `ten_km`, `ma_km`, `mo_ta`, `ngay_bat_dau`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_lien_he`
+-- Cấu trúc bảng cho bảng `tb_lien_he`
 --
 
 CREATE TABLE `tb_lien_he` (
-  `id` int NOT NULL,
-  `tieu_de` text COLLATE utf8mb4_general_ci NOT NULL,
-  `ten_kh` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `so_dien_thoai` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_chi` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `noi_dung` text COLLATE utf8mb4_general_ci NOT NULL,
-  `id_tt` int NOT NULL DEFAULT '3',
-  `ngay_gui` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `tieu_de` text NOT NULL,
+  `ten_kh` varchar(50) NOT NULL,
+  `so_dien_thoai` varchar(15) NOT NULL,
+  `dia_chi` varchar(50) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `noi_dung` text NOT NULL,
+  `id_tt` int(11) NOT NULL DEFAULT 3,
+  `ngay_gui` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_nguoi_dung`
+-- Cấu trúc bảng cho bảng `tb_nguoi_dung`
 --
 
 CREATE TABLE `tb_nguoi_dung` (
-  `id` int NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `mat_khau` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `ho_ten` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_cv` int NOT NULL,
-  `gioi_tinh` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `dia_chi` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mat_khau` varchar(50) NOT NULL,
+  `ho_ten` varchar(50) NOT NULL,
+  `avatar` varchar(255) NOT NULL,
+  `id_cv` int(11) NOT NULL,
+  `gioi_tinh` varchar(50) NOT NULL,
+  `dia_chi` varchar(100) NOT NULL,
   `ngay_sinh` date NOT NULL,
-  `so_dien_thoai` varchar(15) COLLATE utf8mb4_general_ci NOT NULL
+  `so_dien_thoai` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_nguoi_dung`
+-- Đang đổ dữ liệu cho bảng `tb_nguoi_dung`
 --
 
 INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_cv`, `gioi_tinh`, `dia_chi`, `ngay_sinh`, `so_dien_thoai`) VALUES
@@ -288,16 +289,16 @@ INSERT INTO `tb_nguoi_dung` (`id`, `email`, `mat_khau`, `ho_ten`, `avatar`, `id_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_phuong_thuc_thanh_toan`
+-- Cấu trúc bảng cho bảng `tb_phuong_thuc_thanh_toan`
 --
 
 CREATE TABLE `tb_phuong_thuc_thanh_toan` (
-  `id` int NOT NULL,
-  `ten_pttt` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `ten_pttt` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_phuong_thuc_thanh_toan`
+-- Đang đổ dữ liệu cho bảng `tb_phuong_thuc_thanh_toan`
 --
 
 INSERT INTO `tb_phuong_thuc_thanh_toan` (`id`, `ten_pttt`) VALUES
@@ -308,23 +309,23 @@ INSERT INTO `tb_phuong_thuc_thanh_toan` (`id`, `ten_pttt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_san_pham`
+-- Cấu trúc bảng cho bảng `tb_san_pham`
 --
 
 CREATE TABLE `tb_san_pham` (
-  `id` int NOT NULL,
-  `ten_sp` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `ten_sp` varchar(50) NOT NULL,
   `gia_sp` float NOT NULL,
   `gia_km` float NOT NULL,
-  `id_dm` int NOT NULL,
-  `mo_ta` text COLLATE utf8mb4_general_ci NOT NULL,
+  `id_dm` int(11) NOT NULL,
+  `mo_ta` text NOT NULL,
   `ngay_nhap` date NOT NULL,
-  `so_luong` int NOT NULL,
-  `id_tt` int NOT NULL DEFAULT '1'
+  `so_luong` int(11) NOT NULL,
+  `id_tt` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_san_pham`
+-- Đang đổ dữ liệu cho bảng `tb_san_pham`
 --
 
 INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
@@ -340,17 +341,17 @@ INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_trang_thai`
+-- Cấu trúc bảng cho bảng `tb_trang_thai`
 --
 
 CREATE TABLE `tb_trang_thai` (
-  `id` int NOT NULL,
-  `ten_tt` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `badge` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `ten_tt` varchar(50) NOT NULL,
+  `badge` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_trang_thai`
+-- Đang đổ dữ liệu cho bảng `tb_trang_thai`
 --
 
 INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
@@ -363,180 +364,180 @@ INSERT INTO `tb_trang_thai` (`id`, `ten_tt`, `badge`) VALUES
 (7, 'Hủy bỏ', 'danger');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tb_bai_viet`
+-- Chỉ mục cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_binh_luan`
+-- Chỉ mục cho bảng `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_chi_tiet_dh`
+-- Chỉ mục cho bảng `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_chuc_vu`
+-- Chỉ mục cho bảng `tb_chuc_vu`
 --
 ALTER TABLE `tb_chuc_vu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_danh_gia`
+-- Chỉ mục cho bảng `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_danh_muc_sp`
+-- Chỉ mục cho bảng `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_don_hang`
+-- Chỉ mục cho bảng `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_hinh_anh_sp`
+-- Chỉ mục cho bảng `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_khuyen_mai`
+-- Chỉ mục cho bảng `tb_khuyen_mai`
 --
 ALTER TABLE `tb_khuyen_mai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_lien_he`
+-- Chỉ mục cho bảng `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_nguoi_dung`
+-- Chỉ mục cho bảng `tb_nguoi_dung`
 --
 ALTER TABLE `tb_nguoi_dung`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_phuong_thuc_thanh_toan`
+-- Chỉ mục cho bảng `tb_phuong_thuc_thanh_toan`
 --
 ALTER TABLE `tb_phuong_thuc_thanh_toan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_san_pham`
+-- Chỉ mục cho bảng `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_trang_thai`
+-- Chỉ mục cho bảng `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tb_bai_viet`
+-- AUTO_INCREMENT cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tb_binh_luan`
+-- AUTO_INCREMENT cho bảng `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_chi_tiet_dh`
+-- AUTO_INCREMENT cho bảng `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT for table `tb_chuc_vu`
+-- AUTO_INCREMENT cho bảng `tb_chuc_vu`
 --
 ALTER TABLE `tb_chuc_vu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tb_danh_gia`
+-- AUTO_INCREMENT cho bảng `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_danh_muc_sp`
+-- AUTO_INCREMENT cho bảng `tb_danh_muc_sp`
 --
 ALTER TABLE `tb_danh_muc_sp`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tb_don_hang`
+-- AUTO_INCREMENT cho bảng `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `tb_hinh_anh_sp`
+-- AUTO_INCREMENT cho bảng `tb_hinh_anh_sp`
 --
 ALTER TABLE `tb_hinh_anh_sp`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT for table `tb_khuyen_mai`
+-- AUTO_INCREMENT cho bảng `tb_khuyen_mai`
 --
 ALTER TABLE `tb_khuyen_mai`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_lien_he`
+-- AUTO_INCREMENT cho bảng `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_nguoi_dung`
+-- AUTO_INCREMENT cho bảng `tb_nguoi_dung`
 --
 ALTER TABLE `tb_nguoi_dung`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tb_phuong_thuc_thanh_toan`
+-- AUTO_INCREMENT cho bảng `tb_phuong_thuc_thanh_toan`
 --
 ALTER TABLE `tb_phuong_thuc_thanh_toan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_san_pham`
+-- AUTO_INCREMENT cho bảng `tb_san_pham`
 --
 ALTER TABLE `tb_san_pham`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `tb_trang_thai`
+-- AUTO_INCREMENT cho bảng `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
