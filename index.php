@@ -47,6 +47,9 @@ match ($act) {
     //Products
     'product' => productIndex($_GET['id']),
 
+    // Posts
+    'post' => postsIndex($_GET['id']),
+
     // Search
     'search' => searchIndex(),
 

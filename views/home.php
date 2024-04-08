@@ -206,6 +206,34 @@
               <img src="imgs/special_offers/airpods_special_offer.png" alt="">
             </div>
           </section>
+
+          <div id="posts" class="fadein-article-container" style="display: block;">
+            <?php
+            foreach ($posts as $post) { ?>
+              <div class="article">
+                <a href="?act=post&id=<?= $post['id'] ?>">
+
+                  <?php if ($post['hinh_anh']) { ?>
+                    <img src="<?= BASE_URL . 'uploads/posts/' . $post['hinh_anh'] ?>" alt="<?= $post['tieu_de'] ?>">
+                  <?php } ?>
+                  <div class="article-brand">
+                  </div>
+
+                  <span class="article-title">
+                    <?= $post['tieu_de'] ?>
+                  </span>
+
+                  <span class="article-description">
+                    <?= $post['mo_ta_bv'] ?>
+                  </span>
+
+                  <span class="article-date">
+                    <?= $post['ngay_dang'] ?>
+                  </span>
+                </a>
+              </div>
+            <?php } ?>
+          </div>
         </div>
       </div>
     </main>
