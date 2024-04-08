@@ -23,6 +23,10 @@
                             <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="tieu_de" name="tieu_de" required value="<?= $post['tieu_de'] ?>">
                         </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Mô tả bài viết:<span class="text-danger"></span></label>
+                            <input type="text" class="form-control" id="mo_ta_bv" name="mo_ta_bv" required value="<?= $post['mo_ta_bv'] ?>">
+                        </div>
                         <label for="image" class="form-label">Hình ảnh:</label>
                         <div class="mb-3 input-group">
                             <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh">

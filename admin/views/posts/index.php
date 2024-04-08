@@ -21,6 +21,7 @@
               <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tiêu đề bài viết</th>
+              <th>Mô tả bài viết</th>
               <th>Người viết</th>
               <th>Email</th>
               <th>Ngày đăng</th>
@@ -33,6 +34,7 @@
               <th>STT</th>
               <th>Hình ảnh</th>
               <th>Tiêu đề bài viết</th>
+              <th>Mô tả bài viết</th>
               <th>Người viết</th>
               <th>Email</th>
               <th>Ngày đăng</th>
@@ -52,6 +54,7 @@
                   <?php } ?>
                 </td>
                 <td><?= $post['p_tieu_de'] ?></td>
+                <td><?= $post['p_mo_ta_bv'] ?></td>
                 <td><?= $post['us_name'] ?></td>
                 <td><?= $post['us_email'] ?></td>
                 <td><?= $post['p_ngay_dang'] ?></td>

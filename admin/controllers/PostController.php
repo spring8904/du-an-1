@@ -44,6 +44,7 @@ function postCreate()
             $data = [
                 'id_nd' => $_SESSION['user']['id'],
                 'tieu_de' => $_POST['tieu_de'],
+                'mo_ta_bv' => $_POST['mo_ta_bv'],
                 'noi_dung' => $_POST['noi_dung'],
                 'ngay_dang' => date('Y-m-d H:i:s'),
                 'hinh_anh' => uploadImage($_FILES['hinh_anh'], 'posts')
@@ -77,6 +78,7 @@ function postUpdate($id)
         } else {
             $data = [
                 'tieu_de' => $_POST['tieu_de'],
+                'mo_ta_bv' => $_POST['mo_ta_bv'],
                 'noi_dung' => $_POST['noi_dung'],
                 'ngay_sua' => date('Y-m-d H:i:s'),
             ];
@@ -134,6 +136,10 @@ function validatePost($checkImage = false)
 
     if (empty($_POST['noi_dung'])) {
         $err[] = 'Vui lòng nhập nội dung';
+    }
+
+    if (($_POST['mo_ta_bv']) > 255) {
+        $err[] = 'Mô tả bài viết phải ít hơn 255 ký tự';
     }
 
     if ($checkImage) {

@@ -22,7 +22,12 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Tiêu đề bài viết:<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="tieu_de" name="tieu_de" required autofocus>
-                        </div><label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Mô tả bài viết:<span class="text-danger"></span></label>
+                            <input type="text" class="form-control" id="mo_ta_bv" name="mo_ta_bv" required autofocus>
+                        </div>
+                        <label for="image" class="form-label">Hình ảnh:<span class="text-danger">*</span></label>
                         <div class="mb-3 input-group">
                             <input type="file" class="form-control" id="hinh_anh" accept="image/*" onchange="loadFile(event)" name="hinh_anh" required>
                             <label class="input-group-text" for="image">Tải lên</label>

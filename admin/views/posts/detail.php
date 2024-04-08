@@ -33,6 +33,10 @@
               <td><?= $post['p_tieu_de'] ?></td>
             </tr>
             <tr>
+              <td>Mô tả bài viết</td>
+              <td><?= $post['p_mo_ta_bv'] ?></td>
+            </tr>
+            <tr>
               <td>Người viết</td>
               <td><?= $post['us_name'] ?></td>
             </tr>
