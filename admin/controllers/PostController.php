@@ -138,7 +138,7 @@ function validatePost($checkImage = false)
         $err[] = 'Vui lòng nhập nội dung';
     }
 
-    if (($_POST['mo_ta_bv']) > 255) {
+    if (strlen($_POST['mo_ta_bv']) > 255) {
         $err[] = 'Mô tả bài viết phải ít hơn 255 ký tự';
     }
 
