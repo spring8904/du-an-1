@@ -74,56 +74,6 @@
 						</div>
 					</li>
 				<?php endif ?>
-				<li class="navigation-item">
-					<img src="imgs/contact-us.png" alt="image error" />
-					<a href="<?= BASE_URL ?>?act=contact">
-						<span>Liên hệ</span>
-					</a>
-				</li>
-
-				<li class="navigation-item">
-					<img src="imgs/help.png" alt="image error" />
-					<a href="<?= BASE_URL ?>?act=about-us">
-						<span>Giới thiệu</span>
-					</a>
-					<div class="nav-hover-tab" id="about-nht">
-						<div id="call-us-div">
-							<span>
-								<img src="imgs/call-us.png" alt="image error" />
-								Liên hệ
-							</span>
-							<p>+254716119920</p>
-						</div>
-
-						<span class="splitter"></span>
-
-						<a href="#" class="nht-about-button">
-							<img src="imgs/about-us.png" alt="image error" />
-							<span>Về chúng tôi</span>
-						</a>
-						<a href="#" class="nht-about-button">
-							<img src="imgs/shipping.png" alt="image error" />
-							<span>Vận chuyển</span>
-						</a>
-						<a href="#" class="nht-about-button">
-							<img src="imgs/payment.png" alt="image error" />
-							<span>Thanh toán</span>
-						</a>
-
-						<span class="splitter"></span>
-
-						<a href="about-us#aide" class="nht-about-button">
-							<img src="imgs/question-mark.png" alt="image error" />
-							<span>Cần giúp đỡ</span>
-						</a>
-					</div>
-				</li>
-
-				<li class="navigation-item">
-					<a href="<?= BASE_URL ?>?act=promotion">
-						<span>Mã khuyến mãi</span>
-					</a>
-				</li>
 			</ul>
 
 			<div id="cart-container">
@@ -135,4 +85,53 @@
 			</div>
 		</nav>
 	</header>
+	<style>
+		/* CSS để thay đổi màu nền và màu chữ khi hover */
+		.navbar-nav .nav-link:hover {
+			background-color: #c0c0c0;
+			/* Màu nền khi hover */
+			color: blue;
+			/* Màu chữ khi hover */
+		}
+	</style>
+	<section class="container-header">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarScroll">
+					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="./"><span style="font-size: 18px; font-weight: bold">Trang chủ</span></a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<span style="font-size: 18px; font-weight: bold">Danh mục</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<?php
+									$categories = listAll('tb_danh_muc_sp');
+									foreach ($categories as $category) : ?>
+										<a href="?act=search&category_id=<?= $category['id'] ?>&search=" data-category-id="<?= $category['id'] ?>" class="category-button">
+											<img src="<?= BASE_URL ?>uploads/prCategories/<?= $category['hinh_anh'] ?>" alt="category icon" />
+											<span style="font-size: 15px; font-weight: bold"><?= $category['ten_dm'] ?></span>
+										</a>
+									<?php endforeach ?>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="?act=posts-index"><span style="font-size: 18px; font-weight: bold">Bài viết</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="?act=contact"><span style="font-size: 18px; font-weight: bold">Liên hệ</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="?act=promotion"><span style="font-size: 18px; font-weight: bold">Mã khuyến mãi</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</section>
+
 </body>
