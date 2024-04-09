@@ -22,7 +22,7 @@
 				</button>
 			</form>
 
-			<ul id="navigation">
+			<ul id="navigation" class="m-0 p-0">
 				<?php if (!isset($_SESSION['user'])) : ?>
 					<li class="navigation-item">
 						<img src="imgs/connect.png" alt="image error" />
@@ -76,9 +76,14 @@
 				<?php endif ?>
 			</ul>
 
-			<div id="cart-container">
+			<div id="cart-container" class="align-self-center">
 				<a href="<?= BASE_URL ?>?act=cart">
-					<button id="cart-button">
+					<button id="cart-button" class="position-relative">
+						<?php if (isset($_SESSION['cart'])) : ?>
+							<span class="position-absolute z-3 top-0 start-100 translate-middle badge rounded-pill bg-danger">
+								<?= count($_SESSION['cart']) ?>
+							</span>
+						<?php endif ?>
 						<img src="imgs/shopping-cart.png" alt="image error" />
 					</button>
 				</a>
@@ -88,22 +93,22 @@
 	<style>
 		/* CSS để thay đổi màu nền và màu chữ khi hover */
 		.navbar-nav .nav-link:hover {
-			background-color: #c0c0c0;
+			background-color: #c0c0c0 !important;
 			/* Màu nền khi hover */
-			color: blue;
+			color: var(--color-3) !important;
 			/* Màu chữ khi hover */
 		}
 	</style>
-	<section class="container-header">
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<section class="container-header bg-body-tertiary">
+		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarScroll">
-					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-flex justify-content-center gap-4 w-100" style="--bs-scroll-height: 100px;">
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="./"><span style="font-size: 18px; font-weight: bold">Trang chủ</span></a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<a class="nav-link text-black dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								<span style="font-size: 18px; font-weight: bold">Danh mục</span>
 							</a>
 							<ul class="dropdown-menu">
