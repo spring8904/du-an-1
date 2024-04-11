@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 05:26 PM
+-- Generation Time: Apr 11, 2024 at 05:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -143,7 +143,10 @@ CREATE TABLE `tb_danh_gia` (
 INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_dg`) VALUES
 (1, 1, 11, 5, '10 điểm k có nhưng', '2024-04-02 09:21:40'),
 (2, 1, 11, 1, '1 sao', '2024-04-02 09:21:50'),
-(3, 10, 14, 5, 'Xịn xò', '2024-04-04 11:25:48');
+(3, 10, 14, 5, 'Xịn xò', '2024-04-04 11:25:48'),
+(4, 1, 23, 5, 'ok', '2024-04-11 22:30:37'),
+(5, 1, 23, 3, 'ok', '2024-04-11 22:38:15'),
+(6, 1, 23, 4, 'ok', '2024-04-11 22:38:21');
 
 -- --------------------------------------------------------
 
@@ -559,7 +562,7 @@ ALTER TABLE `tb_chuc_vu`
 -- AUTO_INCREMENT for table `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_danh_muc_sp`

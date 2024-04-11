@@ -85,3 +85,21 @@ function getCommentsByProductId($id)
         debug($e);
     }
 }
+
+function getReviewsByProductIdAndUserId($productId, $userId)
+{
+    try {
+        $sql = "SELECT * FROM tb_danh_gia WHERE id_sp = :id_sp AND id_nd = :id_nd";
+
+        $stmt = $GLOBALS['conn']->prepare($sql);
+
+        $stmt->bindParam(":id_sp", $productId);
+        $stmt->bindParam(":id_nd", $userId);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    } catch (\Exception $e) {
+        debug($e);
+    }
+}

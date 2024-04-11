@@ -55,15 +55,22 @@ function checkBoughtProduct($id)
 {
   $user = showOne('tb_nguoi_dung', $id);
   $orders = getOrderByUserId($user['id']);
+  $count = 0;
+
   foreach ($orders as $order) {
-    if ($order['id_tt'] == 9) {
+    if ($order['id_tt'] == 6) {
       $orderDetails = getOrderDetailsByOrderId($order['id']);
       foreach ($orderDetails as $orderDetail) {
         if ($orderDetail['id_sp'] == $_GET['id']) {
-          return true;
+          $count++;
         }
       }
     }
   }
+
+  if (count(getReviewsByProductIdAndUserId($_GET['id'], $_SESSION['user']['id'])) <= $count) {
+    return true;
+  }
+
   return false;
 }
