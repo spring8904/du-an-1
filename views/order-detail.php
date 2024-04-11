@@ -114,6 +114,7 @@
                   <th>Tên sản phẩm</th>
                   <th>Số lượng</th>
                   <th>Thành tiền</th>
+                  <th></th>
                 </tr>
               </thead>
               <tfoot>
@@ -123,6 +124,7 @@
                   <th>Tên sản phẩm</th>
                   <th>Số lượng</th>
                   <th>Thành tiền</th>
+                  <th></th>
                 </tr>
               </tfoot>
               <tbody>
@@ -143,6 +145,14 @@
                     <td><a href="<?= BASE_URL . '?act=product&id=' . $product['id'] ?>" class="text-decoration-underline text-primary"><?= $product['ten_sp'] ?></a></td>
                     <td><?= $orderDetail['so_luong'] ?></td>
                     <td><?= number_format($orderDetail['gia'] * $orderDetail['so_luong']) ?> VNĐ</td>
+                    <td>
+                      <?php if (
+                        $order['id_tt'] == 6
+                        && empty(getReviewsByProductIdAndUserId($product['id'], $_SESSION['user']['id']))
+                      ) { ?>
+                        <a class="btn btn-success" href="<?= BASE_URL . '?act=product&id=' . $product['id'] ?>">Đánh giá</a>
+                      <?php } ?>
+                    </td>
                   </tr>
                 <?php } ?>
               </tbody>

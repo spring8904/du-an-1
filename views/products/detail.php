@@ -165,7 +165,7 @@
           <?php
           if (isset($_SESSION['user']) && $_SESSION['user']['id'] && checkBoughtProduct($_SESSION['user']['id'])) { ?>
             <div class="review-write-container">
-              <h3>Bạn đã mua sản phẩm này trước đây, đã đủ điều kiện để dánh giá</h3>
+              <h3>Bạn đã mua sản phẩm này trước đây, đã đủ điều kiện để đánh giá</h3>
               <form method="POST">
                 <label class="review-write-label">Đánh giá:</label>
                 <div class="review-write-star-input">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 05:40 PM
+-- Generation Time: Apr 11, 2024 at 06:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -146,7 +146,9 @@ INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_d
 (3, 10, 14, 5, 'Xịn xò', '2024-04-04 11:25:48'),
 (4, 1, 23, 5, 'ok', '2024-04-11 22:30:37'),
 (5, 1, 23, 3, 'ok', '2024-04-11 22:38:15'),
-(6, 1, 23, 4, 'ok', '2024-04-11 22:38:21');
+(6, 1, 23, 4, 'ok', '2024-04-11 22:38:21'),
+(7, 1, 14, 5, '5 sao', '2024-04-11 23:13:03'),
+(8, 1, 14, 4, 'oke', '2024-04-11 23:13:27');
 
 -- --------------------------------------------------------
 
@@ -562,7 +564,7 @@ ALTER TABLE `tb_chuc_vu`
 -- AUTO_INCREMENT for table `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_danh_muc_sp`

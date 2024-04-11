@@ -247,6 +247,7 @@ function orderDetailIndex($id)
     $orderDetails = showAllDetailOrrder($id);
     $status = showOne('tb_trang_thai', $order['id_tt']);
     $title = 'Chi tiết đơn hàng ' . $order['ma_dh'];
+
     require_once PATH_VIEW . 'order-detail.php';
 }
 
