@@ -38,15 +38,15 @@ function getPaymentMethod($id)
   return $paymentMethod['ten_pttt'];
 }
 
-function getTotalMoney($id)
+function getgetSalesBy($id)
 {
-  $totalMoney = 0;
+  $getSalesBy = 0;
   $orderDetails = showAllDetailOrrder($id);
   foreach ($orderDetails as $orderDetail) {
     $price = showOne('tb_san_pham', $orderDetail['id_sp'])['gia_sp'];
-    $totalMoney += $orderDetail['so_luong'] * $price;
+    $getSalesBy += $orderDetail['so_luong'] * $price;
   }
-  return number_format($totalMoney);
+  return number_format($getSalesBy);
 }
 
 function orderUpdate($id)

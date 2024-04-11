@@ -79,9 +79,9 @@
 			<div id="cart-container" class="align-self-center">
 				<a href="<?= BASE_URL ?>?act=cart">
 					<button id="cart-button" class="position-relative">
-						<?php if (isset($_SESSION['cart'])) : ?>
+						<?php if (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0) : ?>
 							<span class="position-absolute z-3 top-0 start-100 translate-middle badge rounded-pill bg-danger">
-								<?= count($_SESSION['cart']) ?>
+								<?= count($_SESSION['cart'])  ?>
 							</span>
 						<?php endif ?>
 						<img src="imgs/shopping-cart.png" alt="image error" />

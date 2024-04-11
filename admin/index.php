@@ -95,6 +95,10 @@ match ($act) {
   'login' => authenShowFormLogin(),
   'logout' => authenLogout(),
 
+  'sale-day' => salesDay($_GET['day']),
+  'sale-month' => salesMonth($_GET['month']),
+  'sale-year' => salesYear($_GET['year']),
+
   default => e404(),
 };
 
