@@ -199,7 +199,6 @@
           <div class="col-2">
             <select id="timePeriod" class="form-control">
               <option value="day">Ngày</option>
-              <option value="week">Tuần</option>
               <option value="month" selected>Tháng</option>
               <option value="year">Năm</option>
             </select>
@@ -208,18 +207,6 @@
         </div>
       </div>
       <!-- Card Body -->
-      <div class="card-body">
-        <div class="chart-area">
-          <canvas id="myBarChart"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-      </div>
       <div class="card-body">
         <div class="chart-area">
           <div class="chartjs-size-monitor">
@@ -231,6 +218,19 @@
             </div>
           </div>
           <canvas id="myAreaChart" width="537" height="400" style="display: block; height: 320px; width: 430px;" class="chartjs-render-monitor"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Biểu đồ cột</h6>
+      </div>
+      <div class="card-body">
+        <div class="chart-area">
+          <canvas id="myBarChart"></canvas>
         </div>
       </div>
     </div>

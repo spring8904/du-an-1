@@ -28,7 +28,17 @@ function dashboard()
       $dataMonth[$i] = ['total' => 0, 'month' => $i];
     }
   }
-  $dataYear = thong_ke_theo_nam();
+
+  $dataYear = [];
+  for ($i = date('Y') - 4; $i <= date('Y'); $i++) {
+    foreach (thong_ke_theo_nam() as $year) {
+      if ($year['year'] == $i) {
+        $dataYear[$i] = ['total' => $year['total'], 'year' => $i];
+        break;
+      }
+      $dataYear[$i] = ['total' => 0, 'year' => $i];
+    }
+  }
 
   $moneyDay = getSalesByDay(date('d'));
   $moneyMonth = getSalesByMonth(date('m'));

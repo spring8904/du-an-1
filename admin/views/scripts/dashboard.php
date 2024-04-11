@@ -53,7 +53,7 @@
         ];
         newLabels = [
           <?php foreach ($dataMonth as $month) {
-            echo '["Tháng: ' . $month['month'] . '"],';
+            echo '["T' . $month['month'] . '"],';
           } ?>
         ];
         break;
@@ -63,7 +63,7 @@
         ];
         newLabels = [
           <?php foreach ($dataYear as $year) {
-            echo '["Năm: ' . $year['year'] . '"],';
+            echo '["Năm ' . $year['year'] . '"],';
           } ?>
         ];
         break;
