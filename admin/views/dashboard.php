@@ -91,7 +91,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-4">
+    <div class="col-xl-4 col-md-12 mb-4">
       <div class="card border-left-danger shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
@@ -100,52 +100,40 @@
                 Theo ngày</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 <span id="salesDay">
-                  <?= number_format($moneyDay['total']) ?>
+                  <?= getMoney(date('Y'), date('m'), date('d')) ?>
                 </span> VNĐ
               </div>
             </div>
             <div class="col-auto">
-              <select name="" id="" class="form-control" onchange="getSalesDay(this.value)">
-                <?php for ($i = date('d'); $i >= 1; $i--) : ?>
-                  <option value="<?= $i ?>" <?= date('d') == $i ? 'selected' : null ?>>
-                    <?= $i . '/' . date('n/Y') ?>
-                  </option>
-                <?php endfor; ?>
-              </select>
+              <input type="date" class="form-control" id="" onchange="getSales(this.value)" max="<?= date("Y-m-d") ?>" value="<?= date("Y-m-d") ?>">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6 mb-4">
-      <div class="card border-left-primary shadow h-100 py-2">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                 Theo tháng</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 <span id="salesMonth">
-                  <?= number_format($moneyMonth['total']) ?>
+                  <?= getMoney(date('Y'), date('m')) ?>
                 </span> VNĐ
               </div>
             </div>
             <div class="col-auto">
-              <select name="" id="" class="form-control" onchange="getSalesMonth(this.value)">
-                <?php for ($i = 1; $i <= 12; $i++) : ?>
-                  <option value="<?= $i ?>" <?= date('m') == $i ? 'selected' : null ?>>Tháng
-                    <?= $i . '/' . date('Y') ?>
-                  </option>
-                <?php endfor; ?>
-              </select>
+              <input type="month" class="form-control" id="" onchange="getSales(this.value)" max="<?= date("Y-m") ?>" value="<?= date("Y-m") ?>">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
@@ -154,34 +142,18 @@
                 Theo năm</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 <span id="salesYear">
-                  <?= number_format($moneyYear['total']) ?>
+                  <?= getMoney(date('Y')) ?>
                 </span> VNĐ
               </div>
             </div>
             <div class="col-auto">
-              <select name="" id="" class="form-control" onchange="getSalesYear(this.value)">
+              <select name="" id="" class="form-control" onchange="getSales(this.value)">
                 <?php for ($i = date('Y') - 4; $i <= date('Y'); $i++) : ?>
                   <option value="<?= $i ?>" <?= date('Y') == $i ? 'selected' : null ?>>Năm
                     <?= $i ?>
                   </option>
                 <?php endfor; ?>
               </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-      <div class="card border-left-warning shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                Theo tuần</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">
-                <?= number_format($moneyWeek['total']) ?> VNĐ
-              </div>
             </div>
           </div>
         </div>
@@ -198,8 +170,8 @@
           </div>
           <div class="col-2">
             <select id="timePeriod" class="form-control">
-              <option value="day">Ngày</option>
-              <option value="month" selected>Tháng</option>
+              <option value="day" selected>Ngày</option>
+              <option value="month">Tháng</option>
               <option value="year">Năm</option>
             </select>
 
@@ -238,36 +210,29 @@
 </div>
 
 <script>
-  function getSalesDay(day) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("salesDay").innerHTML = this.responseText;
-      }
-    }
-    xmlhttp.open("GET", "<?= BASE_URL_ADMIN ?>?act=sale-day&day=" + day, true);
-    xmlhttp.send();
-  }
+  function getSales(date) {
+    if (date == '') return;
 
-  function getSalesMonth(month) {
+    var arrDate = date.split('-');
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("salesMonth").innerHTML = this.responseText;
+        if (arrDate[2]) {
+          document.getElementById("salesDay").innerHTML = this.responseText;
+        } else if (arrDate[1]) {
+          document.getElementById("salesMonth").innerHTML = this.responseText;
+        } else {
+          document.getElementById("salesYear").innerHTML = this.responseText;
+        }
       }
     }
-    xmlhttp.open("GET", "<?= BASE_URL_ADMIN ?>?act=sale-month&month=" + month, true);
-    xmlhttp.send();
-  }
 
-  function getSalesYear(year) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("salesYear").innerHTML = this.responseText;
-      }
-    }
-    xmlhttp.open("GET", "<?= BASE_URL_ADMIN ?>?act=sale-year&year=" + year, true);
+    var url = "<?= BASE_URL_ADMIN ?>?act=get-sales";
+    if (arrDate[0]) url += "&year=" + arrDate[0];
+    if (arrDate[1]) url += "&month=" + arrDate[1];
+    if (arrDate[2]) url += "&day=" + arrDate[2];
+
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
   }
 </script>

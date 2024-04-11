@@ -43,7 +43,7 @@
         ];
         newLabels = [
           <?php foreach ($dataDay as $day) {
-            echo '["' . $day['day'] . '/' . date('n') . '"],';
+            echo '["' . $day['date'] . '"],';
           } ?>
         ];
         break;
@@ -69,11 +69,11 @@
         break;
       default:
         newData = [
-          <?= implode(',', array_column($dataMonth, 'total')) ?>
+          <?= implode(',', array_column($dataDay, 'total')) ?>
         ];
         newLabels = [
-          <?php foreach ($dataMonth as $month) {
-            echo '["Tháng: ' . $month['month'] . '"],';
+          <?php foreach ($dataDay as $day) {
+            echo '["' . $day['date'] . '"],';
           } ?>
         ];
         break;
@@ -94,8 +94,8 @@
     type: 'bar',
     data: {
       labels: [
-        <?php foreach ($dataMonth as $month) {
-          echo '["T' . $month['month'] . '"],';
+        <?php foreach ($dataDay as $day) {
+          echo '["' . $day['date'] . '"],';
         } ?>
       ],
       datasets: [{
@@ -104,7 +104,7 @@
         hoverBackgroundColor: "#2e59d9",
         borderColor: "#4e73df",
         data: [
-          <?= implode(',', array_column($dataMonth, 'total')) ?>
+          <?= implode(',', array_column($dataDay, 'total')) ?>
         ],
       }],
     },
@@ -128,7 +128,7 @@
             drawBorder: false
           },
           ticks: {
-            maxTicksLimit: 12
+            maxTicksLimit: 15
           },
           maxBarThickness: 25,
         }],
@@ -185,8 +185,8 @@
     type: 'line',
     data: {
       labels: [
-        <?php foreach ($dataMonth as $month) {
-          echo '["T' . $month['month'] . '"],';
+        <?php foreach ($dataDay as $day) {
+          echo '["' . $day['date'] . '"],';
         } ?>
       ],
       datasets: [{
@@ -203,7 +203,7 @@
         pointHitRadius: 10,
         pointBorderWidth: 2,
         data: [
-          <?= implode(',', array_column($dataMonth, 'total')) ?>
+          <?= implode(',', array_column($dataDay, 'total')) ?>
         ],
       }],
     },
@@ -227,7 +227,7 @@
             drawBorder: false
           },
           ticks: {
-            maxTicksLimit: 12
+            maxTicksLimit: 15
           }
         }],
         yAxes: [{
