@@ -30,7 +30,7 @@ function contactProcessed($id)
   $tableName = 'tb_lien_he';
 
   $data = [
-    'id_tt' => 4,
+    'id_tt' => 9,
   ];
 
   update($tableName, $id, $data);
@@ -43,7 +43,7 @@ function contactNoProcess($id)
   $tableName = 'tb_lien_he';
 
   $data = [
-    'id_tt' => 3,
+    'id_tt' => 8,
   ];
 
   update($tableName, $id, $data);
