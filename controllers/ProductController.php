@@ -53,8 +53,7 @@ function getAverageRating($id)
 
 function checkBoughtProduct($id)
 {
-  $user = showOne('tb_nguoi_dung', $id);
-  $orders = getOrderByUserId($user['id']);
+  $orders = getOrderByUserId($_SESSION['user']['id']);
   $count = 0;
 
   foreach ($orders as $order) {
@@ -68,7 +67,7 @@ function checkBoughtProduct($id)
     }
   }
 
-  if (count(getReviewsByProductIdAndUserId($_GET['id'], $_SESSION['user']['id'])) <= $count) {
+  if (count(getReviewsByProductIdAndUserId($id, $_SESSION['user']['id'])) <= $count) {
     return true;
   }
 

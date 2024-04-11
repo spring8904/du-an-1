@@ -163,7 +163,7 @@
           <!-- loged user review -->
 
           <?php
-          if (isset($_SESSION['user']) && $_SESSION['user']['id'] && checkBoughtProduct($_SESSION['user']['id'])) { ?>
+          if (isset($_SESSION['user']) && $_SESSION['user']['id'] && checkBoughtProduct($_GET['id'])) { ?>
             <div class="review-write-container">
               <h3>Bạn đã mua sản phẩm này trước đây, đã đủ điều kiện để đánh giá</h3>
               <form method="POST">

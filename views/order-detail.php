@@ -148,7 +148,7 @@
                     <td>
                       <?php if (
                         $order['id_tt'] == 6
-                        && empty(getReviewsByProductIdAndUserId($product['id'], $_SESSION['user']['id']))
+                        && checkBoughtProduct($product['id'])
                       ) { ?>
                         <a class="btn btn-success" href="<?= BASE_URL . '?act=product&id=' . $product['id'] ?>">Đánh giá</a>
                       <?php } ?>
