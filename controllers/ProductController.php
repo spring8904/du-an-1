@@ -60,14 +60,14 @@ function checkBoughtProduct($id)
     if ($order['id_tt'] == 6) {
       $orderDetails = getOrderDetailsByOrderId($order['id']);
       foreach ($orderDetails as $orderDetail) {
-        if ($orderDetail['id_sp'] == $_GET['id']) {
+        if ($orderDetail['id_sp'] == $id) {
           $count++;
         }
       }
     }
   }
 
-  if (count(getReviewsByProductIdAndUserId($id, $_SESSION['user']['id'])) <= $count) {
+  if (count(getReviewsByProductIdAndUserId($id, $_SESSION['user']['id'])) < $count) {
     return true;
   }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 06:14 PM
+-- Generation Time: Apr 12, 2024 at 06:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -100,7 +100,9 @@ INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`, `gia`) VALUES
 (52, 48, 23, 1, 9899000),
 (53, 49, 22, 1, 11999000),
 (54, 50, 23, 1, 9899000),
-(55, 50, 14, 2, 29900000);
+(55, 50, 14, 2, 29900000),
+(56, 51, 20, 1, 34000000),
+(57, 52, 23, 1, 9899000);
 
 -- --------------------------------------------------------
 
@@ -141,14 +143,10 @@ CREATE TABLE `tb_danh_gia` (
 --
 
 INSERT INTO `tb_danh_gia` (`id`, `id_nd`, `id_sp`, `so_sao`, `danh_gia`, `ngay_dg`) VALUES
-(1, 1, 11, 5, '10 điểm k có nhưng', '2024-04-02 09:21:40'),
-(2, 1, 11, 1, '1 sao', '2024-04-02 09:21:50'),
-(3, 10, 14, 5, 'Xịn xò', '2024-04-04 11:25:48'),
+(1, 1, 11, 5, '10 điểm', '2024-04-02 09:21:40'),
 (4, 1, 23, 5, 'ok', '2024-04-11 22:30:37'),
-(5, 1, 23, 3, 'ok', '2024-04-11 22:38:15'),
-(6, 1, 23, 4, 'ok', '2024-04-11 22:38:21'),
 (7, 1, 14, 5, '5 sao', '2024-04-11 23:13:03'),
-(8, 1, 14, 4, 'oke', '2024-04-11 23:13:27');
+(9, 1, 20, 5, 'ok', '2024-04-12 10:18:05');
 
 -- --------------------------------------------------------
 
@@ -205,9 +203,11 @@ INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt
 (45, '17126505494967', '2024-04-01 15:15:49', 10, 1, 6, '', 9899000, '', 'Client', 'client@gmail.com', '0339735555', 'Hải Phòng'),
 (46, '17126526097855', '2024-03-09 15:50:09', 1, 1, 6, '', 34900000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
 (47, '17128098629614', '2023-04-11 11:31:02', 10, 1, 6, '', 62680000, '', 'Client', 'client@gmail.com', '0339735555', 'Hải Phòng'),
-(48, '17128225655453', '2024-04-11 15:03:09', 1, 2, 6, '', 9899000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(48, '17128225655453', '2024-04-09 15:03:09', 1, 2, 6, '', 9899000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
 (49, '17128226033793', '2024-04-11 15:03:56', 1, 3, 6, '', 11999000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
-(50, '17128227175770', '2024-04-11 15:05:17', 1, 1, 6, '', 69699000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội');
+(50, '17128227175770', '2024-04-11 15:05:17', 1, 1, 6, '', 69699000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(51, '17128916426094', '2024-04-12 10:15:25', 1, 3, 3, '', 34000000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(52, '17128943462141', '2024-04-12 10:59:06', 1, 1, 4, '', 9899000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -304,7 +304,7 @@ CREATE TABLE `tb_lien_he` (
   `dia_chi` varchar(50) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `noi_dung` text NOT NULL,
-  `id_tt` int(11) NOT NULL DEFAULT 3,
+  `id_tt` int(11) NOT NULL DEFAULT 8,
   `ngay_gui` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -313,7 +313,8 @@ CREATE TABLE `tb_lien_he` (
 --
 
 INSERT INTO `tb_lien_he` (`id`, `tieu_de`, `ten_kh`, `so_dien_thoai`, `dia_chi`, `email`, `noi_dung`, `id_tt`, `ngay_gui`) VALUES
-(5, 'Giao hàng', 'Lâm', '0339735022', 'Hà Nội', 'lamnxph45877@fpt.edu.vn', 'Đơn hàng của tôi bao giờ sẽ giao đến', 9, '2024-04-11 11:06:37');
+(5, 'Giao hàng', 'Lâm', '0339735022', 'Hà Nội', 'lamnxph45877@fpt.edu.vn', 'Đơn hàng của tôi bao giờ sẽ giao đến', 8, '2024-04-11 11:06:37'),
+(6, 'Sai thông tin', 'Mai', '0339735022', 'Hà Nội', 'lamnxph45877@fpt.edu.vn', 'Tôi muốn sửa thông tin cá nhân', 8, '2024-04-12 10:44:14');
 
 -- --------------------------------------------------------
 
@@ -387,16 +388,16 @@ CREATE TABLE `tb_san_pham` (
 INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`, `ngay_nhap`, `so_luong`, `id_tt`) VALUES
 (12, 'iPhone 11 Pro Max 64GB Cũ Trầy xước', 10000000, 9900000, 5, 'Kích thước màn hình\r\n\r\n6.5 inches\r\nCông nghệ màn hình\r\n\r\nSuper Retina XDR\r\nCamera sau\r\n\r\n3 Camera 12MP:\r\n- Camera tele: ƒ/2.0 aperture\r\n- Camera góc rộng: ƒ/1.8 aperture\r\n- Camera siêu rộng: ƒ/2.4 aperture\r\nCamera trước\r\n\r\n12 MP ƒ/2.2 aperture\r\nChipset\r\n\r\nA13 Bionic\r\nDung lượng RAM\r\n\r\n4 GB\r\nBộ nhớ trong\r\n\r\n64 GB\r\nPin\r\n\r\n3969 mAh\r\nThẻ SIM\r\n\r\nNano-SIM + eSIM\r\nHệ điều hành\r\n\r\niOS 13 hoặc cao hơn (Tùy vào phiên bản phát hành)\r\nĐộ phân giải màn hình\r\n\r\n2688 x 1242 pixels\r\nCảm biến\r\n\r\nFaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', '2024-04-03', 10, 1),
 (13, 'iPhone XS Max 64GB Cũ đẹp', 7800000, 5000000, 5, 'Kích thước màn hình\r\n\r\n6.5 inches\r\nCông nghệ màn hình\r\n\r\nSuper Retina OLED\r\nCamera sau\r\n\r\n12 MP\r\nCamera trước\r\n\r\n7 MP\r\nChipset\r\n\r\nApple A12 Bionic 6 nhân\r\nBộ nhớ trong\r\n\r\n64 GB\r\nPin\r\n\r\nLi-ion\r\nThẻ SIM\r\n\r\nNano-SIM\r\nHệ điều hành\r\n\r\n12\r\nĐộ phân giải màn hình\r\n\r\n1242 x 2688 pixel', '2024-04-01', 9, 1),
-(14, 'Samsung Galaxy Z Fold5 12GB 256GB', 38000000, 29900000, 6, 'Kích thước màn hình\r\n\r\n7.6 inches\r\nCông nghệ màn hình\r\n\r\nDynamic AMOLED 2X\r\nCamera sau\r\n\r\nCamera siêu rộng: 12MP F2.2, 123°, 1.12μm\r\nCamera góc rộng: 50MP, F1.8, Dual Pixel AF, OIS, 2.0μm\r\nCamera Tele: 10 MP, F2.4, PDAF, OIS, 1.0μm, zoom 3X, zoom kỹ thuật số 30X\r\nCamera trước\r\n\r\nCamera bên ngoài:10 MP, f/2.2\r\nCamera bên trong: 4 MP, F1.8\r\nChipset\r\n\r\nSnapdragon 8 Gen 2 for Galaxy (4nm) 8 nhân\r\nDung lượng RAM\r\n\r\n12 GB\r\nBộ nhớ trong\r\n\r\n256 GB\r\nPin\r\n\r\n4.400 mAh\r\nThẻ SIM\r\n\r\n2 SIM (nano‑SIM và eSIM)\r\nHệ điều hành\r\n\r\nAndroid 13, One UI 5.1\r\nĐộ phân giải màn hình\r\n\r\n2176 x 1812 pixels (QXGA+)\r\nTính năng màn hình\r\n\r\nMàn hình chính rộng: 7,6 inch, 21.6:18, Dynamic AMOLED 2X, 1-120Hz, Hỗ trợ S Pen\r\nMàn hình ngoài rộng: 6,2 inch, HD+ (2316 x 904), Dynamic AMOLED 2X, 23.1:9, 48-120Hz\r\nĐộ sáng tối đa: 1750 nits Mặt kính cảm ứng Chính: Ultra Thin Glass & Phụ: Corning', '2024-04-01', 8, 1),
+(14, 'Samsung Galaxy Z Fold5 12GB 256GB', 38000000, 29900000, 6, 'Kích thước màn hình\r\n\r\n7.6 inches\r\nCông nghệ màn hình\r\n\r\nDynamic AMOLED 2X\r\nCamera sau\r\n\r\nCamera siêu rộng: 12MP F2.2, 123°, 1.12μm\r\nCamera góc rộng: 50MP, F1.8, Dual Pixel AF, OIS, 2.0μm\r\nCamera Tele: 10 MP, F2.4, PDAF, OIS, 1.0μm, zoom 3X, zoom kỹ thuật số 30X\r\nCamera trước\r\n\r\nCamera bên ngoài:10 MP, f/2.2\r\nCamera bên trong: 4 MP, F1.8\r\nChipset\r\n\r\nSnapdragon 8 Gen 2 for Galaxy (4nm) 8 nhân\r\nDung lượng RAM\r\n\r\n12 GB\r\nBộ nhớ trong\r\n\r\n256 GB\r\nPin\r\n\r\n4.400 mAh\r\nThẻ SIM\r\n\r\n2 SIM (nano‑SIM và eSIM)\r\nHệ điều hành\r\n\r\nAndroid 13, One UI 5.1\r\nĐộ phân giải màn hình\r\n\r\n2176 x 1812 pixels (QXGA+)\r\nTính năng màn hình\r\n\r\nMàn hình chính rộng: 7,6 inch, 21.6:18, Dynamic AMOLED 2X, 1-120Hz, Hỗ trợ S Pen\r\nMàn hình ngoài rộng: 6,2 inch, HD+ (2316 x 904), Dynamic AMOLED 2X, 23.1:9, 48-120Hz\r\nĐộ sáng tối đa: 1750 nits Mặt kính cảm ứng Chính: Ultra Thin Glass & Phụ: Corning', '2024-04-01', 18, 1),
 (15, 'Xiaomi 14 (12GB 256GB)', 25000000, 20900000, 16, 'Mạnh mẽ cân mọi tác vụ, đa nhiệm cực đỉnh - Chip Snapdragon 8 Gen 3 (4nm) mượt mà đi kèm RAM 12GB\r\nTrải nghiệm hình ảnh sống động - Màn hình 6.36” vừa vặn, công nghệ LTPO OLED, tần số quét 120Hz\r\nTuyệt tác camera, chụp ảnh sắc nét - Bộ 3 camera 50MP ống kính Leica cùng chống rung OIS\r\nNăng lượng tràn đầy, thoả sức sức tạo - Dung lượng pin lớn 4610mAh, sạc nhanh 90W', '2024-04-02', 10, 1),
 (16, 'Xiaomi Redmi Note 13 6GB 128GB', 4890000, 4690000, 16, 'Redmi Note 13 sở hữu những nâng cấp đáng chú ý với con chip Snapdragon 685, GPU Mali-G57 cùng 6GB RAM để có thể cải thiện tới 25% hiệu năng và 35% khả năng hiển thị đồ hoạ. Điện thoại cũng sẽ được trang bị màn hình AMOLED 120Hz để có được khả năng hiển thị cùng với đó là viên pin 5000 mAh với công suất sạc 33W.', '2024-04-04', 9, 1),
 (17, 'iPhone 15 Pro Max 256GB', 34990000, 31990000, 5, 'iPhone 15 Pro Max thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', '2024-04-04', 9, 1),
-(18, 'iPhone 14 Pro Max 128GB', 32000000, 26000000, 5, 'iPhone 14 Pro Max sở hữu thiết kế màn hình Dynamic Island ấn tượng cùng màn hình OLED 6,7 inch hỗ trợ always-on display và hiệu năng vượt trội với chip A16 Bionic. Bên cạnh đó máy còn sở hữu nhiều nâng cấp về camera với cụm camera sau 48MP, camera trước 12MP dùng bộ nhớ RAM 6GB đa nhiệm vượt trội. Cùng phân tích chi tiết thông số siêu phẩm này ngay sau đây.', '2024-04-04', 8, 1),
+(18, 'iPhone 14 Pro Max 128GB', 32000000, 26000000, 5, 'iPhone 14 Pro Max sở hữu thiết kế màn hình Dynamic Island ấn tượng cùng màn hình OLED 6,7 inch hỗ trợ always-on display và hiệu năng vượt trội với chip A16 Bionic. Bên cạnh đó máy còn sở hữu nhiều nâng cấp về camera với cụm camera sau 48MP, camera trước 12MP dùng bộ nhớ RAM 6GB đa nhiệm vượt trội. Cùng phân tích chi tiết thông số siêu phẩm này ngay sau đây.', '2024-04-04', 18, 1),
 (19, 'OPPO Reno11 F 5G 8GB 256GB', 9000000, 0, 17, 'OPPO Reno11 F 5G cung cấp trải nghiệm hiển thị, xử lý siêu mượt mà với màn hình AMOLED 6.7 inch hiện đại cùng chipset MediaTek Dimensity 7050 mạnh mẽ. Hệ thống quay chụp trên thế hệ Reno11 F 5G này được cải thiện hơn thông qua cụm 3 camera với độ phân giải lần lượt là 64MP, 8MP và 2MP. Ngoài ra, cung cấp năng lượng cho thế hệ OPPO smartphone này là viên pin 5000mAh cùng sạc nhanh 67W, mang tới trải nghiệm liền mạch suốt ngày dài.', '2024-04-04', 10, 1),
-(20, 'Samsung S24 Ultra ', 34000000, 0, 6, 'Samsung S24 Ultra là siêu phẩm smartphone đỉnh cao mở đầu năm 2024 đến từ nhà Samsung với chip Snapdragon 8 Gen 3 For Galaxy mạnh mẽ, công nghệ tương lai Galaxy AI cùng khung viền Titan đẳng cấp hứa hẹn sẽ mang tới nhiều sự thay đổi lớn về mặt thiết kế và cấu hình. SS Galaxy S24 bản Ultra sở hữu màn hình 6.8 inch Dynamic AMOLED 2X tần số quét 120Hz. Máy cũng sở hữu camera chính 200MP, camera zoom quang học 50MP, camera tele 10MP và camera góc siêu rộng 12MP.', '2024-04-08', 10, 1),
-(21, 'Xiaomi Redmi Note 13 Pro Plus 5G 8GB 256GB', 8900000, 0, 16, 'Xiaomi Redmi Note 13 Pro được trang bị chip MediaTek Helio G99-Ultra được sản xuất theo tiến trình 6nm, dung lượng RAM 8GB, bộ nhớ trong 128GB. Điện thoại sở hữu thời gian sử dụng lâu dài nhờ viên pin 5000mAh cùng khả năng sạc nhanh 67W. Ngoài ra, máy còn được trang bị màn hình AMOLED 6.67 inch, độ phân giải 2400x1080 pixels cùng tần số quét 120Hz.', '2024-04-08', 6, 1),
-(22, 'Xiaomi 13T Pro 5G (12GB - 512GB)', 11999000, 0, 16, 'Xiaomi 13T Pro là flagship mới nhất nhà Xiaomi, mạnh mẽ ấn tượng với chip MediaTek Dimensity 9200+, cùng với đó là RAM 12GB và bộ nhớ trong lên tới 512GB. Đặc biệt, khả năng chụp ảnh đỉnh cao nhờ cụm camera siêu chất, viên pin lớn 5000mAh cùng sạc nhanh 120W. Tất cả sẽ mang tới một siêu phẩm đình đám giúp bạn có được trải nghiệm độc đáo và khẳng định được cá tính của mình.', '2024-04-08', 6, 1),
-(23, 'Realme 11 Pro (8GB - 256GB)', 9899000, 0, 18, 'realme 11 Pro là sản phẩm điện thoại được thiết kế màn hình OLED cùng tần số quét cao 120Hz. Ống kính cảm biến chính lên đến 100MP thu lại hình ảnh ghi lại rõ nét từng chi tiết nhỏ. Dung lượng bộ nhớ khủng 128GB giúp tăng lưu trữ hình ảnh, tài liệu, ứng dụng dễ dàng. ', '2024-04-08', 1, 1);
+(20, 'Samsung S24 Ultra ', 34000000, 0, 6, 'Samsung S24 Ultra là siêu phẩm smartphone đỉnh cao mở đầu năm 2024 đến từ nhà Samsung với chip Snapdragon 8 Gen 3 For Galaxy mạnh mẽ, công nghệ tương lai Galaxy AI cùng khung viền Titan đẳng cấp hứa hẹn sẽ mang tới nhiều sự thay đổi lớn về mặt thiết kế và cấu hình. SS Galaxy S24 bản Ultra sở hữu màn hình 6.8 inch Dynamic AMOLED 2X tần số quét 120Hz. Máy cũng sở hữu camera chính 200MP, camera zoom quang học 50MP, camera tele 10MP và camera góc siêu rộng 12MP.', '2024-04-08', 9, 1),
+(21, 'Xiaomi Redmi Note 13 Pro Plus 5G 8GB 256GB', 8900000, 0, 16, 'Xiaomi Redmi Note 13 Pro được trang bị chip MediaTek Helio G99-Ultra được sản xuất theo tiến trình 6nm, dung lượng RAM 8GB, bộ nhớ trong 128GB. Điện thoại sở hữu thời gian sử dụng lâu dài nhờ viên pin 5000mAh cùng khả năng sạc nhanh 67W. Ngoài ra, máy còn được trang bị màn hình AMOLED 6.67 inch, độ phân giải 2400x1080 pixels cùng tần số quét 120Hz.', '2024-04-08', 16, 1),
+(22, 'Xiaomi 13T Pro 5G (12GB - 512GB)', 11999000, 0, 16, 'Xiaomi 13T Pro là flagship mới nhất nhà Xiaomi, mạnh mẽ ấn tượng với chip MediaTek Dimensity 9200+, cùng với đó là RAM 12GB và bộ nhớ trong lên tới 512GB. Đặc biệt, khả năng chụp ảnh đỉnh cao nhờ cụm camera siêu chất, viên pin lớn 5000mAh cùng sạc nhanh 120W. Tất cả sẽ mang tới một siêu phẩm đình đám giúp bạn có được trải nghiệm độc đáo và khẳng định được cá tính của mình.', '2024-04-08', 16, 1),
+(23, 'Realme 11 Pro (8GB - 256GB)', 9899000, 0, 18, 'realme 11 Pro là sản phẩm điện thoại được thiết kế màn hình OLED cùng tần số quét cao 120Hz. Ống kính cảm biến chính lên đến 100MP thu lại hình ảnh ghi lại rõ nét từng chi tiết nhỏ. Dung lượng bộ nhớ khủng 128GB giúp tăng lưu trữ hình ảnh, tài liệu, ứng dụng dễ dàng. ', '2024-04-08', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -552,7 +553,7 @@ ALTER TABLE `tb_binh_luan`
 -- AUTO_INCREMENT for table `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `tb_chuc_vu`
@@ -564,7 +565,7 @@ ALTER TABLE `tb_chuc_vu`
 -- AUTO_INCREMENT for table `tb_danh_gia`
 --
 ALTER TABLE `tb_danh_gia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_danh_muc_sp`
@@ -576,7 +577,7 @@ ALTER TABLE `tb_danh_muc_sp`
 -- AUTO_INCREMENT for table `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
@@ -594,7 +595,7 @@ ALTER TABLE `tb_khuyen_mai`
 -- AUTO_INCREMENT for table `tb_lien_he`
 --
 ALTER TABLE `tb_lien_he`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_nguoi_dung`

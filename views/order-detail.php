@@ -147,8 +147,7 @@
                     <td><?= number_format($orderDetail['gia'] * $orderDetail['so_luong']) ?> VNĐ</td>
                     <td>
                       <?php if (
-                        $order['id_tt'] == 6
-                        && checkBoughtProduct($product['id'])
+                        checkBoughtProduct($product['id'])
                       ) { ?>
                         <a class="btn btn-success" href="<?= BASE_URL . '?act=product&id=' . $product['id'] ?>">Đánh giá</a>
                       <?php } ?>

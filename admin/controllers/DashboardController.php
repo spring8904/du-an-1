@@ -48,7 +48,18 @@ function dashboard()
       $countOkContact++;
     }
   }
+
+  $orders = listAll('tb_don_hang');
+  $countOrder = count($orders);
+  $countOkOrder = 0;
+  foreach ($orders as $order) {
+    if ($order['id_tt'] != 3) {
+      $countOkOrder++;
+    }
+  }
+
   $percentContact = ($countContact == 0 ? 0 : ceil($countOkContact / $countContact * 100)) . '%';
+  $percentOrder = ($countOrder == 0 ? 0 : ceil($countOkOrder / $countOrder * 100)) . '%';
   require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
