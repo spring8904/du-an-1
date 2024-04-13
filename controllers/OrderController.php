@@ -315,13 +315,13 @@ function thanksIndex()
             'ghi_chu' => $_GET['ghi_chu'] ?? '',
         ];
         createOrder($orderData);
+        unset($_SESSION['cart']);
+        unset($_SESSION['promotion']);
         require_once PATH_VIEW . 'thanks.php';
     } else {
         header('location: ' . BASE_URL . '?act=cart');
         exit();
     }
-    unset($_SESSION['cart']);
-    unset($_SESSION['promotion']);
 }
 
 function execPostRequest($url, $data)

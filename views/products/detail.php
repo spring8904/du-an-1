@@ -114,9 +114,9 @@
                   <img src="imgs/shopping-cart.png" />
                   <span>Thêm vào giỏ hàng</span>
                 </button>
-              <?php } ?>
               </div>
             </form>
+          <?php } ?>
         </div>
       </section>
 

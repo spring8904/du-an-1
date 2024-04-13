@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2024 at 06:02 AM
+-- Generation Time: Apr 13, 2024 at 04:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,7 +102,14 @@ INSERT INTO `tb_chi_tiet_dh` (`id`, `id_dh`, `id_sp`, `so_luong`, `gia`) VALUES
 (54, 50, 23, 1, 9899000),
 (55, 50, 14, 2, 29900000),
 (56, 51, 20, 1, 34000000),
-(57, 52, 23, 1, 9899000);
+(57, 52, 23, 1, 9899000),
+(58, 53, 23, 3, 9899000),
+(59, 54, 23, 1, 9899000),
+(60, 55, 19, 1, 9000000),
+(61, 56, 23, 1, 9899000),
+(62, 57, 22, 1, 11999000),
+(63, 58, 22, 1, 11999000),
+(64, 59, 22, 1, 11999000);
 
 -- --------------------------------------------------------
 
@@ -207,7 +214,14 @@ INSERT INTO `tb_don_hang` (`id`, `ma_dh`, `ngay_dat`, `id_nd`, `id_pttt`, `id_tt
 (49, '17128226033793', '2024-04-11 15:03:56', 1, 3, 6, '', 11999000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
 (50, '17128227175770', '2024-04-11 15:05:17', 1, 1, 6, '', 69699000, '', 'Admin', 'admin@gmail.com', '0339735022', 'Hà Nội'),
 (51, '17128916426094', '2024-04-12 10:15:25', 1, 3, 3, '', 34000000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
-(52, '17128943462141', '2024-04-12 10:59:06', 1, 1, 4, '', 9899000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội');
+(52, '17128943462141', '2024-04-12 10:59:06', 1, 1, 4, '', 9899000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(53, '17129741969211', '2024-04-13 09:09:56', 1, 1, 3, 'IK86OVCT', 23757600, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(54, '17129742277402', '2024-04-13 09:11:04', 1, 2, 6, '', 9899000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(55, '17129743894604', '2024-04-13 09:13:53', 1, 3, 3, '', 9000000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(56, '17129762689426', '2024-04-13 09:44:28', 1, 1, 3, '', 9899000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(57, '17129764379240', '2024-04-13 09:47:17', 1, 1, 3, '', 11999000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(58, '17129764935486', '2024-04-13 09:48:13', 1, 1, 3, '', 11999000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội'),
+(59, '17129765632202', '2024-04-13 09:49:23', 1, 1, 3, '', 11999000, '', 'Xuân Lâm', 'admin@gmail.com', '0339735022', 'Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -393,24 +407,11 @@ INSERT INTO `tb_san_pham` (`id`, `ten_sp`, `gia_sp`, `gia_km`, `id_dm`, `mo_ta`,
 (16, 'Xiaomi Redmi Note 13 6GB 128GB', 4890000, 4690000, 16, 'Redmi Note 13 sở hữu những nâng cấp đáng chú ý với con chip Snapdragon 685, GPU Mali-G57 cùng 6GB RAM để có thể cải thiện tới 25% hiệu năng và 35% khả năng hiển thị đồ hoạ. Điện thoại cũng sẽ được trang bị màn hình AMOLED 120Hz để có được khả năng hiển thị cùng với đó là viên pin 5000 mAh với công suất sạc 33W.', '2024-04-04', 9, 1),
 (17, 'iPhone 15 Pro Max 256GB', 34990000, 31990000, 5, 'iPhone 15 Pro Max thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera telephoto có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!', '2024-04-04', 9, 1),
 (18, 'iPhone 14 Pro Max 128GB', 32000000, 26000000, 5, 'iPhone 14 Pro Max sở hữu thiết kế màn hình Dynamic Island ấn tượng cùng màn hình OLED 6,7 inch hỗ trợ always-on display và hiệu năng vượt trội với chip A16 Bionic. Bên cạnh đó máy còn sở hữu nhiều nâng cấp về camera với cụm camera sau 48MP, camera trước 12MP dùng bộ nhớ RAM 6GB đa nhiệm vượt trội. Cùng phân tích chi tiết thông số siêu phẩm này ngay sau đây.', '2024-04-04', 18, 1),
-(19, 'OPPO Reno11 F 5G 8GB 256GB', 9000000, 0, 17, 'OPPO Reno11 F 5G cung cấp trải nghiệm hiển thị, xử lý siêu mượt mà với màn hình AMOLED 6.7 inch hiện đại cùng chipset MediaTek Dimensity 7050 mạnh mẽ. Hệ thống quay chụp trên thế hệ Reno11 F 5G này được cải thiện hơn thông qua cụm 3 camera với độ phân giải lần lượt là 64MP, 8MP và 2MP. Ngoài ra, cung cấp năng lượng cho thế hệ OPPO smartphone này là viên pin 5000mAh cùng sạc nhanh 67W, mang tới trải nghiệm liền mạch suốt ngày dài.', '2024-04-04', 10, 1),
+(19, 'OPPO Reno11 F 5G 8GB 256GB', 9000000, 0, 17, 'OPPO Reno11 F 5G cung cấp trải nghiệm hiển thị, xử lý siêu mượt mà với màn hình AMOLED 6.7 inch hiện đại cùng chipset MediaTek Dimensity 7050 mạnh mẽ. Hệ thống quay chụp trên thế hệ Reno11 F 5G này được cải thiện hơn thông qua cụm 3 camera với độ phân giải lần lượt là 64MP, 8MP và 2MP. Ngoài ra, cung cấp năng lượng cho thế hệ OPPO smartphone này là viên pin 5000mAh cùng sạc nhanh 67W, mang tới trải nghiệm liền mạch suốt ngày dài.', '2024-04-04', 9, 1),
 (20, 'Samsung S24 Ultra ', 34000000, 0, 6, 'Samsung S24 Ultra là siêu phẩm smartphone đỉnh cao mở đầu năm 2024 đến từ nhà Samsung với chip Snapdragon 8 Gen 3 For Galaxy mạnh mẽ, công nghệ tương lai Galaxy AI cùng khung viền Titan đẳng cấp hứa hẹn sẽ mang tới nhiều sự thay đổi lớn về mặt thiết kế và cấu hình. SS Galaxy S24 bản Ultra sở hữu màn hình 6.8 inch Dynamic AMOLED 2X tần số quét 120Hz. Máy cũng sở hữu camera chính 200MP, camera zoom quang học 50MP, camera tele 10MP và camera góc siêu rộng 12MP.', '2024-04-08', 9, 1),
 (21, 'Xiaomi Redmi Note 13 Pro Plus 5G 8GB 256GB', 8900000, 0, 16, 'Xiaomi Redmi Note 13 Pro được trang bị chip MediaTek Helio G99-Ultra được sản xuất theo tiến trình 6nm, dung lượng RAM 8GB, bộ nhớ trong 128GB. Điện thoại sở hữu thời gian sử dụng lâu dài nhờ viên pin 5000mAh cùng khả năng sạc nhanh 67W. Ngoài ra, máy còn được trang bị màn hình AMOLED 6.67 inch, độ phân giải 2400x1080 pixels cùng tần số quét 120Hz.', '2024-04-08', 16, 1),
-(22, 'Xiaomi 13T Pro 5G (12GB - 512GB)', 11999000, 0, 16, 'Xiaomi 13T Pro là flagship mới nhất nhà Xiaomi, mạnh mẽ ấn tượng với chip MediaTek Dimensity 9200+, cùng với đó là RAM 12GB và bộ nhớ trong lên tới 512GB. Đặc biệt, khả năng chụp ảnh đỉnh cao nhờ cụm camera siêu chất, viên pin lớn 5000mAh cùng sạc nhanh 120W. Tất cả sẽ mang tới một siêu phẩm đình đám giúp bạn có được trải nghiệm độc đáo và khẳng định được cá tính của mình.', '2024-04-08', 16, 1),
-(23, 'Realme 11 Pro (8GB - 256GB)', 9899000, 0, 18, 'realme 11 Pro là sản phẩm điện thoại được thiết kế màn hình OLED cùng tần số quét cao 120Hz. Ống kính cảm biến chính lên đến 100MP thu lại hình ảnh ghi lại rõ nét từng chi tiết nhỏ. Dung lượng bộ nhớ khủng 128GB giúp tăng lưu trữ hình ảnh, tài liệu, ứng dụng dễ dàng. ', '2024-04-08', 9, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_thong_ke`
---
-
-CREATE TABLE `tb_thong_ke` (
-  `id` int(11) NOT NULL,
-  `don_hang` varchar(50) NOT NULL,
-  `doanh_thu` int(50) NOT NULL,
-  `so_luong_ban` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(22, 'Xiaomi 13T Pro 5G (12GB - 512GB)', 11999000, 0, 16, 'Xiaomi 13T Pro là flagship mới nhất nhà Xiaomi, mạnh mẽ ấn tượng với chip MediaTek Dimensity 9200+, cùng với đó là RAM 12GB và bộ nhớ trong lên tới 512GB. Đặc biệt, khả năng chụp ảnh đỉnh cao nhờ cụm camera siêu chất, viên pin lớn 5000mAh cùng sạc nhanh 120W. Tất cả sẽ mang tới một siêu phẩm đình đám giúp bạn có được trải nghiệm độc đáo và khẳng định được cá tính của mình.', '2024-04-08', 13, 1),
+(23, 'Realme 11 Pro (8GB - 256GB)', 9899000, 0, 18, 'realme 11 Pro là sản phẩm điện thoại được thiết kế màn hình OLED cùng tần số quét cao 120Hz. Ống kính cảm biến chính lên đến 100MP thu lại hình ảnh ghi lại rõ nét từng chi tiết nhỏ. Dung lượng bộ nhớ khủng 128GB giúp tăng lưu trữ hình ảnh, tài liệu, ứng dụng dễ dàng. ', '2024-04-08', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -522,12 +523,6 @@ ALTER TABLE `tb_san_pham`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_thong_ke`
---
-ALTER TABLE `tb_thong_ke`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tb_trang_thai`
 --
 ALTER TABLE `tb_trang_thai`
@@ -553,7 +548,7 @@ ALTER TABLE `tb_binh_luan`
 -- AUTO_INCREMENT for table `tb_chi_tiet_dh`
 --
 ALTER TABLE `tb_chi_tiet_dh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `tb_chuc_vu`
@@ -577,7 +572,7 @@ ALTER TABLE `tb_danh_muc_sp`
 -- AUTO_INCREMENT for table `tb_don_hang`
 --
 ALTER TABLE `tb_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tb_hinh_anh_sp`
@@ -614,12 +609,6 @@ ALTER TABLE `tb_phuong_thuc_thanh_toan`
 --
 ALTER TABLE `tb_san_pham`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `tb_thong_ke`
---
-ALTER TABLE `tb_thong_ke`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_trang_thai`
